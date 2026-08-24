@@ -1,81 +1,86 @@
 # Search Queries for Job Scraper
 
-<!-- SETUP: Customize these queries based on your skills, target roles, and location -->
-
 ## Installed portal CLIs (primary for `/scrape`)
 
-`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Shipped country-agnostic CLIs include `linkedin-search` and `freehire-search`; Danish demos and any skill you add with `/add-portal` are included the same way. You do **not** need a matching `site:` line below for those CLIs to run.
+`/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Shipped country-agnostic CLIs include `linkedin-search` and `freehire-search`, plus `instahyre-search` for the India tech/startup market; any skill you add with `/add-portal` is included the same way. You do **not** need a matching `site:` line below for those CLIs to run.
 
-The `site:` query templates in this file are the **WebSearch fallback** — for portals without a CLI, company career pages, or when a CLI fails.
+For this search, run **`linkedin-search`** (primary - AI/GenAI roles in India and global-remote), **`instahyre-search`** (India tech/startup, Bengaluru-heavy), and **`freehire-search`** (global-remote). Use the `site:` templates below as the WebSearch fallback for boards without a CLI (Naukri, Wellfound/AngelList, and startup career pages).
 
-**Language scope:** write every query category in every language listed in your CLAUDE.md Languages table (typically 1-2, sometimes more). A posting requiring a language you have *not* declared, as a job condition, is excluded before scoring; a posting requiring a *higher level* than you declared in a language you *do* work in is flagged for your own judgment, not excluded — see `04-job-evaluation.md`'s Language Gate, the single source of truth for this rule. Translate each category's keywords rather than machine-translating word-for-word (e.g. "Frontend Developer" -> "Desarrollador Frontend", not a literal word-for-word translation) if you work in more than one language.
+**Instahyre caveat:** its API exposes no posting date and no recency filter, so `instahyre-search` cannot honour the 14-day window in the Date Filter below - do not pass it `--jobage`, and treat every Instahyre result as "date unknown". Its `detail` command returns skill keywords, not description text.
+
+**Language scope:** Sahil works in English, Hindi, and Marathi (see CLAUDE.md Languages table). AI/GenAI job postings in India and global-remote are effectively all written and conducted in English, so all query categories below are in English. Hindi/Marathi require no separate translated query set here; the Language Gate in `04-job-evaluation.md` still uses the full table when assessing any individual posting.
 
 ## Search Sites
 
-Primary (your market's job boards - scaffold one with `/add-portal`):
-- **[YOUR_JOB_BOARD]** - your market's largest general job board
-- **linkedin.com/jobs** - LinkedIn job listings (filter: [YOUR_COUNTRY] / [YOUR_CITY]); also covered by `linkedin-search` CLI
-- **[YOUR_INDUSTRY_JOB_BOARD]** - a niche/industry board for your field (optional)
-- **[YOUR_ADDITIONAL_JOB_BOARD]** - another major board for your market (optional)
+Primary:
+- **linkedin.com/jobs** - LinkedIn job listings (filter: India / Bengaluru + Remote); also covered by `linkedin-search` CLI
+- **naukri.com** - India's largest general job board (WebSearch fallback only; naukri.com's robots.txt disallows Claude/AI user-agents on job paths, so no portal CLI ships for it)
+- **wellfound.com** (AngelList Talent) - startup / AI-first roles, incl. global-remote
+- **instahyre.com** - India tech/startup roles; covered by the `instahyre-search` CLI
 
 Secondary (company career pages via Google):
-- Direct Google searches with `site:` filters for known target companies
+- Direct Google searches with `site:` filters for AI-first startups and funded product companies
 
 ## Query Categories
 
-Queries are grouped by priority. Write **each category in every language from your Languages table** (see Language scope above). Combine each query with your location terms (e.g. your city, region, or metro area) where the site supports it.
+Queries are grouped by priority. Combine each with location terms (Bengaluru / Bangalore / Remote) where the site supports it.
 
-### Priority 1: [YOUR_PRIMARY_ROLE_TYPE]
+### Priority 1: AI / GenAI Engineer
 
-These match your strongest and most desired career direction.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_KEY_SKILL]" [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_COUNTRY]
-```
-
-### Priority 2: [YOUR_DOMAIN_EXPERTISE]
-
-These match your domain expertise.
+Strongest and most desired direction.
 
 ```
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] OR [YOUR_REGION]
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_2] [YOUR_COUNTRY]
-site:linkedin.com/jobs [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] [YOUR_COUNTRY]
+site:linkedin.com/jobs "AI Engineer" (Bengaluru OR Remote) India
+site:linkedin.com/jobs "GenAI Engineer" (Bengaluru OR Remote)
+site:naukri.com "Generative AI Engineer" Bangalore
+site:wellfound.com "AI Engineer" remote
+"RAG" "LLM" AI Engineer (Bangalore OR remote) jobs
 ```
 
-### Priority 3: [YOUR_ADJACENT_ROLE_TYPE]
+### Priority 2: LLM / Applied AI Engineer (domain: production GenAI, RAG, retrieval)
 
-Adjacent roles you could pivot into.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_1]" [YOUR_KEY_SKILL] [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_2]" [YOUR_KEY_SKILL] [YOUR_CITY]
-```
-
-### Priority 4: Broader Technical / Consulting
-
-Wider net for general technical roles.
+Matches the retrieval/RAG/production-GenAI core.
 
 ```
-site:[YOUR_JOB_BOARD] [YOUR_KEY_SKILL] developer [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
+site:linkedin.com/jobs "Applied AI Engineer" (Bengaluru OR Remote)
+site:linkedin.com/jobs "LLM Engineer" India
+site:linkedin.com/jobs "RAG" OR "retrieval" LLM engineer Bangalore
+site:naukri.com "LangChain" OR "LangGraph" engineer Bangalore
+"vector search" OR "hybrid retrieval" engineer remote jobs
+```
+
+### Priority 3: AI Platform / Agentic / Developer-tooling Engineer
+
+Adjacent frontier roles matching the current agentic test-automation work.
+
+```
+site:linkedin.com/jobs "AI Platform Engineer" (Bengaluru OR Remote)
+site:linkedin.com/jobs "Agentic" AI engineer
+site:linkedin.com/jobs "AI developer tooling" OR "LLM tooling" engineer
+site:wellfound.com "agentic" OR "AI agent" engineer remote
+```
+
+### Priority 4: Broader ML / GenAI (wider net)
+
+Wider net for adjacent titles.
+
+```
+site:linkedin.com/jobs "Machine Learning Engineer" GenAI (Bengaluru OR Remote)
+site:naukri.com "Machine Learning Engineer" LLM Bangalore
+site:linkedin.com/jobs "AI/ML Engineer" Python Bangalore
 ```
 
 ## Location Filter
 
-When evaluating results, verify the job location is within reasonable commute distance from your home. Define acceptable areas:
-- [YOUR_CITY] and surrounding areas
-- [ACCEPTABLE_AREA_1]
-- [ACCEPTABLE_AREA_2]
-- [BORDERLINE_AREA] (borderline - ~X min by transit)
-- [TOO_FAR_AREA] (too far)
+When evaluating results, verify the job location fits Sahil's constraints (Bengaluru-based; open to on-site/hybrid in Bangalore or global remote in USD; relocation negotiable for the right AI role):
+- **Ideal:** Bengaluru/Bangalore (on-site/hybrid) OR fully remote (India or global/USD)
+- **Acceptable:** hybrid in Bangalore; remote-first with occasional travel
+- **Borderline:** relocation to another Indian tech hub (Hyderabad, Pune, Gurugram, etc.) for a strong AI role - FLAG for user
+- **Too far:** on-site-only outside India with no remote option and no relocation/visa support
 
 ## Language Filter
 
-Your working languages and levels are in CLAUDE.md's Languages table. When filtering scraped results, apply `04-job-evaluation.md`'s Language Gate: a posting requiring a language you haven't declared at all is excluded; a posting requiring a higher level than you declared in a language you do work in is not excluded, flag it clearly instead (see `job-scraper/SKILL.md`'s Step 3 "Quick Fit Assessment" for how the flag surfaces in `/scrape` output). Postings simply *written* in a language you don't work in, that don't require it on the job, are fine.
+Working languages and levels are in CLAUDE.md's Languages table (English professional, Hindi native, Marathi native). Apply `04-job-evaluation.md`'s Language Gate: a posting requiring a language not on the table (as a job condition) is excluded; a posting requiring a higher level than declared in a listed language is flagged, not excluded. Target AI postings here are English-language, so this rarely triggers.
 
 ## Date Filter
 
@@ -84,4 +89,5 @@ Only include jobs posted within the last 14 days, or with an application deadlin
 ## Adapting Queries
 
 If the user specifies a focus area, select queries from the matching category and also generate 2-3 custom queries for that focus. For example:
-- "/scrape [focus_area]" -> relevant category queries + custom focus-specific queries
+- "/scrape agentic" -> Priority 3 queries + custom agentic/AI-tooling queries
+- "/scrape remote" -> tighten all categories with "remote" + run `freehire-search`

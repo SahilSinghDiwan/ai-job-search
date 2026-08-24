@@ -115,12 +115,19 @@ When the role sits outside your home domain, **lead with the domain-transfer arg
 
 **Create 2-3 profile statement templates for your main role types:**
 
-<!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+<!-- Lead identity: applied "AI/GenAI Engineer - POC to production at scale." Flagships in role
+order: Incident Resolution (hero), hybrid retrieval ~30→80% (depth), Convogene (breadth); agentic
+test-automation platform = frontier/range. Default center of gravity: global-remote (USD) +
+funded-product / AI-first startup. Lead with 🟢 measured numbers only (see the evidence bank). -->
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+**For AI/GenAI Engineer / LLM / Applied AI roles (default):**
+> AI/GenAI Engineer with 5 years taking LLM & RAG systems from proof-of-concept to production at scale - on real infrastructure, not notebooks. Built the retrieval engine for an enterprise incident-resolution assistant that scaled from a 20-user POC to a 200+-SRE beta and cut triage time ~70%; rebuilt failing semantic search as hybrid retrieval to roughly double recall; and shipped a live, near-zero-hallucination RAG product on Azure. Production GenAI on Kafka, Kubernetes, and Airflow.
+
+**For AI Platform / Agentic / Developer-tooling roles:**
+> AI/GenAI Engineer building agentic developer tooling with LLMs - an agentic test-automation platform that clones a repo, maps its call graph and workflows, generates and self-corrects test suites, analyzes PR blast-radius, and scores how well code matches its spec. Backed by 5 years shipping production GenAI (RAG/retrieval at scale on Kafka/Kubernetes/Airflow, a live RAG product on Azure), using Claude Code for agentic coding day to day.
+
+**For scrappy AI-first startup roles (breadth / end-to-end ownership):**
+> Full-range applied AI engineer who ships end-to-end: a live RAG product (convogene.ai) on Azure, an incident-resolution retrieval engine (20 → 200+ SREs), hybrid-retrieval and agentic test-automation work, and a portfolio site that itself ships live AI features. Non-linear path (Mechanical → self-taught → C-DAC → 5 yrs production GenAI): learns hard things fast, owns the whole problem, and moves quickly.
 
 Statements labeled *[Used for: <company>_<role>]* were extracted from archived application drafts by `/setup` Path A. They are **phrasing references, never fact sources**: when drafting from one, every factual claim still comes from `01-candidate-profile.md` - a past tailored draft does not vouch for its own accuracy.
 

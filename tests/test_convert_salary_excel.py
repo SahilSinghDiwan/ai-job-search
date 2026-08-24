@@ -1,11 +1,16 @@
+import io
 import unittest
+from contextlib import redirect_stderr
 from types import SimpleNamespace
 
 from tools.convert_salary_excel import (
     INDEX_PATTERNS,
+    absolute_category_name,
+    detect_absolute_column_type,
     detect_column_type,
     header_matches,
     parse_sheet,
+    parse_sheet_absolute,
 )
 
 
@@ -269,6 +274,75 @@ class DetectColumnTypeTests(unittest.TestCase):
         categories = companies[0]["categories"]
         self.assertEqual(categories["a"], {"count": 10, "index": 100.0})
         self.assertEqual(categories["b"], {"count": 20, "index": 200.0})
+
+
+class DetectAbsoluteColumnTypeTests(unittest.TestCase):
+    def test_money_component_headers_are_classified(self):
+        cases = {
+            "AI Engineer 3-5y Fixed": "fixed_lpa",
+            "Base pay": "fixed_lpa",
+            "AI Engineer 3-5y Variable": "variable_lpa",
+            "Annual bonus": "variable_lpa",
+            "AI Engineer 3-5y ESOP": "esop_lpa",
+            "RSU": "esop_lpa",
+            "AI Engineer 3-5y Total CTC": "total_ctc_lpa",
+            "AI Engineer 3-5y Count": "count",
+        }
+        for header, expected in cases.items():
+            with self.subTest(header=header):
+                self.assertEqual(detect_absolute_column_type(header), expected)
+
+    def test_unrelated_header_is_unclassified(self):
+        self.assertIsNone(detect_absolute_column_type("Notes"))
+
+    def test_category_name_strips_field_keywords(self):
+        self.assertEqual(
+            absolute_category_name("AI Engineer 3-5y Total CTC", "total_ctc_lpa"),
+            "ai_engineer_3_5y",
+        )
+        self.assertEqual(absolute_category_name("Fixed", "fixed_lpa"), "all")
+
+
+class ParseSheetAbsoluteTests(unittest.TestCase):
+    def _sheet(self):
+        return FakeWorksheet([
+            [
+                "Company", "City",
+                "AI Engineer 3-5y Count", "AI Engineer 3-5y Fixed",
+                "AI Engineer 3-5y Variable", "AI Engineer 3-5y ESOP",
+                "AI Engineer 3-5y Total CTC", "Notes",
+            ],
+            ["Acme Technologies Pvt Ltd", "Bengaluru", 42, 28.0, 4.0, 6.0, 38.0, "hearsay"],
+            ["Globex Solutions India Pvt Ltd", "Bengaluru", 7, 22.0, None, None, None, ""],
+        ])
+
+    def _parse(self):
+        with redirect_stderr(io.StringIO()):
+            return parse_sheet_absolute(self._sheet())
+
+    def test_columns_group_into_one_category_per_role(self):
+        companies = self._parse()
+        self.assertEqual(companies[0]["company"], "Acme Technologies Pvt Ltd")
+        self.assertEqual(
+            companies[0]["categories"]["ai_engineer_3_5y"],
+            {"count": 42, "fixed_lpa": 28.0, "variable_lpa": 4.0,
+             "esop_lpa": 6.0, "total_ctc_lpa": 38.0},
+        )
+
+    def test_missing_components_are_absent_not_zero(self):
+        companies = self._parse()
+        category = companies[1]["categories"]["ai_engineer_3_5y"]
+        self.assertEqual(category, {"count": 7, "fixed_lpa": 22.0})
+        self.assertNotIn("esop_lpa", category)
+
+    def test_unclassified_columns_are_skipped(self):
+        companies = self._parse()
+        self.assertNotIn("notes", companies[0]["categories"])
+
+    def test_sheet_without_absolute_columns_yields_nothing(self):
+        ws = FakeWorksheet([["Company", "Notes"], ["Acme", "n/a"]])
+        with redirect_stderr(io.StringIO()):
+            self.assertEqual(parse_sheet_absolute(ws), [])
 
 
 if __name__ == "__main__":

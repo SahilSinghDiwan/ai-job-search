@@ -158,6 +158,7 @@ jobs:
       matrix:
         tool:
           - freehire-search
+          - instahyre-search
           - jobbank-search
           - jobdanmark-search
           - jobindex-search

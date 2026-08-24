@@ -1,10 +1,7 @@
-# Job Application Assistant for [YOUR_NAME]
-
-<!-- SETUP: This file is populated by running /setup -->
-<!-- After running /setup, all [PLACEHOLDER] tokens will be replaced with your actual information -->
+# Job Application Assistant for Sahil Singh Diwan
 
 ## Role
-This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:
+This repo is a job application workspace. Claude acts as a career advisor and application assistant for Sahil Singh Diwan, helping with:
 1. **Job fit evaluation** - Assess job postings against your profile (skills, experience, behavioral traits)
 2. **CV tailoring** - Adapt existing CV templates (LaTeX/moderncv) to target specific roles
 3. **Cover letter writing** - Draft targeted cover letters using existing templates (LaTeX)
@@ -13,79 +10,75 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 
 ## Candidate Profile
 
-<!-- This section is auto-populated by /setup. You can also fill it in manually. -->
-
 ### Identity
-- **Name:** [YOUR_NAME]
-- **Location:** [YOUR_CITY], [YOUR_COUNTRY] ([YOUR_COMMUTE_CONSTRAINTS])
+- **Name:** Sahil Singh Diwan
+- **Location:** Bengaluru, India (open to Bangalore-based on-site/hybrid or global remote in USD; relocation is not a hard blocker for the right AI role)
 - **Languages:**
   | Language | Level |
   |----------|-------|
-  | [LANGUAGE] | [LEVEL] |
-  <!-- Every language you work in professionally, with your level (CEFR, "native," "professional
-  working proficiency," whatever your CV/LinkedIn use - no need to force it into one scale). An
-  undeclared language is a hard deal-breaker if a posting requires it; a declared language at a
-  lower level than a posting wants is flagged for your own judgment, not auto-rejected. See
-  04-job-evaluation.md's Language Gate. -->
-- **CV language:** [YOUR_CV_LANGUAGE] <!-- English unless your market expects otherwise; /setup asks -->
+  | English | Professional / fluent |
+  | Hindi | Native |
+  | Marathi | Native |
+- **CV language:** English
 
-- **Status:** [YOUR_EMPLOYMENT_STATUS]
-- **LinkedIn headline:** "[YOUR_LINKEDIN_HEADLINE]"
+- **Status:** Employed as Software Engineer, AI at Infobell IT Solutions (Bengaluru); on notice with last working day **12 Oct 2026**; actively interviewing for AI/GenAI Engineer roles
+- **LinkedIn headline:** "AI/GenAI Engineer | Taking LLM & RAG systems from POC to production at scale | LangChain · Kafka · Kubernetes | Building agentic developer tooling"
 
 ### Education
-<!-- List your degrees, most recent first -->
-- **[DEGREE_LEVEL] in [FIELD]** ([YEAR_START]-[YEAR_END]) - [INSTITUTION]
-  - Thesis: "[THESIS_TITLE]"
-  - Topics: [KEY_TOPICS]
+- **Post Graduate Diploma (6 months)** (Sep 2023 - Feb 2024) - Centre for Development of Advanced Computing (C-DAC)
+  - Topics: applied software engineering, systems, and the transition into production AI/ML work
+- **B.E. in Mechanical Engineering** (2015-2018) - G H Raisoni Academy of Engineering and Technology, Nagpur, India
 
 ### Professional Experience
-<!-- List your roles, most recent first -->
-- **[JOB_TITLE]** ([START_DATE] - [END_DATE]) - **[COMPANY]** ([LOCATION])
-  - [KEY_RESPONSIBILITY_1]
-  - [KEY_RESPONSIBILITY_2]
-  - [KEY_ACHIEVEMENT]
+- **Software Engineer, AI** (March 2024 - Present) - **Infobell IT Solutions** (Bengaluru, India)
+  - Building an agentic AI test-automation platform: clones a repo, uses LLMs to map signatures/call-graph/workflows, then generates and self-corrects test suites (API, workflow, security/edge) in budget- or coverage-driven modes; adds PR blast-radius analysis (1/2/3-hop) and a spec-coverage "certification" score
+  - Built the retrieval engine and Kafka/Elasticsearch event pipeline for an enterprise SRE incident-resolution assistant on a major public cloud; scaled from a 20-user POC to a 200+-SRE beta and cut time-to-find similar incidents ~70% (15-20 min → ~5 min, measured with SREs)
+  - Rebuilt failing semantic (cosine) search as hybrid retrieval with structured filtering and identifier masking (privacy-preserving by design), roughly doubling similar-incident recall (~30% → ~80%); deployed on Kubernetes with custom Helm charts
+  - Built and shipped Convogene.ai, a live near-zero-hallucination RAG chatbot for a semiconductor client (scheduled scraping via LangGraph/LangChain, two-layer data + prompt guardrails), deployed on Microsoft Azure
+  - Built kernel-backporting automation and a cloud-native anomaly-detection system on Apache Airflow/Kubernetes
+- **Master Trainer, AI & Python** (Aug 2022 - Aug 2023) - **India STEM Foundation** (Remote & On-site, India)
+  - Led online Python and AI training for an international student base (USA, UK, Singapore, India); designed hands-on robotics curricula (Python, C, Raspberry Pi, Arduino)
+- **Junior Software Developer** (June 2020 - June 2022) - **Koderoom** (Remote, India)
+  - Built and maintained backend APIs for a legal contract-management platform: document parsing, data structuring, and secure retrieval of sensitive contracts
 
 ### Technical Skills
-- **Primary:** [YOUR_PRIMARY_SKILLS]
-- **Secondary:** [YOUR_SECONDARY_SKILLS]
-- **Domain:** [YOUR_DOMAIN_EXPERTISE]
-- **Software:** [YOUR_TOOLS_AND_SOFTWARE]
+- **Primary:** RAG pipelines, hybrid retrieval, LLM integration, prompt engineering & guardrails, agentic systems, LangChain, LangGraph, Python
+- **Secondary:** FastAPI, Flask, async Python, microservices, REST APIs, PyTorch, model fine-tuning, Playwright, LLM-based test generation, call-graph analysis
+- **Domain:** production GenAI (POC → production at scale), vector search & retrieval (FAISS, Milvus, ChromaDB, Elasticsearch), event streaming (Apache Kafka, Apache Airflow), LLMOps
+- **Software:** Docker, Kubernetes, Helm, GitHub Actions, Microsoft Azure, AWS, GCP, MongoDB, MySQL, ServiceNow/Jira integrations, Claude Code
 
 ### Certifications
-<!-- List relevant certifications with dates -->
-- **[CERTIFICATION_NAME]** - [HOURS]h - completed [DATE]
+- **Claude Certified Architect - Foundations** (Anthropic) - issued Aug 2026, valid to Aug 2027 (Credly: https://www.credly.com/badges/19e35e8e-4d09-45a9-ade3-e246ceef7203)
+- **IBM Cloud Advocate Essentials** - completed Dec 2025
 
 ### Publications
-<!-- List peer-reviewed publications, if any -->
-- [AUTHOR_LIST] ([YEAR]). [TITLE]. [JOURNAL].
+- IEEE conference paper on a hexapod robot (2019). <!-- Full citation to be confirmed; kept off the CV per positioning decisions but real. -->
 
 ### Awards
-<!-- List relevant awards, hackathons, competitions -->
-- [AWARD_NAME] - [EVENT] ([YEAR])
+<!-- None recorded yet. Add hackathons/competitions/awards here as they occur. -->
 
 ### Behavioral Profile
-<!-- Your behavioral assessment results (PI, DISC, Myers-Briggs, or self-assessment) -->
-- **[TRAIT_1]** - [DESCRIPTION]
-- **[TRAIT_2]** - [DESCRIPTION]
-- **Strengths:** [YOUR_STRENGTHS]
-- **Growth areas:** [YOUR_GROWTH_AREAS]
-- **Thrives in:** [YOUR_IDEAL_ENVIRONMENT]
+- **Ships to production, not notebooks** - measures success by systems that stay up and get adopted (20 → 200+ SREs), not demos that impress once
+- **Learns hard things fast, explains them simply** - non-linear path (Mechanical → self-taught → C-DAC → production GenAI); a year teaching AI & Python to students across the US, UK, Singapore, and India
+- **Strengths:** end-to-end ownership, retrieval/RAG systems depth, pragmatic engineering under confidentiality constraints, clear communication, build-in-public habit
+- **Growth areas:** works at the AI frontier and prefers greenfield build over long-cycle maintenance; deliberately honest about metric confidence (leads with measured numbers, flags estimates)
+- **Thrives in:** frontier-AI teams with real production surface, autonomy, and fast shipping cycles
 
 ### What Excites You
-<!-- What motivates you professionally -->
-- [PASSION_1]
-- [PASSION_2]
+- Taking LLM/RAG and agentic systems from proof-of-concept to production at scale
+- Frontier applied AI - agentic developer tooling, retrieval, LLMOps - and building in public
 
 ### Target Sectors
-<!-- Industries and companies you're targeting -->
-- [SECTOR_1]: [EXAMPLE_COMPANIES]
-- [SECTOR_2]: [EXAMPLE_COMPANIES]
+- AI-first startups (India): early/growth-stage product companies building at the LLM frontier
+- Global-remote (USD) product & funded product companies: applied-AI/GenAI engineering teams
+- Big-tech / GCCs and frontier/regulated orgs (incl. banks): opportunistic, tailored per application
 
 ### Deal-breakers
 <!-- Hard constraints on job search. Language requirements are handled separately and
 automatically from your Languages table above - don't duplicate them here. -->
-- [DEALBREAKER_1]
-- [DEALBREAKER_2]
+- Fixed compensation below ~₹25 LPA band (never anchored to current CTC - always argued to market band)
+- Non-AI roles with little or no LLM/GenAI/applied-AI engineering
+- Pure-research or notebook-only roles with nothing shipping to production
 
 ## Repo Structure
 - `cv/` - LaTeX CV variants (moderncv template, banking style)
@@ -132,12 +125,12 @@ After creating or updating a CV or cover letter, re-read the generated file and 
 - [ ] CV section headings (`\section{...}`) and the References boilerplate line match the CV's language, not left as the English template defaults (see `05-cv-templates.md`)
 
 ### Compiled PDF verification (MANDATORY - never skip)
-Both documents MUST be compiled and visually inspected via the Read tool on the PDF output. "Looks fine in the .tex" is not acceptable - LaTeX page-break decisions are unpredictable. Iterate until these all pass:
+Every document that was compiled MUST be visually inspected via the Read tool on the PDF output. "Looks fine in the .tex" is not acceptable - LaTeX page-break decisions are unpredictable. The CV is always compiled. The cover letter is only compiled when the LaTeX format was chosen; when a plain-text cover letter was produced instead (see `06-cover-letter-templates.md`), mark the cover-letter items below `N/A - plain-text cover letter, no PDF generated` and check it against that file's plain-text checklist. Iterate until these all pass:
 - [ ] CV compiled with **lualatex** (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors). Cover letter compiled with **xelatex** (cover.cls requires fontspec). If a custom template is active (registered via `/add-template`), compile with its declared command instead — see the `ACTIVE-TEMPLATE` block in `05-cv-templates.md`/`06-cover-letter-templates.md`.
 - [ ] **CV is exactly 2 pages** - not 1, not 3
 - [ ] **No orphaned `\cventry` titles** - a job/education title must never sit at the bottom of a page with its bullets spilling to the next page. Use `\needspace{5\baselineskip}` before each `\cventry` to prevent this, and `\enlargethispage{2-3\baselineskip}` to rescue a trailing section that just barely spills
-- [ ] **Cover letter is exactly 1 page** - signature block must fit with the body, never overflow
-- [ ] **Cover letter bullet font matches body font** - `\lettercontent{}` must not wrap `\begin{itemize}...\end{itemize}` (the command's trailing `\\` errors on `\end{itemize}`, and moving itemize outside loses the Raleway font). Standard pattern: close `\lettercontent{}`, then wrap the list in `{\raggedright\fontspec[Path = OpenFonts/fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont \begin{itemize}...\end{itemize}\par}`
+- [ ] **Cover letter is exactly 1 page** (LaTeX path only) - signature block must fit with the body, never overflow
+- [ ] **Cover letter bullet font matches body font** (LaTeX path only) - `\lettercontent{}` must not wrap `\begin{itemize}...\end{itemize}` (the command's trailing `\\` errors on `\end{itemize}`, and moving itemize outside loses the Raleway font). Standard pattern: close `\lettercontent{}`, then wrap the list in `{\raggedright\fontspec[Path = OpenFonts/fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont \begin{itemize}...\end{itemize}\par}`
 
 ### ATS & keyword verification (CV)
 ATS parsers read the PDF's embedded text layer, not the rendered page. Extract it with `pdftotext -layout` and verify what a parser sees. `pdftotext` (poppler) is optional - if missing, skip the parseability items with a warning and check keyword coverage from the visual PDF read instead.

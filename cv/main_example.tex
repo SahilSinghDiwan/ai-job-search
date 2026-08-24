@@ -1,8 +1,7 @@
-%% Example CV - [YOUR_NAME]
+%% Master CV - Sahil Singh Diwan
 %% Comprehensive overview of all competencies, experience, and achievements.
-%% Use as a master reference when tailoring role-specific CVs.
+%% Use as a master reference when tailoring role-specific CVs (cv/main_<company>_<role>.tex).
 %%
-%% SETUP: Run /setup to populate this with your actual information.
 %% Compile with: lualatex main_example.tex
 %% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
 
@@ -18,35 +17,36 @@
 \renewcommand*{\sectionstyle}[1]{{\sectionfont\color{color1}#1}}
 
 \usepackage[utf8]{inputenc}
+\usepackage{needspace}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Sahil Singh Diwan - CV},
     pdfpagemode=FullScreen,
 }
 \usepackage[scale=0.80]{geometry}
 \usepackage{import}
 
 % personal data
-\name{[First]}{[Last]}
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{Sahil}{Singh Diwan}
+\address{Bengaluru, India}{}{}
+\phone[mobile]{+91 800-7192-680}
+\email{diwan.sahilsingh@gmail.com}
+\extrainfo{\href{https://linkedin.com/in/diwan-sahil}{LinkedIn}, \href{https://github.com/SahilSinghDiwan}{GitHub}, \href{https://myprofile.nostalkers.shop}{Portfolio}, \href{https://convogene.ai}{Live demo}}
 
 \begin{document}
 
 \makecvtitle
 
 % ============================================================
-%     PROFILE STATEMENT
+%     PROFILE STATEMENT  (tailor per role - see 05-cv-templates.md)
 % ============================================================
 
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+\small{AI/GenAI Engineer with 5 years taking LLM \& RAG systems from proof-of-concept to production at scale --- on real infrastructure, not notebooks. Built the retrieval engine for an enterprise incident-resolution assistant that scaled from a 20-user POC to a 200+-SRE beta and cut triage time \textasciitilde70\%; rebuilt failing semantic search as hybrid retrieval to roughly double recall; and shipped a live, near-zero-hallucination RAG product on Azure. Currently building agentic developer tooling with LLMs, using Claude Code day to day (Claude Certified Architect --- Foundations).}
 
 % ============================================================
 %     CORE COMPETENCIES
@@ -56,15 +56,15 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
+\item \textbf{AI / GenAI}: RAG pipelines, hybrid retrieval, LLM integration, prompt engineering \& guardrails, agentic systems, model fine-tuning, LangChain, LangGraph, PyTorch
 
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
+\item \textbf{Vector Search \& Retrieval}: FAISS, Milvus, ChromaDB, Elasticsearch
 
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
+\item \textbf{Data \& Event Streaming}: Apache Kafka, Apache Airflow, Pandas, NumPy
 
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
+\item \textbf{Backend \& Test Automation}: Python, FastAPI, Flask, async Python, microservices, REST APIs, Playwright, LLM-based test generation, call-graph analysis
 
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
+\item \textbf{Cloud \& DevOps}: Docker, Kubernetes, Helm, GitHub Actions, Microsoft Azure, AWS, GCP, MongoDB, MySQL
 
 \end{itemize}
 
@@ -77,31 +77,33 @@
 \begin{itemize}
 
 % --- Most Recent Role ---
-\item{\cventry{[YYYY-Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2024-Present}{Software Engineer, AI}{Infobell IT Solutions}{Bengaluru, India}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1 - be specific, use numbers where possible]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-    \item [Achievement or responsibility 4]
+    \item Building an \textbf{agentic AI test-automation platform}: clones a repo, uses LLMs to map signatures/call-graph/workflows, then generates and self-corrects test suites (API, workflow, security/edge) in budget- or coverage-driven modes; added PR blast-radius analysis (1/2/3-hop) and a spec-coverage certification score. Built with Claude Code.
+    \item Built the retrieval engine + Kafka/Elasticsearch pipeline for an enterprise SRE incident-resolution assistant on a major public cloud; scaled a \textbf{20-user POC to a 200+-SRE beta} and cut time-to-find similar incidents \textbf{\textasciitilde70\% (15-20 min to \textasciitilde5 min)}. Delivered to production and transitioned ownership to the client team.
+    \item Rebuilt failing semantic (cosine) search as \textbf{hybrid retrieval} with structured filtering and identifier masking (privacy-preserving), \textbf{roughly doubling recall (\textasciitilde30\% to \textasciitilde80\%)}; deployed on Kubernetes with custom Helm charts.
+    \item Built and shipped \textbf{Convogene.ai}, a live near-zero-hallucination RAG chatbot for a semiconductor client (scheduled scraping via LangGraph/LangChain, two-layer data + prompt guardrails), deployed on Microsoft Azure.
+    \item Built Linux-kernel patch-backporting automation (ordered patch sequences of 5-120 patches) and a cloud-native anomaly-detection system on Apache Airflow / Kubernetes.
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Previous Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2022-2023}{Master Trainer, AI \& Python}{India STEM Foundation}{Remote \& On-site, India}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
+    \item Led online Python and AI training for an international student base (USA, UK, Singapore, India).
+    \item Designed hands-on robotics curricula (Python, C, Raspberry Pi, Arduino), translating complex concepts into accessible modules.
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Earlier Role ---
-\item{\cventry{[YYYY-YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2020-2022}{Junior Software Developer}{Koderoom}{Remote, India}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
+    \item Built and maintained backend APIs for a legal contract-management platform --- document parsing, data structuring, and secure retrieval of sensitive contracts.
 \end{itemize}}}
 
 \end{itemize}
@@ -114,16 +116,23 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
-}}
+\item{\cventry{2023-2024}{Post Graduate Diploma (6 months)}{Centre for Development of Advanced Computing (C-DAC)}{India}{}{}}
 
 \vspace{3pt}
 
-\item{\cventry{[YYYY-YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
-}}
+\item{\cventry{2015-2018}{B.E., Mechanical Engineering}{G H Raisoni Academy of Engineering and Technology}{Nagpur, India}{}{}}
 
+\end{itemize}
+
+% ============================================================
+%     CERTIFICATIONS
+% ============================================================
+
+\section{Certifications}
+\vspace{1pt}
+\begin{itemize}
+\item{\textbf{Claude Certified Architect --- Foundations} (Anthropic) --- issued Aug 2026, valid to Aug 2027. \href{https://www.credly.com/badges/19e35e8e-4d09-45a9-ade3-e246ceef7203}{Credly badge}.}
+\item{\textbf{IBM Cloud Advocate Essentials} --- completed Dec 2025.}
 \end{itemize}
 
 % ============================================================
@@ -133,27 +142,7 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item [Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).
-\end{itemize}
-
-% ============================================================
-%     PUBLICATIONS (optional)
-% ============================================================
-
-\section{Publications}
-\vspace{1pt}
-\begin{itemize}
-\item [Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
+\item English (professional), Hindi (native), Marathi (native).
 \end{itemize}
 
 % ============================================================
