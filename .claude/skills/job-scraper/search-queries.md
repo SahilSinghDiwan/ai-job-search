@@ -4,7 +4,9 @@
 
 `/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Shipped country-agnostic CLIs include `linkedin-search` and `freehire-search`, plus `instahyre-search` for the India tech/startup market; any skill you add with `/add-portal` is included the same way. You do **not** need a matching `site:` line below for those CLIs to run.
 
-For this search, run **`linkedin-search`** (primary - AI/GenAI roles in India and global-remote), **`instahyre-search`** (India tech/startup, Bengaluru-heavy), and **`freehire-search`** (global-remote). Use the `site:` templates below as the WebSearch fallback for boards without a CLI (Naukri, Wellfound/AngelList, and startup career pages).
+For this search, run **`linkedin-search`** (primary - AI/GenAI roles in India and global-remote), **`naukri-search`** (India's largest board; browser-driven, see caveat below), **`instahyre-search`** (India tech/startup, Bengaluru-heavy), and **`freehire-search`** (global-remote). Use the `site:` templates below as the WebSearch fallback for boards without a portal skill (Wellfound/AngelList and startup career pages).
+
+**Naukri notes:** its `jobAge` filter genuinely works server-side (verified: unfiltered 3884 -> `jobAge=7` 951 -> `jobAge=1` 423), so alongside `linkedin-search` it is one of only two sources that can honour the 14-day Date Filter below - use `jobAge=15` and trim the extra day client-side. Two caveats: Naukri publishes **no salary** on these listings (0/20 cards), so never present a Naukri salary figure; and bulk posters are heavy - a single Bengaluru AI/ML search returned 17 of 20 cards from one employer, differing only by experience band. Route that through Step 2.5 (Mass-Posting Detection) in `SKILL.md`, consolidating rather than excluding.
 
 **Instahyre caveat:** its API exposes no posting date and no recency filter, so `instahyre-search` cannot honour the 14-day window in the Date Filter below - do not pass it `--jobage`. Treat **bulk API results as "date unknown"**: they are genuinely dateless, and Instahyre leaves listings up indefinitely, so a first page of hits routinely mixes 11-day-old and 600-day-old postings with nothing to tell them apart.
 
@@ -18,7 +20,7 @@ Its `detail` command returns skill keywords, not description text.
 
 Primary:
 - **linkedin.com/jobs** - LinkedIn job listings (filter: India / Bengaluru + Remote); also covered by `linkedin-search` CLI
-- **naukri.com** - India's largest general job board (WebSearch fallback only; naukri.com's robots.txt disallows Claude/AI user-agents on job paths, so no portal CLI ships for it)
+- **naukri.com** - India's largest general job board; covered by the `naukri-search` skill, which is **browser-driven via `ego-browser` on the user's own logged-in session** rather than an HTTP CLI, because naukri.com's robots.txt disallows Claude/AI user-agents on job paths. `/scrape` must **not** attempt `bun run` for it - there is no `cli/` directory. Personal-use, low-volume, read-only
 - **wellfound.com** (AngelList Talent) - startup / AI-first roles, incl. global-remote
 - **instahyre.com** - India tech/startup roles; covered by the `instahyre-search` CLI
 
