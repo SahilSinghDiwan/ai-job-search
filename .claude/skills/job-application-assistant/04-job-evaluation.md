@@ -1,5 +1,5 @@
 ---
-framework_version: 1.3.0
+framework_version: 1.4.0
 ---
 
 # Job Evaluation Framework
@@ -28,18 +28,24 @@ Read the posting's eligibility / work rights / "who can apply" section **verbati
 
 ### Remote roles: residency and work authorization
 
-The framing above — "if the candidate is not a citizen or permanent resident of the country they are applying in" — already covers remote postings *logically*, because a "Remote — US" role is still a job in the US. But the gate never names the remote case, so in practice it gets skipped: nothing in the posting looks like a visa question, the location field says "Remote", and the role sails through to dimension 4, which used to score every remote posting as a clean PASS. That is the failure mode this sub-gate exists to close. A large share of postings advertised as "remote" are remote *within a single country*, and for a Bengaluru-based candidate those are not opportunities at all — they are a hard fail dressed up as a global one.
+The framing above — "if the candidate is not a citizen or permanent resident of the country they are applying in" — already covers remote postings *logically*, because a "Remote — US" role may well be a job in the US. But the gate never names the remote case, so in practice it gets skipped: nothing in the posting looks like a visa question, the location field says "Remote", and the role sails through to dimension 4, which used to score every remote posting as a clean PASS. This sub-gate closes that hole — but it closes it narrowly, and the narrowness is the point.
 
-So for any posting whose location is remote, hybrid-remote, or "distributed", read the location, eligibility, and "who can apply" lines **verbatim** and classify before scoring:
+**The binding constraint is whether the work can be performed from India, not which country the posting names.** Those are different questions and it is easy to collapse them. A country tag on a remote posting very often reflects where the company's entity sits, where the hiring manager sits, or an ATS default nobody edited — not a requirement that the person be physically there. Treating the tag as a requirement silently deletes roles the candidate explicitly wants to see, which is a worse failure than surfacing one that turns out to be unworkable: a wrongly-flagged role costs him two minutes of reading, a wrongly-failed role he never learns existed.
+
+So: **a geography tag alone is a FLAG. Only a stated requirement that India cannot satisfy is a FAIL.** Read the location, eligibility, and "who can apply" lines **verbatim** and classify on that hinge before scoring:
 
 | Posting wording | Verdict |
 |-----------------|---------|
-| Scopes remote work to a **country or region the candidate does not live in and has no right to work in** ("Remote — US", "Remote (EMEA)", "must reside in the EU", "US-based candidates only", "anywhere in Canada") | **FAIL — hard stop.** Do not score, do not draft. Quote the exact line. This is the single most common way a hopeless posting reaches the drafting stage. |
-| States a **work-authorization requirement** the candidate cannot meet ("must be authorized to work in the US without sponsorship", "must hold existing UK right to work", "no visa sponsorship available" on a country-scoped role) | **FAIL — hard stop.** Quote the line. |
-| Scopes remote work to a **state, province, or list of states** within a country the candidate cannot work in ("remote in any of our 12 registered states") | **FAIL.** The narrower list is strictly worse than the country-level version. |
+| Tags remote work with a **country or region** and says nothing more ("Remote — US", "Remote (EMEA)", "Remote, Canada", "US timezone preferred") | **FLAG — never a fail on the tag alone.** Score and report normally, with a note naming what needs verifying: does the employer hire India-based staff, and through what mechanism (Indian entity, EOR, or contractor)? The tag is a question, not an answer. |
+| States an explicit **residency requirement** ("must reside in the US", "you must be physically located in the EU", "candidates must live in one of our 12 registered states") | **FAIL — hard stop.** Quote the line. Being in Bengaluru cannot satisfy a requirement to be somewhere else, and no amount of employer flexibility changes that. |
+| States a **work-authorization requirement** the candidate cannot meet ("must be authorized to work in the US without sponsorship", "must hold existing UK right to work") | **FAIL — hard stop.** Quote the line. |
+| Requires **on-site or hybrid attendance at a non-India location** — any in-office days, however few, at an office he would have to be abroad to reach | **FAIL.** This is the real location failure, and it is frequently buried in a posting whose header still says "Remote". |
+| Gates on **citizenship or a security clearance** | **FAIL** — see the parent gate above. |
 | Says **"remote — India"**, "remote (APAC)", names India in the eligible list, or the employer already has an Indian entity or GCC the role would sit under | **PASS** — verified. Worth naming as a positive in the application. |
-| Says **"fully remote, work from anywhere"**, "globally distributed", "we hire in 40+ countries", or explicitly says it hires via an employer of record | **PASS** — but confirm on the employer's own careers or "how we hire" page that India is actually on the eligible-country list. Companies that hire "anywhere" usually mean *anywhere their payroll provider operates*, which is a shorter list than it sounds. |
-| **Silent** on geography — location reads only "Remote" with no country, no eligible-country list, no authorization line | **PROCEED, but mark unverified.** Silence is not permission here either. Check the careers page, the ATS location field (which is often stricter than the ad copy), and any "benefits" section that quietly lists a single country's healthcare or 401(k). Report the role to the user as geography-unconfirmed rather than as a clean pass. |
+| Says **"fully remote, work from anywhere"**, "globally distributed", "we hire in 40+ countries", or explicitly hires via an employer of record | **PASS** — worth confirming India is on the payroll provider's country list, but do not hold the application for it. Companies that hire "anywhere" usually mean *anywhere their payroll provider operates*, which is a shorter list than it sounds. |
+| **Silent** on geography — location reads only "Remote" | **FLAG as unverified.** Check the careers page, the ATS location field (often stricter than the ad copy), and any benefits section quietly listing a single country's healthcare or 401(k). Report as geography-unconfirmed. |
+
+**Silence is not prohibition.** The parent Eligibility Gate warns that silence is not *permission*, and for citizenship questions that is right. Do not import that reflex here and invert it into a fail. For a remote geography tag, silence and ambiguity both mean **unverified**, and unverified goes to the human with the open question named — it does not get resolved in either direction by you. When you genuinely cannot tell whether a line is a tag or a requirement, prefer FLAG.
 
 **Engagement mechanism — extract, report, do not score.** Even when a company genuinely hires in India, the *mechanism* varies enormously and postings often say which. The three you will see are: **employer-of-record (EOR)** employment through a provider such as Deel or Remote.com; direct employment on an **Indian subsidiary / GCC payroll**; and **independent-contractor** engagement. They differ substantially in benefits, tax handling, notice protections, and stability — a contractor engagement with no PF, no gratuity, and 30-day termination is a very different proposition from an Indian-entity offer at the same headline number, and the difference belongs in front of the user before they invest a week in the application. Extract whichever the posting names, report it verbatim in your notes for dimension 4, and where the posting is silent, say so explicitly rather than guessing. Do not turn this into a score — it is information the candidate weighs, not a fit signal you can rank.
 
@@ -109,7 +115,9 @@ Does the role and company culture match the behavioral profile?
 
 ### 4. Location & Logistics (Pass/Fail + Notes)
 
-This dimension stays pass/fail plus notes — it is not scored and not weighted. Anything that would be a *categorical* bar on holding the job (remote scoped to a country the candidate cannot work in, a work-authorization requirement he cannot meet) has already been caught by the Eligibility Gate's remote sub-gate above and never reaches here. What is left for this dimension is the physical and practical shape of the job: where the work happens, when it happens, and how the candidate would be engaged.
+This dimension stays pass/fail plus notes — it is not scored and not weighted. Anything that is a *categorical* bar on holding the job (a stated residency requirement, a work-authorization requirement he cannot meet, on-site or hybrid attendance at a non-India office) has already been caught by the Eligibility Gate's remote sub-gate above and never reaches here. Note what that list does **not** include: a bare country tag on a remote posting is not a categorical bar, it is a FLAG, and such roles do reach this dimension and get scored normally. What is left here is the physical and practical shape of the job: where the work happens, when it happens, and how the candidate would be engaged.
+
+**The two standing constraints** the candidate has stated, which this dimension exists to check against: the work must be doable **in English**, and it must be performable **from within Bengaluru / India**. Everything below is an elaboration of those two. The language half is already handled upstream by the Language Gate against the Languages table in CLAUDE.md (English professional, Hindi native, Marathi native) — do not re-litigate it here. The location half is this dimension's job, and the thing to hold onto is that "performable from India" is a question about where his body has to be, not about which flag is on the posting.
 
 **Where:**
 
@@ -117,6 +125,7 @@ This dimension stays pass/fail plus notes — it is not scored and not weighted.
 |-----------|---------|
 | Bangalore-based, on-site or hybrid | **PASS** |
 | Remote, with India confirmed eligible (or genuinely work-from-anywhere, verified per the gate above) | **PASS** |
+| Remote, tagged with a country he does not live in, with no stated residency or authorization requirement | **FLAG** — score and draft normally. Name the open question (does the employer hire India-based staff, and via what mechanism?) in the notes. Never treat the tag itself as a fail |
 | Remote, geography unconfirmed after checking the careers page | **FLAG** — carry the gate's "unverified" note through to the report; do not quietly upgrade it to PASS |
 | Requires relocation outside Bangalore | **FLAG** — not a hard deal-breaker for the right AI role, per the profile. Discuss with the user |
 | Frequent international travel | **FLAG** — discuss with the user |
