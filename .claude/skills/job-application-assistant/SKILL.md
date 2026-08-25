@@ -57,6 +57,7 @@ When the user provides a job posting (URL or text), follow this workflow:
 | `06-cover-letter-templates.md` | LaTeX cover letter structure and tailoring rules |
 | `07-interview-prep.md` | STAR examples, tough questions, roleplay guidelines |
 | `08-application-forms.md` | Portal free-text fields: self-introduction, project entries, character-limited pitches |
+| `09-referral-outreach.md` | Finding referral contacts at a target company and drafting the outreach the candidate sends |
 
 ---
 

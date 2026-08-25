@@ -374,6 +374,12 @@ Check whether the posting or the portal it came from asks for free-text fields t
 
 **Only on yes**, read `08-application-forms.md` and draft the fields per its rules, grounded against the same three-source union as the CV and cover letter. Save per that file's "Output format" section. **On no, or when the posting has no such fields, say nothing further and move on** — this is an optional addition and never changes the default two-document output.
 
+Then, separately, offer **referral outreach**. A referral moves the application from the resume pile to a named human, and Indian employers run formal referral programmes with a bonus attached, so an employee forwarding a CV is acting on an existing incentive rather than doing a favour. Offer it once, in the same turn:
+
+> "Want me to find referral contacts at [Company] and draft the outreach? I'll rank the people and write the notes; you review and send them yourself."
+
+**Only on yes**, read `.claude/skills/job-application-assistant/09-referral-outreach.md` and follow it exactly. Two constraints from that file are absolute: **never send, connect, or message anyone on the candidate's behalf** — you produce drafts, he sends them — and every contact must have a genuine, specific hook or be explicitly labelled as not having one. **On no, say nothing further and move on.**
+
 ### Next Steps
 - **Submitted?** `/outcome <company>` logs it in the tracker and starts the per-application record that `/setup` later uses to calibrate the fit framework.
 - **Interview scheduled?** `/interview` builds a stage-specific prep pack from this posting and the documents you just created.
