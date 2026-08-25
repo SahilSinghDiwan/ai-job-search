@@ -12,9 +12,35 @@ description: >
   Bengaluru jobs Naukri, Bangalore jobs Naukri, naukri par job dhundo, nokri,
   naukri ke liye search, AI jobs India Naukri.
 context: fork
-enabled: true  # set to false to keep this portal installed but have /scrape skip it
+enabled: false  # OFF by design - see "Why this portal ships disabled" below. Flip to true for an on-demand run.
 allowed-tools: Skill(ego-browser), Bash(ego-browser nodejs *)
 ---
+
+## Why this portal ships disabled
+
+`enabled: false` in the frontmatter above is deliberate, not an oversight. `/scrape`
+skips this portal entirely until it is flipped to `true`.
+
+**The reason is signal quality, not access.** A live Bengaluru AI/ML search returned
+**17 of 20 cards from a single employer**, differing only by experience band, and
+**0 of 20 carried a salary**. At that ratio Naukri crowds out every other source in a
+pooled `/scrape` run while contributing nothing to a compensation decision - which is
+the opposite of useful when the shortlist is meant to be triaged by hand.
+
+**It is kept installed on purpose.** This is a working, verified skill: `jobAge`
+filters server-side (3884 -> 951 at `jobAge=7` -> 423 at `jobAge=1`), and Naukri is
+India's largest board by volume. That volume is exactly what you want if the
+high-signal sources go quiet and the search stalls - a deliberate, eyes-open sweep
+through a noisy but enormous index beats having no option at all.
+
+**To run it:** either flip `enabled: true` for a full `/scrape` run, or invoke this
+skill directly for a one-off search without touching the roster. Prefer the one-off.
+When you do run it, expect the bulk-poster pattern and lean on Step 2.5 (Mass-Posting
+Detection) in `.claude/skills/job-scraper/SKILL.md` to consolidate the duplicates
+rather than letting them fill the shortlist.
+
+**Turn it back off afterwards.** The failure mode this setting exists to prevent is a
+noisy portal quietly becoming the default again.
 
 # Naukri Search Skill
 

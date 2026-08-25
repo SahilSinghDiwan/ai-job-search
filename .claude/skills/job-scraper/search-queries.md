@@ -4,7 +4,34 @@
 
 `/scrape` discovers every portal skill under `.agents/skills/*/SKILL.md` and runs its CLI first. Shipped country-agnostic CLIs include `linkedin-search` and `freehire-search`, plus `instahyre-search` for the India tech/startup market; any skill you add with `/add-portal` is included the same way. You do **not** need a matching `site:` line below for those CLIs to run.
 
-For this search, run **`linkedin-search`** (primary - AI/GenAI roles in India and global-remote), **`naukri-search`** (India's largest board; browser-driven, see caveat below), **`instahyre-search`** (India tech/startup, Bengaluru-heavy), and **`freehire-search`** (global-remote). Use the `site:` templates below as the WebSearch fallback for boards without a portal skill (Wellfound/AngelList and startup career pages).
+## Portal roster and priority
+
+`/scrape` honours each skill's `enabled` flag, but it has no priority field - so run
+order and cadence are set here. Selected on **signal quality, not volume** (see
+`portal-research.md` for the evidence behind each call).
+
+| Portal | State | Cadence | Why |
+|---|---|---|---|
+| `linkedin-search` | **ON - primary** | every run | Best India + global-remote coverage, and one of only two sources with trustworthy posting dates |
+| `freehire-search` | **ON** | every run | Global-remote across ~50 ATS platforms; real `posted_at` dates |
+| `instahyre-search` | **ON - demoted** | every 2nd run | See demotion note below |
+| `naukri-search` | **OFF** | on demand only | Bulk-poster dominance and no salary data; kept installed as an escape hatch. See its `SKILL.md` |
+| Danish portals (4) | **OFF** | never | Wrong market; kept installed for clean upstream merges |
+
+**Instahyre is demoted, not disabled.** It surfaces real Bengaluru AI roles, but it
+never expires listings - one page of Bangalore LLM results held postings 11, 35, 53,
+61, 182, 378 and **649 days old, rendered identically**. So: run it every second
+`/scrape`, never treat its result count as a volume signal, and **do not rank an
+Instahyre job on age until it has been date-enriched** (its API returns no date at
+all; see the enrichment workflow in its `SKILL.md`). An un-enriched Instahyre result
+is "date unknown", not "fresh".
+
+Use the `site:` templates below as the WebSearch fallback for boards without a portal
+skill (Wellfound/AngelList, Zoho Recruit career pages, and startup career pages).
+
+**Highest-value source not yet built:** per-company ATS feeds (Greenhouse, Ashby,
+Lever) - unauthenticated JSON, real posting dates, straight from the employer with no
+board markup or agency reposts. See `portal-research.md` section 1.
 
 **Naukri notes:** its `jobAge` filter genuinely works server-side (verified: unfiltered 3884 -> `jobAge=7` 951 -> `jobAge=1` 423), so alongside `linkedin-search` it is one of only two sources that can honour the 14-day Date Filter below - use `jobAge=15` and trim the extra day client-side. Two caveats: Naukri publishes **no salary** on these listings (0/20 cards), so never present a Naukri salary figure; and bulk posters are heavy - a single Bengaluru AI/ML search returned 17 of 20 cards from one employer, differing only by experience band. Route that through Step 2.5 (Mass-Posting Detection) in `SKILL.md`, consolidating rather than excluding.
 
