@@ -31,6 +31,7 @@ The CLI runs without any install because it has zero runtime dependencies.
 |---------|-------------|
 | `search` | Search for job listings (all flags optional) |
 | `detail` | Fetch a single posting's metadata and skill keywords |
+| `table`  | Local posting-date table: `upsert` / `pending` / `list`. No network. |
 
 `search` accepts `--format json|table|plain` (default `json`); `detail` accepts `--format json|plain`.
 
@@ -41,7 +42,10 @@ Both are properties of Instahyre's API, not of this CLI, and both are reported i
 
 1. **No posting date, no recency filter.** `--jobage` / `--since` are unsupported —
    passing either prints a stderr warning and does *not* filter. Every result's `date`
-   is `null`.
+   is `null`. Real dates exist only on the HTML job page (schema.org JSON-LD
+   `datePosted`) and are recovered by an **opt-in browser pass** over a shortlist —
+   see the skill's SKILL.md. This CLI never requests HTML; it only stores what the
+   browser read, via `table`.
 2. **`detail` returns no job-description text.** The detail endpoint returns the same
    object as the search listing. Use the `keywords` array as the requirements signal
    and open `url` for the full posting.

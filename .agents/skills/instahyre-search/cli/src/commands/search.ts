@@ -95,6 +95,11 @@ export async function runSearch(opts: SearchOpts): Promise<number> {
               locationFilter: locationFiltered ? "client-side" : null,
               recencyFilter: "unsupported",
               postingDate: "unavailable",
+              // The API has no date field, but the job's HTML page does
+              // (schema.org JSON-LD `datePosted`). That is an opt-in browser
+              // pass over a shortlist, never part of bulk search — see the
+              // `table` command and SKILL.md.
+              postingDateEnrichment: "opt-in: `table` + browser JSON-LD pass",
             },
             results: cards,
           },

@@ -89,8 +89,28 @@ For each promising result from Step 1:
 
 **From CLI results:** Search output already includes title, company, location, date,
 and URL. For jobs worth a deeper look, fetch full detail with that portal's `detail`
-command (see its SKILL.md — do not guess flags) to extract **key requirements**,
-**application deadline**, and a brief description snippet.
+command (see its SKILL.md — do not guess flags) to extract **key requirements**, the
+**posting date**, an **application deadline** if one is stated, and a brief
+description snippet.
+
+**Capture the posting date, not just the deadline.** These are different fields and
+the posting date is the more useful one: almost no posting in this market states a
+deadline, whereas nearly all of them state or imply a publication date, and `/rank`
+uses posting age as its *primary* urgency signal. Take it from whatever the portal
+actually gives you — the search result's own `date` field (linkedin-search parses
+one, freehire-search returns `posted_at`), a date on the detail payload, or a
+relative string on the page ("Posted 5 days ago"), which you convert to an absolute
+ISO date using today's date. Record it as `posted_date` in Step 4. If a portal
+exposes no date at all, leave it out — **never guess one from the URL, the job id,
+or how fresh the listing feels**.
+
+Two portals need their own handling here:
+- **instahyre-search** — its API has no date field whatsoever. Bulk results are
+  legitimately dateless. Its skill documents an opt-in browser enrichment pass that
+  recovers real dates for a *shortlist*; if you have run it, copy the enriched date
+  into `posted_date`, otherwise leave the key absent.
+- Any portal added via `/add-portal` — read its own SKILL.md for which date fields
+  it exposes rather than assuming.
 
 **From WebSearch results:** Use `WebFetch` on the posting URL and extract the same
 fields manually.
@@ -126,6 +146,7 @@ For each new job, do a rapid fit check (NOT the full evaluation from `04-job-eva
       "company": "...",
       "url": "...",
       "first_seen": "YYYY-MM-DD",
+      "posted_date": "YYYY-MM-DD",
       "fit": "high/medium/low",
       "status": "new/skipped/evaluated/ranked/expired",
       "portal": "<source portal skill, e.g. jobindex-search>"
@@ -136,7 +157,42 @@ For each new job, do a rapid fit check (NOT the full evaluation from `04-job-eva
 
 The `portal` field records which CLI skill produced the job (results are already tagged per portal in Step 1b - persist that tag here). Entries written before this field existed lack it; the health check (Step 4.75) attributes those by matching the URL's domain against each portal's base URL, so do not backfill.
 
-`/rank` extends this schema additively: ranked entries also carry `rank_score` (0–100 overall score), `rank_verdict` (fit band, e.g. "strong fit"), `rank_date` (ISO date of ranking), and `strengths`/`gaps` (1-3 verbatim bullets each, copied from the scoring agent's findings). The `status` field is set to `"ranked"`. Do not drop any of these fields when re-writing entries. Entries ranked before `strengths`/`gaps` existed simply lack them; readers tolerate their absence and never backfill by guessing.
+The `posted_date` field is the posting's **own publication date** as reported by the
+portal (Step 2), and it is distinct from `first_seen`, which is merely the day this
+scraper first noticed the listing. Both are kept because they answer different
+questions: `first_seen` powers dedup, `posted_date` powers `/rank`'s freshness
+signal. **Omit the key entirely when the portal exposed no date** — never write
+`null` and never substitute `first_seen`, because `/rank` falls back to `first_seen`
+on its own and marks those jobs `age_basis: "first_seen"` so their age is read as a
+floor (`≥N days`) rather than an exact value. Writing a fake `posted_date` would
+silently promote a floor into a fact. Entries written before this field existed
+simply lack it and stay correct under that fallback; **do not backfill them.**
+
+`/rank` extends this schema additively. Ranked entries also carry:
+
+| Field | Written by `/rank` |
+|-------|--------------------|
+| `rank_score` | 0-100 overall score |
+| `rank_verdict` | Fit band, e.g. "strong fit" |
+| `rank_date` | ISO date of ranking |
+| `strengths` / `gaps` | 1-3 verbatim bullets each, from the scoring agent |
+| `location` / `language_gate` / `language_note` | Gate results, `PASS`/`FAIL`/`FLAG` (+ note) |
+| `age_days` | Posting age in days **as of `rank_date`** — a snapshot, not a durable fact; any later reader recomputes it from the dates |
+| `age_basis` | `"posted_date"` (exact) or `"first_seen"` (a floor — the real posting is at least this old) |
+| `applicants` | The portal's applicant count, only when one was actually captured; the key is **omitted**, never `null`, when it was not |
+| `expired_reason` | `"unfetchable"` / `"deadline_passed"` / `"stale"`, alongside `status: "expired"` |
+
+The `status` field is set to `"ranked"` (or `"expired"`). **Do not drop any of these
+fields when re-writing entries** — `expired_reason` in particular is the only thing
+that distinguishes a posting that 404'd from one that merely aged out, and only the
+second is worth re-checking.
+
+`posted_date` and `deadline` are **shared** between the two commands: `/rank` may
+*fill* either when the entry lacks it, but must never overwrite a non-null value
+written by `/scrape`, which read the portal's own structured field and is the better
+source. Entries ranked before `strengths`/`gaps` existed simply lack them;
+readers tolerate their absence — and the absence of any other key in the table
+above — and never backfill by guessing.
 
 2. Only present jobs NOT already in the seen list or tracker.
 

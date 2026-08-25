@@ -72,6 +72,77 @@ warns on stderr when they are passed, and every result's `date` is `null`. If
 Instahyre ever adds a date field, wire it into `parseJobCard` and drop the warning
 in `src/cli.ts`.
 
+The date *is* published — but only on the HTML job page, which no HTTP client can
+reach. See **Posting date (HTML page, browser only)** below.
+
+## Posting date (HTML page, browser only)
+
+**Where it lives:** a `<script type="application/ld+json">` block on the public job
+page carrying a schema.org `JobPosting` object. The field is **`datePosted`**.
+
+```
+document.querySelector('script[type="application/ld+json"]')  // several on the page
+  → JSON.parse(…) where obj['@type'] === 'JobPosting'
+  → obj.datePosted
+```
+
+Exact extraction snippet (the one the enrichment pass runs, evaluated in-page):
+
+```js
+(() => {
+  for (const s of document.querySelectorAll('script[type="application/ld+json"]')) {
+    let d; try { d = JSON.parse(s.textContent) } catch (e) { continue }
+    for (const o of (Array.isArray(d) ? d : [d])) {
+      if (o && o['@type'] === 'JobPosting') {
+        return { datePosted: o.datePosted || null, validThrough: o.validThrough || null }
+      }
+    }
+  }
+  return { datePosted: null, noJobPostingLd: true }
+})()
+```
+
+**Granularity: absolute ISO `YYYY-MM-DD`, no precision loss.** The site does *not*
+render a relative "Posted 5 days ago" string — there is no posting date in the
+visible page text at all (the only "posted" string on the page is the *"Job posted
+by"* recruiter card, which names a person, not a date). The JSON-LD is the sole
+anchor, and it gives a clean calendar date. Verified on 2026-08-25 against seven
+live postings:
+
+| Job id | `datePosted` | Age at verification |
+|--------|--------------|---------------------|
+| `344067` | `2024-11-14` | 649 d |
+| `387381` | `2025-08-12` | 378 d |
+| `413663` | `2026-02-24` | 182 d |
+| `430593` | `2026-06-25` | 61 d |
+| `431875` | `2026-07-03` | 53 d |
+| `434667` | `2026-07-21` | 35 d |
+| `438746` | `2026-08-14` | 11 d |
+
+**`validThrough` was `null` on every posting checked** — Instahyre publishes a
+posting date but not an expiry, so there is no application deadline to harvest here.
+
+**The spread above is itself the finding.** Instahyre leaves listings up
+indefinitely: a first page of "LLM Engineer, Bangalore" hits contained postings up
+to 649 days old, presented identically to an 11-day-old one. Without enrichment
+there is no way to tell those apart, which is exactly why the pass exists.
+
+**Anonymous access is enough.** No Instahyre login is required to read the JSON-LD;
+the pages verified above were read from a logged-out session (the page still shows
+`LOGIN` / `SIGNUP` in its nav). A session that happens to be logged in works too,
+and reads nothing extra that matters here.
+
+**Cloudflare.** These pages return `403 Just a moment...` to plain HTTP clients,
+which is why the enrichment pass uses a real browser (ego-browser) and why the CLI
+itself still never requests HTML. This is not a workaround: nothing spoofs a
+fingerprint, solves a challenge, or bypasses anything — a genuine browser simply
+passes. If the site ever challenges the browser session too, **stop and report**;
+do not route around it.
+
+**Bonus observation (not wired up):** the same JSON-LD block also carries the full
+`description` HTML that the API withholds (limitation 2). It is not currently
+extracted — the enrichment pass reads dates only, to keep the browser pass small.
+
 ### Useful facet block (`meta`)
 
 `meta` carries facet counts that are handy for discovering valid filter values:
@@ -111,11 +182,21 @@ Each object in `objects[]`:
 | `public_url` | `url` | Full public job URL; CLI falls back to `https://www.instahyre.com/job-<id>/` |
 | `keywords` | `keywords` | Array of skill tags — the best available requirements signal |
 | `resource_uri` | — | `/api/v1/job_search/<id>`; accepted by `detail` |
-| *(none)* | `date` | **Always null** — the portal exposes no posting date |
+| *(none)* | `date` | **Always null** — the API exposes no posting date. Real dates come from the browser enrichment pass (see above) and are stored in `job_scraper/instahyre_posting_dates.md`, not in the API result |
 
 Fields present but only meaningful for a logged-in candidate, and ignored by this
 CLI: `interview_status`, `reviewed_at`, `is_strong_match`, `score`, `gender`,
 `accept_outstation`.
+
+## Posting-date table
+
+The enrichment pass persists what it reads to
+`job_scraper/instahyre_posting_dates.md` (Markdown, already covered by the repo's
+`**/job_scraper/*.md` gitignore rule — personal job-search data, never committed).
+Columns: `id`, `title`, `company`, `location`, `url`, `api_date`, `posted_date`,
+`verified_at`, `source`. Written only by `cli.ts table upsert`, keyed on `id`, so
+re-running enrichment updates rows rather than appending duplicates. Parser and
+renderer live in `src/table.ts`.
 
 ## Fixtures
 

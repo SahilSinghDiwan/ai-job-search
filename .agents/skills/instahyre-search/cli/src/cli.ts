@@ -8,9 +8,15 @@
 // low; the API rate-limits with 429 and the client backs off rather than
 // pushing through.
 
+import { join } from "node:path"
 import { runSearch, type SearchOpts } from "./commands/search.js"
 import { runDetail, type DetailOpts } from "./commands/detail.js"
+import { runTable, type TableOpts } from "./commands/table.js"
+import { defaultTablePath, todayIso } from "./table.js"
 import { writeError, writeWarning } from "./helpers.js"
+
+/** The skill directory (this file lives at <skill>/cli/src/cli.ts). */
+const SKILL_DIR = join(import.meta.dir, "..", "..")
 
 interface Flags {
   _: string[]
@@ -30,7 +36,8 @@ function parseFlags(argv: string[]): Flags {
     if (a.startsWith("--") || a.startsWith("-")) {
       const key = alias[a.replace(/^-+/, "")] ?? a.replace(/^-+/, "")
       const next = argv[i + 1]
-      if (next === undefined || next.startsWith("-")) {
+      // A bare "-" is a value (stdin), not the start of another flag.
+      if (next === undefined || (next.startsWith("-") && next !== "-")) {
         flags[key] = true
       } else {
         flags[key] = next
@@ -48,6 +55,9 @@ const HELP = `instahyre-cli — search jobs on Instahyre (India tech/startup rol
 USAGE
   bun run src/cli.ts search [flags]
   bun run src/cli.ts detail <id|url> [--format json|plain]
+  bun run src/cli.ts table upsert --json <json|-|@file> [--table <path>]
+  bun run src/cli.ts table pending [--limit N] [--stale-days N] [--format ...]
+  bun run src/cli.ts table list [--limit N] [--format json|table|plain]
 
 SEARCH FLAGS
   --query, -q <text>      Keywords (skill or title), e.g. "LLM", "RAG", "Python".
@@ -66,6 +76,24 @@ NOT SUPPORTED BY THIS PORTAL
   --jobage / --since      Instahyre's API exposes no posting date and no recency
                           filter. These flags are accepted but cannot filter;
                           the CLI warns and reports "recencyFilter":"unsupported".
+                          Real posting dates come from the opt-in browser
+                          enrichment pass instead — see 'table' below.
+
+TABLE (posting-date enrichment — opt-in, shortlist-sized)
+  Instahyre publishes each posting's date only on its HTML page, in a schema.org
+  JobPosting JSON-LD block ("datePosted"). That page is Cloudflare-challenged to
+  HTTP clients, so a real browser (ego-browser) reads it — never this CLI. The
+  'table' command is the durable store both passes share:
+
+    search --format json | bun run src/cli.ts table upsert --json -   # seed
+    bun run src/cli.ts table pending --limit 5 --format json          # worklist
+    bun run src/cli.ts table upsert --json '[{"id":"438746","posted_date":"2026-08-14"}]'
+
+  --table <path>          Override the table file (default:
+                          <skill>/job_scraper/instahyre_posting_dates.md).
+  --stale-days <n>        'pending' re-lists a row verified this long ago or
+                          longer. Default 21.
+  --limit, -n <n>         Cap rows emitted.
 
 EXAMPLES
   bun run src/cli.ts search -q "LLM" -f machine-learning -l Bangalore --limit 10 --format table
@@ -96,7 +124,8 @@ async function main(): Promise<number> {
       if (flags[name] !== undefined) {
         writeWarning(
           `--${name} is not supported by Instahyre: the API exposes no posting date, ` +
-            `so results are NOT filtered by recency. See the skill's SKILL.md.`,
+            `so results are NOT filtered by recency. Enrich a shortlist with ` +
+            `\`table\` + a browser pass to get real dates. See the skill's SKILL.md.`,
         )
       }
     }
@@ -150,6 +179,29 @@ async function main(): Promise<number> {
       format: (fmt === "plain" ? "plain" : "json") as DetailOpts["format"],
     }
     return runDetail(opts)
+  }
+
+  if (cmd === "table") {
+    const sub = (flags._ as string[])[1] ?? ""
+    const fmt = (flags.format as string) || "json"
+    const opts: TableOpts = {
+      sub,
+      path:
+        typeof flags.table === "string" ? (flags.table as string) : defaultTablePath(SKILL_DIR),
+      json: typeof flags.json === "string" ? (flags.json as string) : undefined,
+      limit: flags.limit ? parseInt(flags.limit as string, 10) : undefined,
+      staleDays:
+        typeof flags["stale-days"] === "string"
+          ? Math.max(0, parseInt(flags["stale-days"] as string, 10) || 21)
+          : 21,
+      format: (["json", "table", "plain"].includes(fmt) ? fmt : "json") as TableOpts["format"],
+      today: typeof flags.today === "string" ? (flags.today as string) : todayIso(),
+    }
+    if (opts.limit !== undefined && isNaN(opts.limit)) {
+      writeError(`--limit must be a number`, "BAD_ARG")
+      return 1
+    }
+    return runTable(opts)
   }
 
   writeError(`Unknown command "${cmd}"`, "BAD_CMD")

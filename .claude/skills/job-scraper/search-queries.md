@@ -6,7 +6,11 @@
 
 For this search, run **`linkedin-search`** (primary - AI/GenAI roles in India and global-remote), **`instahyre-search`** (India tech/startup, Bengaluru-heavy), and **`freehire-search`** (global-remote). Use the `site:` templates below as the WebSearch fallback for boards without a CLI (Naukri, Wellfound/AngelList, and startup career pages).
 
-**Instahyre caveat:** its API exposes no posting date and no recency filter, so `instahyre-search` cannot honour the 14-day window in the Date Filter below - do not pass it `--jobage`, and treat every Instahyre result as "date unknown". Its `detail` command returns skill keywords, not description text.
+**Instahyre caveat:** its API exposes no posting date and no recency filter, so `instahyre-search` cannot honour the 14-day window in the Date Filter below - do not pass it `--jobage`. Treat **bulk API results as "date unknown"**: they are genuinely dateless, and Instahyre leaves listings up indefinitely, so a first page of hits routinely mixes 11-day-old and 600-day-old postings with nothing to tell them apart.
+
+Enriched results are a different case. The skill ships an **opt-in browser pass** that reads each posting's real publication date (`datePosted`, from the job page's schema.org JSON-LD) and stores it in its own posting-date table - see `.agents/skills/instahyre-search/SKILL.md`. Run it deliberately over a **shortlist** you have already narrowed, never over a whole search page. An enriched posting has an exact ISO date, is not "date unknown", and its date should be carried into `seen_jobs.json` as `posted_date` so `/rank` scores its age exactly instead of falling back to `first_seen`.
+
+Its `detail` command returns skill keywords, not description text.
 
 **Language scope:** Sahil works in English, Hindi, and Marathi (see CLAUDE.md Languages table). AI/GenAI job postings in India and global-remote are effectively all written and conducted in English, so all query categories below are in English. Hindi/Marathi require no separate translated query set here; the Language Gate in `04-job-evaluation.md` still uses the full table when assessing any individual posting.
 
