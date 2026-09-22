@@ -1,0 +1,417 @@
+COMPANY: COSO Intelligence
+URL: https://www.linkedin.com/jobs/view/artificial-intelligence-engineer-at-coso-intelligence-4446076743/
+SCORE: 82
+SCRAPED: 2026-09-16
+
+---
+
+0 notifications
+Skip to search
+Skip to main content
+Skip to primary content
+Skip to aside
+Skip to footer
+Home
+My Network
+Jobs
+Messaging
+8
+Notifications
+Me
+For Business
+
+Try Premium for ₹0
+
+Artificial Intelligence Engineer
+
+COSO Intelligence • India (Remote)
+
+Easy Apply
+
+COSO Intelligence
+
+Artificial Intelligence Engineer
+
+India · 1 month ago · Over 100 applicants
+
+Promoted by hirer · No response insights available yet
+
+Remote
+Full-time
+
+Not currently accepting applications
+
+Use AI to assess how you fit
+
+Get AI-powered advice on this job and more exclusive features with Premium. Activate Premium for ₹0
+
+Show match details
+
+Tailor my resume
+
+Help me stand out
+
+About the job
+
+Python backend, at production depth. FastAPI or Django REST, async Python, PostgreSQL with real schema design, Redis, task queues (Celery or equivalent), Docker. Good looks like: has owned a service in production that other people depended on, has debugged it at 2am, can talk about connection pooling and N+1 queries without prompting.
+
+Retrieval-augmented generation, built properly rather than demoed. Hybrid retrieval (dense plus sparse or BM25), reranking, query rewriting, chunking strategy chosen for a reason, metadata filtering. Vector stores: Qdrant, pgvector, Pinecone, FAISS or similar. Good looks like: can explain why their chunking strategy failed the first time and what they changed.
+
+Evaluation of AI output — this is the strongest single filter. A labelled evaluation set, retrieval metrics (Recall@k, MRR, nDCG), faithfulness or groundedness scoring, and ideally those checks running in CI so a regression blocks a merge. Good looks like: has a story about the day the eval went red. Most candidates cannot tell that story; the ones who can are the ones to interview.
+
+Multi-tenant data isolation. Row-level security, per-tenant or per-workspace scoping enforced at the database or query layer rather than in application code. Good looks like: understands why a filter that can be forgotten is different from a projection that cannot leak. This matters more here than in most products, because a contractor and a government client share one system and must never see each other's private layer.
+
+Citation grounding and honest refusal. Answers that resolve to a source document, page or record; a designed "not enough information to answer" state rather than a plausible guess. Good looks like: has built a gate that blocks an uncited answer from being exported.
+
+Document and unstructured data pipelines. OCR of scanned documents, PDF and drawing parsing, layout-aware extraction, ingestion pipelines that survive messy real-world input. Tesseract, docTR, Azure Document Intelligence, AWS Textract, DocLayout or similar.
+
+Strongly wanted
+Agentic orchestration with human-in-the-loop gates — LangGraph, LangChain, Agno, AutoGen, CrewAI, or hand-rolled. The important part is not the framework, it is that the agent stages an action and a human commits it. We do not want anyone whose instinct is to let an agent write to the database unattended.
+Model routing and cost architecture — choosing the right model per task, open-source fallbacks, quantised self-hosted serving (vLLM, Ollama, int4/int8), per-request cost and latency tracking. We run models inside our own environment for data-sovereignty reasons, so comfort with self-hosting matters.
+Observability — structured logging, tracing, OpenTelemetry, latency and cost dashboards.
+Cloud — AWS or GCP. Bedrock, SageMaker, Vertex AI, ECS/EKS, Lambda, S3. Azure acceptable.
+Data engineering — ETL at volume, PySpark, Parquet, partitioning, CDC. Useful because project data arrives as large messy historical dumps that must be backfilled.
+Fine-tuning — LoRA or QLoRA on open models, and the judgement to know when not to bother.
+Three to six years of hands-on engineering, of which at least eighteen months on large language model systems in production rather than in prototypes. Someone at two years with unusually strong evidence is worth considering. Someone at eight years who has only ever integrated an API is not.
+… more
+
+Requirements added by the job poster
+
+• Bachelor's Degree
+
+• 1+ years of Technology, Information and Internet experience
+
+This job alert is on
+
+Artificial Intelligence Engineer, India
+
+On
+
+Job search faster with Premium
+
+Access company insights like strategic priorities, headcount trends, and more
+
+Meer Fahad Ali and millions of other members use Premium
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+About the company
+
+COSO Intelligence
+
+429 followers
+
+Follow
+
+Construction
+
+ • 
+
+2-10 employees
+
+ • 
+
+1 on LinkedIn
+
+COSO is a Construction Intelligence platform built by civil engineers, for the construction industry. By leveraging AI, we are replacing the antiquated workflows that inhibit infrastructure projects with a single live operational ecosystem solution. We strive to bring construction out of fragmentation and into a shared, intelligent source of truth that connects all stakeholders in real time. Our vision is to make every infrastructure project more predictable, transparent and decision-ready, by becoming the digital backbone of projects globally. 
+… more
+
+Show more
+More jobs
+
+Forward Deployed Engineer – AI / B2B SaaS
+Forward Deployed Engineer – AI / B2B SaaS
+
+Hive Inspect
+
+India (Remote)
+
+Promoted
+
+ · 
+
+Posted 5 days ago
+5 days ago
+
+Senior AI Engineer (AI Voice Agent)
+Senior AI Engineer (AI Voice Agent)
+
+Adit
+
+India (Remote)
+
+Promoted
+
+ · 
+
+Posted 5 days ago
+5 days ago
+
+AI Agent Engineer (Remote)
+AI Agent Engineer (Remote)
+
+Hire Feed
+
+India (Remote)
+
+Promoted
+
+ · 
+
+Posted 4 days ago
+4 days ago
+
+ · 
+
+Easy Apply
+
+Prompt Engineer, Multi-Agent Systems (Verified job)
+Prompt Engineer, Multi-Agent Systems 
+
+Fello
+
+India (Remote)
+
+Promoted
+
+ · 
+
+Posted 1 month ago
+1 month ago
+
+Forward Deployed Engineer (Verified job)
+Forward Deployed Engineer 
+
+Aviato Consulting
+
+India (Remote)
+
+Promoted
+
+ · 
+
+Posted 1 month ago
+1 month ago
+
+Artificial Intelligence Engineer 
+Artificial Intelligence Engineer 
+
+AgileEngine
+
+India (Remote)
+
+Promoted
+
+ · 
+
+Posted 1 month ago
+1 month ago
+
+Senior AI/LLM Engineer (Python) - Remote (Verified job)
+Senior AI/LLM Engineer (Python) - Remote 
+
+Kake
+
+Bengaluru (Remote)
+
+Promoted
+
+ · 
+
+Posted 5 days ago
+5 days ago
+
+ · 
+
+Easy Apply
+
+AI Developer Jobs in India
+AI Developer Jobs in India
+
+Rex.zone
+
+India (Remote)
+
+$30/hr - $50/hr
+
+Promoted
+
+ · 
+
+Posted 5 days ago
+5 days ago
+
+Artificial Intelligence Engineer
+Artificial Intelligence Engineer
+
+Ternuvo AI
+
+India (Remote)
+
+Promoted
+
+ · 
+
+Posted 2 days ago
+2 days ago
+
+ · 
+
+Easy Apply
+
+Senior AI Engineer (Verified job)
+Senior AI Engineer 
+
+Teradata
+
+Maharashtra, India (Remote)
+
+10 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+AI Prompt Engineer
+AI Prompt Engineer
+
+Caravel | BPM Technology Solutions
+
+Bengaluru (Remote)
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+Forward Deployed AI Engineer (Verified job)
+Forward Deployed AI Engineer 
+
+Katonic AI
+
+India (Remote)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+See more jobs like this
+
+Job search smarter with Premium
+
+See jobs where you’d be a top applicant
+
+Message hiring managers with InMail
+
+Get personalized cover letter and resume tips
+
+Plus! Get insider access to live talks with industry leaders.
+
+Meer Fahad Ali and millions of other members use Premium
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+Looking for talent?
+
+Post a job
+
+About
+
+Accessibility
+
+Talent Solutions
+
+Community Guidelines
+
+Careers
+
+Marketing Solutions 
+
+Privacy & Terms
+
+Ad Choices
+
+Advertising
+
+Sales Solutions
+
+Mobile
+
+Small Business
+
+Safety Center
+
+LinkedIn Corporation © 2026
+
+Questions?
+
+Visit our Help Center.
+
+Manage your account and privacy
+
+Go to your Settings.
+
+Recommendation transparency
+
+Learn more about Recommended Content.
+
+Select language
+
+العربية (Arabic)
+বাংলা (Bangla)
+Čeština (Czech)
+Dansk (Danish)
+Deutsch (German)
+Ελληνικά (Greek)
+English (English)
+Español (Spanish)
+فارسی (Persian)
+Suomi (Finnish)
+Français (French)
+हिंदी (Hindi)
+Magyar (Hungarian)
+Bahasa Indonesia (Indonesian)
+Italiano (Italian)
+עברית (Hebrew)
+日本語 (Japanese)
+한국어 (Korean)
+मराठी (Marathi)
+Bahasa Malaysia (Malay)
+Nederlands (Dutch)
+Norsk (Norwegian)
+ਪੰਜਾਬੀ (Punjabi)
+Polski (Polish)
+Português (Portuguese)
+Română (Romanian)
+Русский (Russian)
+Svenska (Swedish)
+తెలుగు (Telugu)
+ภาษาไทย (Thai)
+Tagalog (Tagalog)
+Türkçe (Turkish)
+Українська (Ukrainian)
+Tiếng Việt (Vietnamese)
+简体中文 (Chinese (Simplified))
+正體中文 (Chinese (Traditional))

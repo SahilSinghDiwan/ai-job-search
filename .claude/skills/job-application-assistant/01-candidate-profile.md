@@ -11,9 +11,9 @@ framework_version: 1.1.1
 - **Email:** diwan.sahilsingh@gmail.com
 - **LinkedIn:** https://linkedin.com/in/diwan-sahil
 - **GitHub:** https://github.com/SahilSinghDiwan
-- **Portfolio:** https://myprofile.nostalkers.shop (ships live AI features - resume chatbot, AI project summaries)
+- **Portfolio:** https://sahildiwan.in (ships live AI features - resume chatbot, AI project summaries)
 - **Live demo:** https://convogene.ai (RAG chatbot built & shipped)
-- **Status:** Employed as Software Engineer, AI at Infobell IT Solutions; on notice, last working day 12 Oct 2026; actively interviewing
+- **Status:** Employed as Software Engineer, AI at Infobell IT Solutions; on notice, last working day 12 Oct 2026. Holds an accepted backup offer (auxoai, accepted 27 Aug 2026, below the pay floor); still actively interviewing for a better-fitting AI role
 - **Constraints:** Bengaluru-based; open to on-site/hybrid in Bangalore or global remote (USD). Relocation is not a hard blocker for the right AI role.
 
 ### Languages
@@ -54,7 +54,7 @@ Remote, India
 - Built and maintained backend APIs for a legal contract-management platform - document parsing, data structuring, and secure retrieval of sensitive contracts.
 
 ## Independent Projects
-- **Portfolio site (myprofile.nostalkers.shop):** Personal portfolio that itself ships live AI features - a resume chatbot, AI project summaries, and a tech-filter - a working proof of applied GenAI engineering.
+- **Portfolio site (sahildiwan.in):** Personal portfolio that itself ships live AI features - a resume chatbot, AI project summaries, and a tech-filter - a working proof of applied GenAI engineering.
 - **Convogene.ai:** Publicly deployed RAG chatbot (see experience above); live and demonstrable.
 
 ## Technical Skills

@@ -21,17 +21,21 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
   | Marathi | Native |
 - **CV language:** English
 
-- **Status:** Employed as Software Engineer, AI at Infobell IT Solutions (Bengaluru); on notice with last working day **12 Oct 2026**; actively interviewing for AI/GenAI Engineer roles
+- **Status:** Employed as Software Engineer, AI at Infobell IT Solutions (Bengaluru); on notice with last working day **12 Oct 2026**. Holds an **accepted backup offer** (auxoai, Senior AI Engineer, accepted 27 Aug 2026) that sits below the pay floor — still actively interviewing for the AI/GenAI Engineer role he actually wants, and now negotiating from a floor rather than a deadline
 - **LinkedIn headline:** "AI/GenAI Engineer | Taking LLM & RAG systems from POC to production at scale | LangChain · Kafka · Kubernetes | Building agentic developer tooling"
 
 ### Education
 - **Post Graduate Diploma (6 months)** (Sep 2023 - Feb 2024) - Centre for Development of Advanced Computing (C-DAC)
   - Topics: applied software engineering, systems, and the transition into production AI/ML work
+- **Post Graduate Diploma in Industrial Robotics** (2019-2020) - Rashtrasant Tukadoji Maharaj Nagpur University (RTMNU), Oberoi Centre for Excellence, Nagpur
+  - 1-year programme (2 semesters, ~800 hrs) with live-project and internship components; exited into the industry internship that became Koderoom as COVID hit, so the coursework was not fully completed
 - **B.E. in Mechanical Engineering** (2015-2018) - G H Raisoni Academy of Engineering and Technology, Nagpur, India
 
 ### Professional Experience
 - **Software Engineer, AI** (March 2024 - Present) - **Infobell IT Solutions** (Bengaluru, India)
-  - Building an agentic AI test-automation platform: clones a repo, uses LLMs to map signatures/call-graph/workflows, then generates and self-corrects test suites (API, workflow, security/edge) in budget- or coverage-driven modes; adds PR blast-radius analysis (1/2/3-hop) and a spec-coverage "certification" score
+  - **Co-leads** an agentic AI test-automation platform (with one peer; the two mentor the junior engineers on it). Clones a repo, uses LLMs to map signatures/call-graph/workflows, then generates and self-corrects test suites (API, workflow, security/edge) in budget- or coverage-driven modes; adds PR blast-radius analysis (1/2/3-hop) and a spec-coverage "certification" score. **Entering alpha with AMD** (a global semiconductor client) across their serviced projects — backend/API/workflow/security today; Playwright-driven frontend and performance testing deferred to a later phase. Peer owns Test Studio (generation); **Sahil owns Test Execution**: execution architecture, the LLM self-healing loop that repairs tests mid-run, GitHub Actions CI/CD, credentials + role-based access control and settings logic, Allure reporting (he added it), and the model layer supporting AMD's on-premises LLMs plus Vertex AI and Azure (no external model providers permitted). <!-- No adoption/volume metrics yet — alpha demo to project team leads was 1 Sep 2026. Use documents/prompts/measure-test-platform.md to generate them. Do NOT name AMD on CVs/cover letters; write "a global semiconductor client". -->
+  - Designing the execution layer of a **cloud-onboarding assistant for IBM** (West Team Workload Engineering Services): helps IBM Cloud "classic" users move to VPC via a 2-week free sandbox trial, where setup friction currently eats most of the trial. Colleagues own the docs chatbot and Terraform-script generation; Sahil owns execution — an agent **skill** (MCP server likely blocked by platform constraints) that authenticates with the chatbot's IBM Cloud account credentials, queries existing data, performs CRUD on resources, and provisions/wires resources via Terraform; possible future extension to set things up in the user's GitHub. Early/idea stage as of Sep 2026. <!-- Do NOT name IBM on CVs; write "a Fortune-50 cloud provider". -->
+  - Runs internal enablement sessions on **Claude Code** and Cursor for the engineering team (presentation in preparation, Sep 2026)
   - Built the retrieval engine and Kafka/Elasticsearch event pipeline for an enterprise SRE incident-resolution assistant on a major public cloud; scaled from a 20-user POC to a 200+-SRE beta and cut time-to-find similar incidents ~70% (15-20 min → ~5 min, measured with SREs)
   - Rebuilt failing semantic (cosine) search as hybrid retrieval with structured filtering and identifier masking (privacy-preserving by design), roughly doubling similar-incident recall (~30% → ~80%); deployed on Kubernetes with custom Helm charts
   - Built and shipped Convogene.ai, a live near-zero-hallucination RAG chatbot for a semiconductor client (scheduled scraping via LangGraph/LangChain, two-layer data + prompt guardrails), deployed on Microsoft Azure
@@ -40,15 +44,19 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
   - Led online Python and AI training for an international student base (USA, UK, Singapore, India); designed hands-on robotics curricula (Python, C, Raspberry Pi, Arduino)
 - **Junior Software Developer** (June 2020 - June 2022) - **Koderoom** (Remote, India)
   - Built and maintained backend APIs for a legal contract-management platform: document parsing, data structuring, and secure retrieval of sensitive contracts
+  - Entered via the internship component of the RTMNU Industrial Robotics diploma (COVID cut the coursework short)
+- **Site Engineer** (2018 - 2019) - **Samia Engineering Services** (Nagpur, India)
+  - Purely mechanical role, on payroll of Samia Engineering Services (reflected in UAN record); worked alongside Shubam Enterprises. Kept on the CV as a one-liner solely to close the 2018-2020 gap. Official designation: Site Engineer (confirmed by Sahil, 1 Sep 2026).
 
 ### Technical Skills
-- **Primary:** RAG pipelines, hybrid retrieval, LLM integration, prompt engineering & guardrails, agentic systems, LangChain, LangGraph, Python
-- **Secondary:** FastAPI, Flask, async Python, microservices, REST APIs, PyTorch, model fine-tuning, Playwright, LLM-based test generation, call-graph analysis
+- **Primary:** RAG pipelines, hybrid retrieval, LLM integration, prompt engineering & guardrails, agentic systems, agent skills & MCP, self-healing agent loops, LangChain, LangGraph, Python
+- **Secondary:** FastAPI, Flask, async Python, microservices, REST APIs, PyTorch, model fine-tuning, Playwright, LLM-based test generation, call-graph analysis, Allure reporting, Terraform / IaC
 - **Domain:** production GenAI (POC → production at scale), vector search & retrieval (FAISS, Milvus, ChromaDB, Elasticsearch), event streaming (Apache Kafka, Apache Airflow), LLMOps
-- **Software:** Docker, Kubernetes, Helm, GitHub Actions, Microsoft Azure, AWS, GCP, MongoDB, MySQL, ServiceNow/Jira integrations, Claude Code
+- **Software:** Docker, Kubernetes, Helm, GitHub Actions, Microsoft Azure, AWS, GCP / Vertex AI, IBM Cloud, on-premises & self-hosted LLM serving, secrets management & RBAC, MongoDB, MySQL, ServiceNow/Jira integrations, Claude Code, Cursor
 
 ### Certifications
 - **Claude Certified Architect - Foundations** (Anthropic) - issued Aug 2026, valid to Aug 2027 (Credly: https://www.credly.com/badges/19e35e8e-4d09-45a9-ade3-e246ceef7203)
+- **Claude Certified Architect - Practitioner** (Anthropic) - in progress as of Sep 2026
 - **IBM Cloud Advocate Essentials** - completed Dec 2025
 
 ### Publications

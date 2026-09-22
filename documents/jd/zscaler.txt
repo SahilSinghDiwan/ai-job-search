@@ -1,0 +1,440 @@
+COMPANY: Zscaler
+URL: https://freehire.me/jobs/senior-machine-learning-engineer-agentic-ai-zscaler-sygc7oxl
+SCORE: 83
+SCRAPED: 2026-09-16
+
+---
+
+freehire
+Location
+/
+697
+
+Point your AI agent at freehire and let it find you a job. A CLI and an MCP server over the whole job API — no browser.
+
+Get the CLI →
+✕
+
+Zscaler
+
+Open 96d
+posting date refreshed
+Posted
+4 Sept 2026
+28 views
+Senior Machine Learning Engineer (Agentic AI)
+Apply
+
+PROFILE MATCH
+
+68%
+18 of 27 skills
+Agentic AI
+Agile
+AI
+Sign in to see your match
+Sign in
+Tailor my CV
+Work format
+Hybrid
+Location
+Bangalore, IND
+Region
+APAC
+Grade
+Senior
+Experience
+3+ yrs
+Category
+ML / AI
+Country
+India
+Relocation
+Not supported
+Visa
+Sponsored
+Company
+Product
+Size
+1000+
+greenhouse
+
+Zscaler · Senior Machine Learning Engineer (Agentic AI)
+
+Apply
+Description
+Company
+Application
+Discussion
+Report
+Save
+Summary
+
+Senior Machine Learning Engineer at Zscaler in Bangalore builds and deploys Agentic AI systems for cybersecurity, focusing on LLM orchestration, RAG, and production-grade LLMOps.
+
+Zscaler (NASDAQ: ZS) accelerates digital transformation so customers can be more agile, efficient, resilient, and secure. The Zscaler Zero Trust Exchange™️ platform protects thousands of customers from cyberattacks and data loss by securely connecting users, devices, and applications in any location. Distributed across 160+ public exchanges globally and thousands of private exchanges at the edge, the SASE-based Zero Trust Exchange is the world’s largest in-line cloud security platform.
+
+We believe the future of work is Human + AI and are building an AI-native enterprise where human potential is amplified by machine intelligence to solve the world’s hardest security challenges. Driven by deep customer obsession, we are committed to the mission, outcome, and to each other. We bring these commitments to life through three core behaviors: ownership and collaboration, trust through outcomes and impact, and a challenge culture with ongoing feedback. Ready to make an impact at the company pioneering security transformation in the AI era? Join us at Zscaler.
+
+Role
+
+We are looking for a Senior Machine Learning Engineer to join our Exposure Management & Security Operations team. This role is a hybrid position based in Bangalore, reporting to the Manager, Machine Learning Engineering. You will join the team that built the world’s largest cloud security platform from the ground up, helping to scale a multitenant architecture that serves over 15 million users globally. Your vision and passion will be critical as we continue to innovate and enable organizations to harness the speed and agility of a cloud-first strategy.
+
+What you’ll do (Role Expectations)
+
+Independently develop and implement machine learning models and Generative AI solutions, with a strong emphasis on building and deploying Agentic AI architectures
+Drive the end-to-end productionization of AI agents, navigating the complexities of multi-step reasoning, tool use, state management, and LLM orchestration in live environments
+Design and implement advanced LLM Ops frameworks, ensuring deep observability, rigorous monitoring, logging, and evaluation specifically tailored for dynamic AI agents
+Assist in refining and optimizing both modern Gen AI pipelines and existing classical ML models (feature engineering, hyperparameter tuning) for maximum accuracy, efficiency, and scalability
+Collaborating with cross-functional teams to translate complex business needs into technical solutions
+
+Who You Are (Success Profile)
+
+You thrive in ambiguity and are comfortable building the path as you walk it, seeing dynamic environments as the raw material to build something meaningful
+You act like an owner with a passion for the mission and a bias for action, navigating seamlessly between high-level strategy and hands-on execution
+You are a problem-solver who seeks out challenges because you are energized by finding solutions that deliver the biggest impact
+You are a learner with a growth mindset, actively seeking feedback to become a better partner and a stronger teammate
+You are driven by innovation and have a deep curiosity for how things work, believing in the power of technology to accelerate transformation
+
+What We’re Looking for (Minimum Qualifications)
+
+3 to 5 years of related experience as an MLE, with a strong track record of building and deploying ML systems
+Proven hands-on experience in creating Gen AI-based systems, including Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), and a clear history of operationalizing Agentic AI in production
+Deep understanding of MLOps and LLMOps principles, specifically dealing with the unique monitoring, observability, and debugging challenges of non-deterministic AI agents
+A solid computer science foundation (data structures, algorithms) coupled with expertise in Python (scikit-learn, PyTorch/TensorFlow) and SQL for comprehensive feature engineering and model evaluation
+Excellent communication and interpersonal skills, with the ability to work independently and as a strong team player
+
+What Will Make You Stand Out (Preferred Qualifications)
+
+Expertise with cloud services such as AWS, GCP, or Azure and ML platforms like Kubeflow or SageMaker
+Familiarity with systems programming or distributed systems
+A demonstrated interest in innovation, such as participation in tech blogs, external papers, or industry knowledge-sharing
+
+#LI-AN4
+#LI-HYBRID
+
+At Zscaler, we are committed to building a team that reflects the communities we serve and the customers we work with. We foster an inclusive environment that values all backgrounds and perspectives, emphasizing collaboration and belonging. Join us in our mission to make doing business seamless and secure.
+
+Our Benefits program is one of the most important ways we support our employees. Zscaler proudly offers comprehensive and inclusive benefits to meet the diverse needs of our employees and their families throughout their life stages, including:
+
+Various health plans
+Time off plans for vacation and sick time
+Parental leave options
+Retirement options
+Education reimbursement
+In-office perks, and more!
+
+Learn more about Zscaler's hybrid working model and benefits here.
+
+By applying for this role, you adhere to applicable laws, regulations, and Zscaler policies, including those related to security and privacy standards and guidelines.
+
+Zscaler is committed to providing equal employment opportunities to all individuals. We strive to create a workplace where employees are treated with respect and have the chance to succeed. All qualified applicants will be considered for employment without regard to race, color, religion, sex (including pregnancy or related medical conditions), age, national origin, sexual orientation, gender identity or expression, genetic information, disability status, protected veteran status, or any other characteristic protected by federal, state, or local laws. See more information by clicking on the Know Your Rights: Workplace Discrimination is Illegal link.
+
+Pay Transparency
+
+Zscaler complies with all applicable federal, state, and local pay transparency rules.
+
+Zscaler is committed to providing reasonable support (called accommodations or adjustments) in our recruiting processes for candidates who are differently abled, have long term conditions, mental health conditions or sincerely held religious beliefs, or who are neurodivergent or require pregnancy-related support.
+
+Skills
+Agentic AI
+?
+Agile
+?
+AI
+?
+AWS
+?
+Azure
+?
+Cloud
+?
+Cloud Security
+?
+Distributed Systems
+?
+Feature Engineering
+?
+GCP
+?
+Generative AI
+?
+Kubeflow
+?
+LLM
+?
+LLMOps
+?
+Machine Learning
+?
+MLOps
+?
+Model Evaluation
+?
+Observability
+?
+Python
+?
+PyTorch
+?
+RAG
+?
+SageMaker
+?
+Sase
+?
+scikit-learn
+?
+SQL
+?
+TensorFlow
+?
+Zero Trust
+?
+Reddit
+12
+12 views
+last month
+Senior Machine Learning Engineer
+Remote
+North America
+Contract
+Senior
+H-1B sponsor history
+USCIS
+— This employer has had H-1B petitions approved by USCIS in the last five fiscal years, per the USCIS H-1B Employer Data Hub. The approval belongs to the employer and is not a commitment to sponsor this role.
+Canada
+
+Build and deploy large-scale ML systems for personalized recommendations, search, and ads at Reddit, using PyTorch/TensorFlow and distributed pipelines.
+
+Agentic AI
+AI
+Airflow
+BigQuery
+Data Science
++18 skills
+78% · 18/23 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+Reddit
+11
+11 views
+last month
+Senior Machine Learning Engineer
+Remote
+North America
+Contract
+Senior
+H-1B sponsor history
+USCIS
+— This employer has had H-1B petitions approved by USCIS in the last five fiscal years, per the USCIS H-1B Employer Data Hub. The approval belongs to the employer and is not a commitment to sponsor this role.
+United States
+
+Build and deploy large-scale ML systems for recommendations, search, ads, and LLM-driven features that power Reddit’s community platform.
+
+Agentic AI
+AI
+Airflow
+BigQuery
+Data Science
++18 skills
+217K – 303K $
+88% · 20/23 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+O
+Ouryahoo
+3
+3 views
+2 months ago
+Senior Machine Learning Engineer
+Hybrid
+North America
+Fellowship
+Senior
+United States
+
+Build and deploy AI/ML systems that personalize Yahoo Mail for 220M+ users, using NLP, GenAI, and agentic workflows while optimizing for scale and latency.
+
+Accessibility
+Agentic AI
+AI
+Cloud
+Cloud Native
++21 skills
+128K – 267K $
+73% · 19/26 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+atoms
+7
+7 views
+5 days ago
+Senior Machine Learning Engineer
+North America
+Internship
+Senior
+United States
+
+Builds AI models for autonomous transport robots, focusing on trajectory planning, multimodal perception, and edge deployment for real-world industrial use.
+
+AI
+Automation
+C++
+CUDA
+Data Engineering
++12 skills
+208K – 264K $
+76% · 13/17 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+2K
+4
+4 views
+6 days ago
+Senior Machine Learning Engineer
+Europe
+Senior
+Ireland
+
+Build and deploy ML models for game features like matchmaking, economy balancing, and toxicity detection using Python, PyTorch, and cloud infrastructure.
+
+Agentic AI
+Airflow
+Automation
+AWS
+Azure
++34 skills
+85% · 33/39 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+VantageScore
+5
+5 views
+8 hours ago
+Senior AI Engineer
+North America
+Full-time
+Senior
+United States
+
+Senior AI Engineer at VantageScore developing credit scoring and GenAI/LLM-powered products: researching structured and unstructured data, fine-tuning LLMs, building and deploying ML models to production, and monitoring and explaining them. Core stack is Python with data science/ML libraries; hybrid role in Washington D.C. or New York.
+
+AI
+Analytics
+Data Science
+Fine Tuning
+Fintech
++7 skills
+150K – 170K $
+62% · 7/12 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+See also
+173,325 jobs
+Python jobs
+9,456 jobs
+Machine Learning jobs
+260,699 jobs
+Senior-Level jobs
+122,412 jobs
+AWS jobs
+107,888 jobs
+Azure jobs
+61,383 jobs
+Google Cloud jobs
+11,741 jobs
+PyTorch jobs
+8,455 jobs
+TensorFlow jobs
+7,799 jobs
+Indian Roots jobs
+17,387 jobs
+Remote Worldwide jobs
+
+ML / AI jobs by country — openings, pay and top skills →
+
+PRODUCT
+
+Jobs
+Companies
+Collections
+Talent Network
+Jobs by role
+Skills glossary
+Recruiters
+
+FEATURES
+
+Advanced search
+Browser extension
+Inbox
+CV tailoring
+Application tracking
+Notifications
+Referrals
+Ghost jobs
+
+RESOURCES
+
+How it works
+Discussions
+Blog
+Insights
+Hiring signal
+Trends
+For AI agents
+CLI
+ChatGPT
+API docs
+
+COMPANY
+
+About
+Open
+For companies
+Contribute
+Contributors
+Submit a job
+Status
+Support
+Privacy
+Terms
+
+POPULAR
+
+Remote Worldwide
+JavaScript
+TypeScript
+Python
+React
+Go
+Senior-Level
+Backend
+Frontend
+AWS
+
+© 2026
+
+Cookie settings
+
+Free & open-source. View source on GitHub.
+
+freehire.me is open source.
+
+Stars are how people find it.
+
+Star on GitHub
+697

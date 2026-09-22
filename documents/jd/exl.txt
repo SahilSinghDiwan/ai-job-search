@@ -1,0 +1,342 @@
+COMPANY: EXL
+URL: https://freehire.me/jobs/senior-ai-engineer-exl-g33bjp2i
+SCORE: 80
+SCRAPED: 2026-09-16
+
+---
+
+freehire
+Location
+/
+697
+
+Point your AI agent at freehire and let it find you a job. A CLI and an MCP server over the whole job API — no browser.
+
+Get the CLI →
+✕
+
+EXL
+
+Posted
+3 Sept 2026
+7 views
+Senior AI Engineer
+Apply
+
+PROFILE MATCH
+
+68%
+11 of 16 skills
+AI
+API
+AWS
+Sign in to see your match
+Sign in
+Tailor my CV
+Work format
+Hybrid
+Location
+Gurugram, Haryana, India
+Region
+APAC
+Grade
+Senior
+Experience
+4+ yrs
+Category
+AI Engineering
+Country
+India
+oracle
+Description
+Company
+Discussion
+Report
+Save
+Design and deliver enterprise-grade AI solutions using LLMs and modern AI frameworks
+Build and optimize applications using LangChain, LangGraph, and multi-agent architectures
+Drive end-to-end development lifecycle from problem definition to production deployment
+Collaborate with cross-functional teams to translate business needs into AI solutions
+Develop and deploy LLM-based applications using RAG, embeddings, and prompt engineering
+Build and manage multi-agent systems and workflows using LangGraph, MCP, or similar frameworks
+Design scalable AI pipelines, APIs, and integrations for production use
+Optimize performance, cost, and reliability of AI systems in production
+Collaborate with product, engineering, and data teams to deliver business impact
+4–6 years of experience in AI/ML engineering or related roles
+Strong Python programming skills (mandatory)
+Experience with LLMs, LangChain, LangGraph, and agent frameworks
+Hands-on knowledge of multi-agent systems and MCP (or similar protocols)
+Understanding of RAG, embeddings, prompt engineering, and LLM orchestration
+Experience in deploying AI solutions on cloud platforms (Azure/AWS/GCP)
+Strong communication skills and ability to work with cross-functional teams
+Experience with MLOps practices, APIs, and production deployments
+Skills
+AI
+?
+API
+?
+AWS
+?
+Azure
+?
+Cloud
+?
+Embeddings
+?
+GCP
+?
+LangChain
+?
+LangGraph
+?
+LLM
+?
+Machine Learning
+?
+MCP
+?
+MLOps
+?
+Prompt Engineering
+?
+Python
+?
+RAG
+?
+Similar jobs
+Other locations (2)
+540
+7
+7 views
+2 months ago
+Senior Software Engineer (AI/ML)
+North America
+Senior
+United States
+
+Senior Software Engineer builds and scales AI/ML-driven features for a cloud-native data processing platform supporting government missions, using Python, containerized services, and MLOps.
+
+AI
+Analytics
+Anomaly Detection
+API
+Authentication
++19 skills
+84% · 20/24 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+AllZone Tech
+5
+5 views
+last month
+Senior AI ML Engineer
+APAC
+Senior
+Pakistan
+
+Build and deploy AI systems including LLMs, computer vision, and autonomous agents using Python, PyTorch, and LangChain, then productionize them with MLOps on cloud platforms.
+
+Agentic AI
+AI
+AutoGen
+AWS
+Azure
++24 skills
+79% · 23/29 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+emagine
+5
+5 views
+2 months ago
+AI Engineer
+Hybrid
+UK
+United Kingdom
+
+Build and deploy enterprise-grade agentic AI systems using Python, LangGraph, and LangChain on Azure/AWS, focusing on multi-agent orchestration, RAG, and governance.
+
+Agentic AI
+AI
+API
+Automation
+AWS
++14 skills
+600 – 600 £ / day
+62% · 12/19 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+weekday-1
+5
+5 views
+4 weeks ago
+Senior Technical Lead - Agentic AI / Generative AI
+APAC
+Full-time
+Lead
+India
+
+Leads AI architecture and development of agentic/Generative AI systems, including LLM-powered agents, RAG pipelines, and multi-agent workflows, while mentoring engineers and collaborating cross-functionally to deliver scalable, production-grade solutions.
+
+Agentic AI
+AI
+API
+AutoGen
+AWS
++27 skills
+3M – 5M INR
+80% · 26/32 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+Amtech Software
+8
+8 views
+2 weeks ago
+Senior AI Engineer – Agentic Platform
+APAC
+Senior
+India
+
+About Vista Equity Partners Vista Equity Partners is a leading global investment firm focused exclusively on enterprise software, data, and technology-enabled businesses. With over $100B in assets under management and…
+
+Agentic AI
+AI
+Ai Enablement
+Anthropic
+API
++37 skills
+70% · 29/42 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+Check Point Software Technologies
+5
+5 views
+2 months ago
+Senior AI Engineer
+Hybrid
+MENA
+Senior
+H-1B sponsor history
+USCIS
+— This employer has had H-1B petitions approved by USCIS in the last five fiscal years, per the USCIS H-1B Employer Data Hub. The approval belongs to the employer and is not a commitment to sponsor this role.
+Israel
+
+Design, develop, and maintain AI-powered applications, agents, and backend systems Build intelligent workflows and agentic systems integrated into Check Point networking and security products Develop scalable APIs,…
+
+Agentic AI
+AI
+API
+AWS
+Azure
++18 skills
+70% · 16/23 skills
+Sign in to see your match
+Sign in to see your match
+Save to board
+Apply
+See also
+173,325 jobs
+Python jobs
+12,093 jobs
+AI Engineering jobs
+260,699 jobs
+Senior-Level jobs
+122,412 jobs
+AWS jobs
+107,888 jobs
+Azure jobs
+61,383 jobs
+Google Cloud jobs
+17,387 jobs
+Remote Worldwide jobs
+50,725 jobs
+JavaScript jobs
+62,422 jobs
+TypeScript jobs
+57,361 jobs
+React jobs
+
+AI Engineering jobs by country — openings, pay and top skills →
+
+PRODUCT
+
+Jobs
+Companies
+Collections
+Talent Network
+Jobs by role
+Skills glossary
+Recruiters
+
+FEATURES
+
+Advanced search
+Browser extension
+Inbox
+CV tailoring
+Application tracking
+Notifications
+Referrals
+Ghost jobs
+
+RESOURCES
+
+How it works
+Discussions
+Blog
+Insights
+Hiring signal
+Trends
+For AI agents
+CLI
+ChatGPT
+API docs
+
+COMPANY
+
+About
+Open
+For companies
+Contribute
+Contributors
+Submit a job
+Status
+Support
+Privacy
+Terms
+
+POPULAR
+
+Remote Worldwide
+JavaScript
+TypeScript
+Python
+React
+Go
+Senior-Level
+Backend
+Frontend
+AWS
+
+© 2026
+
+Cookie settings
+
+Free & open-source. View source on GitHub.
+
+freehire.me is open source.
+
+Stars are how people find it.
+
+Star on GitHub
+697

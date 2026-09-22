@@ -1,0 +1,55 @@
+COMPOSITE KEYWORD REFERENCE — NOT A REAL JOB POSTING.
+
+Hand-assembled on 2026-08-27 from the vocabulary that recurs across the AI/GenAI
+engineer roles Sahil targets in India and global-remote (Sarvam, SciSpace, Evam Labs,
+Level AI, Harness, UptimeAI, Marble and similar). Use it with tools/ats_check.py as a
+standing keyword baseline for the MASTER CV only. For a real application, run the
+checker against that posting's actual text instead — this file is a proxy, and a
+proxy is never the thing.
+
+---
+
+Senior AI Engineer / GenAI Engineer / Applied AI Engineer / Agent Engineer
+
+About the role
+We are looking for an AI Engineer to design, build and deploy production-grade
+Generative AI and Large Language Model (LLM) applications. You will own features
+end to end: from prototype to production, at scale, with real users.
+
+Responsibilities
+- Design and build Retrieval-Augmented Generation (RAG) pipelines: chunking,
+  embeddings, vector search, reranking, hybrid retrieval and evaluation.
+- Build agentic AI systems and multi-agent workflows with tool calling, function
+  calling, planning and self-correction loops.
+- Integrate LLM APIs (OpenAI, Anthropic Claude, open-source models) and orchestrate
+  them with LangChain, LangGraph or LlamaIndex.
+- Own prompt engineering, guardrails, evaluation harnesses and hallucination
+  reduction; define metrics and run offline and online evaluation.
+- Fine-tune and optimise models; manage inference cost, latency and throughput.
+- Build and expose services in Python with FastAPI; write clean, tested,
+  production-quality code.
+- Deploy with Docker and Kubernetes; own CI/CD, monitoring, observability and
+  incident response for AI services in production.
+- Work with vector databases such as FAISS, Milvus, Pinecone, Qdrant, ChromaDB,
+  pgvector and Elasticsearch.
+- Partner with product and design; translate ambiguous problems into shipped systems.
+
+Requirements
+- 4+ years of software engineering experience, with 2+ years building LLM, NLP or
+  Generative AI applications in production.
+- Strong Python. Solid grasp of data structures, algorithms and system design.
+- Hands-on experience with RAG, semantic search, embeddings and vector databases.
+- Experience with cloud platforms: AWS, Azure or GCP.
+- Experience with MLOps / LLMOps: model deployment, versioning, evaluation,
+  observability, cost tracking.
+- Familiarity with PyTorch, Hugging Face transformers.
+- Experience with distributed systems, event streaming (Kafka), and scalable
+  backend architecture.
+- Excellent communication; comfortable with ownership and ambiguity.
+
+Nice to have
+- Open-source contributions, technical writing, or building in public.
+- Experience with AI developer tooling, code generation or test automation.
+- Experience with SQL and NoSQL databases, Redis caching.
+- Experience with streaming responses, websockets, async Python.
+- Experience scaling a system from proof-of-concept to thousands of users.

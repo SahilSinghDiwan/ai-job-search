@@ -1,0 +1,497 @@
+COMPANY: Welldoc
+URL: https://www.linkedin.com/jobs/view/ai-engineer-at-welldoc-4372790022/
+SCORE: 80
+SCRAPED: 2026-09-16
+
+---
+
+0 notifications
+Skip to search
+Skip to main content
+Skip to primary content
+Skip to aside
+Skip to footer
+Home
+My Network
+Jobs
+Messaging
+9
+Notifications
+Me
+For Business
+
+Try Premium for ₹0
+
+AI Engineer (Verified job)
+AI Engineer 
+
+Welldoc • Bengaluru, Karnataka, India (Hybrid)
+
+Apply
+
+Welldoc
+
+AI Engineer 
+
+Bengaluru, Karnataka, India · Reposted 3 weeks ago · Over 100 people clicked apply
+
+Promoted by hirer · Responses managed off LinkedIn
+
+Hybrid
+Full-time
+
+Not currently accepting applications
+
+Use AI to assess how you fit
+
+Get AI-powered advice on this job and more exclusive features with Premium. Activate Premium for ₹0
+
+Show match details
+
+Tailor my resume
+
+Help me stand out
+
+About the job
+
+Job Purpose
+
+We are seeking a highly motivated and skilled AI Engineer to join our team and drive innovation in the fast-evolving landscape of Generative AI. The ideal candidate will have deep hands-on expertise in RAG (Retrieval-Augmented Generation) pipelines and working familiarity with Frontier Models (e.g., GPT-4, Claude, LLaMA, etc.). Exposure to cutting-edge orchestration frameworks like CrewAI, LangGraph, Autogen, or OpenAI SDK is highly desirable.
+
+You will work closely with product, data, and engineering teams to prototype, build, and scale AI-first solutions that deliver tangible business impact. Strong communication skills are key, as you’ll be working with cross-functional teams and occasionally interfacing with clients.
+
+Responsibilities
+
+Design and implement scalable RAG pipelines to enable contextual, high-quality responses using enterprise knowledge bases.
+Evaluate and integrate Frontier LLMs /Open source LLM and APIs for specific tasks, ensuring optimal performance and efficiency.
+Build autonomous agent workflows using tools like CrewAI, LangGraph, Autogen, or OpenAI SDK.
+Develop and optimize prompts, chains, and multi-agent systems.
+Stay updated on the latest in the GenAI ecosystem and make recommendations for internal adoption.
+Collaborate with stakeholders to understand use cases, define solution architectures, and iterate prototypes into production-ready systems.
+Ensure responsible AI practices, including data privacy, model explainability, and compliance.
+
+Required Skills & Experience
+
+6 to 7 years of overall industry experience with at least 1–2 years in Generative AI /LLM-focused projects.
+Strong understanding of Frontier LLMs and their application across domains.
+Hands-on experience in IDE’s such as Cursor
+Hands-on experience building Retrieval-Augmented Generation systems using vector databases (like FAISS, Weaviate, or Pinecone).
+Working knowledge of CrewAI, LangGraph, Autogen, or similar agent orchestration frameworks.
+Proficiency in Python, with experience using libraries like LangChain, Transformers, and OpenAI SDKs.
+Familiarity with API integrations, asynchronous task handling, and cloud-native deployment (Azure).
+Excellent problem-solving and analytical skills.
+Strong written and verbal communication skills.
+
+Preferred Qualifications
+
+Exposure to US Healthcare systems, data formats (FHIR, HL7), or domain-specific use cases is a plus.
+Experience in fine-tuning or evaluating LLMs using domain-specific corpora.
+Understanding of security and compliance requirements in regulated industries.
+
+What We Offer
+
+ Opportunity to work on cutting-edge AI projects with meaningful real-world applications.
+ Collaborative and inclusive work culture.
+ Flexible work environment and competitive compensation.
+
+Join us in shaping the future of AI-powered applications. If you are passionate about solving
+
+complex problems with elegant GenAI-driven solutions, we’d love to hear from you.
+
+Required Education
+
+Bachelor’s degree in Computer Science, Electrical and Computer Engineering, Software
+
+Engineering, or Equivalent. An MS or PhD in such technical fields is very desirable
+
+Compensation & Benefits
+
+Welldoc offers a competitive compensation package, including generous PTO, pre-IPO stock options, and medical insurance
+… more
+
+Benefits found in job post
+
+Medical insurance
+
+Set alert for similar jobs
+
+Artificial Intelligence Engineer, Bengaluru, Karnataka, India
+
+Off
+Unlock hiring insights on Welldoc
+
+46%
+
+employee growth
+
+Chart
+Chart with 25 data points.
+The chart has 1 X axis displaying Time. Data ranges from 2024-09-01 00:00:00 to 2026-09-01 00:00:00.
+The chart has 1 Y axis displaying values. Data ranges from 294 to 428.
+Sep 2024
+Sep 2025
+Sep 2026
+End of interactive chart.
+
+Applicant education level
+
+42%
+
+have a Bachelor of Technology
+
+Applicant seniority level
+
+66%
+
+Entry level applicants
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+About the company
+
+Welldoc
+
+23,212 followers
+
+Follow
+
+Hospitals and Health Care
+
+ • 
+
+51-200 employees
+
+ • 
+
+431 on LinkedIn
+
+Meet Welldoc: Flexible, clinically-validated AI tech offering personalized, predictive solutions built for today’s healthcare realities.
+
+The Welldoc platform transforms fragmented cardiometabolic data into actionable insights, connecting members, care teams, and partners with clinically rigorous and validated AI.
+… more
+
+Show more
+More jobs
+
+Senior AI Engineer
+Senior AI Engineer
+
+LeadSquared
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 month ago
+1 month ago
+
+ · 
+
+Easy Apply
+
+AI Engineer (Verified job)
+AI Engineer 
+
+Ecolab
+
+Bengaluru East
+
+3 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 13 hours ago
+13 hours ago
+
+Artificial Intelligence Engineer (Verified job)
+Artificial Intelligence Engineer 
+
+Recro
+
+Greater Bengaluru Area (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+ · 
+
+Easy Apply
+
+Agentic AI Engineer (Verified job)
+Agentic AI Engineer 
+
+Infosys
+
+Bengaluru East
+
+4 connections work here
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+AI/ML Engineer (Verified job)
+AI/ML Engineer 
+
+Recro
+
+Bengaluru (On-site)
+
+18 INR/yr - 22 INR/yr
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+AI Engineer
+AI Engineer
+
+UST
+
+Bengaluru
+
+50 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Agentic AI Engineer (Verified job)
+Agentic AI Engineer 
+
+Talentgigs
+
+Hyderabad (On-site)
+
+Promoted
+
+ · 
+
+Posted 24 minutes ago
+24 minutes ago
+
+ · 
+
+Easy Apply
+
+Senior AI Engineer (Verified job)
+Senior AI Engineer 
+
+Sapiens
+
+Bengaluru
+
+59 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 4 days ago
+4 days ago
+
+Senior GenAI Engineer (Verified job)
+Senior GenAI Engineer 
+
+Artech L.L.C.
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+ · 
+
+Easy Apply
+
+Artificial Intelligence Engineer
+Artificial Intelligence Engineer
+
+EverestDX Inc
+
+Hyderabad (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+Artificial Intelligence Engineer (Verified job)
+Artificial Intelligence Engineer 
+
+EdgeVerve
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 3 weeks ago
+3 weeks ago
+
+ · 
+
+Easy Apply
+
+AI Engineer (Verified job)
+AI Engineer 
+
+Guidewire Software
+
+Bengaluru
+
+4 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 5 days ago
+5 days ago
+
+See more jobs like this
+
+Job search smarter with Premium
+
+See jobs where you’d be a top applicant
+
+Message hiring managers with InMail
+
+Get personalized cover letter and resume tips
+
+Plus! Get insider access to live talks with industry leaders.
+
+Meer Fahad Ali and millions of other members use Premium
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+Looking for talent?
+
+Post a job
+
+About
+
+Accessibility
+
+Talent Solutions
+
+Community Guidelines
+
+Careers
+
+Marketing Solutions 
+
+Privacy & Terms
+
+Ad Choices
+
+Advertising
+
+Sales Solutions
+
+Mobile
+
+Small Business
+
+Safety Center
+
+LinkedIn Corporation © 2026
+
+Questions?
+
+Visit our Help Center.
+
+Manage your account and privacy
+
+Go to your Settings.
+
+Recommendation transparency
+
+Learn more about Recommended Content.
+
+Select language
+
+العربية (Arabic)
+বাংলা (Bangla)
+Čeština (Czech)
+Dansk (Danish)
+Deutsch (German)
+Ελληνικά (Greek)
+English (English)
+Español (Spanish)
+فارسی (Persian)
+Suomi (Finnish)
+Français (French)
+हिंदी (Hindi)
+Magyar (Hungarian)
+Bahasa Indonesia (Indonesian)
+Italiano (Italian)
+עברית (Hebrew)
+日本語 (Japanese)
+한국어 (Korean)
+मराठी (Marathi)
+Bahasa Malaysia (Malay)
+Nederlands (Dutch)
+Norsk (Norwegian)
+ਪੰਜਾਬੀ (Punjabi)
+Polski (Polish)
+Português (Portuguese)
+Română (Romanian)
+Русский (Russian)
+Svenska (Swedish)
+తెలుగు (Telugu)
+ภาษาไทย (Thai)
+Tagalog (Tagalog)
+Türkçe (Turkish)
+Українська (Ukrainian)
+Tiếng Việt (Vietnamese)
+简体中文 (Chinese (Simplified))
+正體中文 (Chinese (Traditional))

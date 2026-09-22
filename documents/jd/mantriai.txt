@@ -1,0 +1,201 @@
+COMPANY: MantriAI
+URL: https://wellfound.com/jobs/4644173-senior-gen-ai-engineer
+SCORE: 87
+SCRAPED: 2026-09-16
+
+---
+
+DiscoverFind JobsFor Recruiters
+Log InSign Up
+MantriAI
+Actively Hiring
+Helping people with hiring needs
+Top 1% of responders
+Responds within a day
+Save
+Apply Now
+Senior Gen AI Engineer
+₹60L – ₹80L
+|
+Remote (
+India
+)
+|6 years of exp
+|Full Time
+Posted: 2 weeks ago• Recruiter recently active
+Hires remotely in
+India
+Remote Work Policy
+
+Remote only
+
+Company Location
+Bangalore Urban
+Visa Sponsorship
+
+Not Available
+
+Relocation
+Allowed
+Skills
+Graphic Design
+Generative AI
+RAG
+Hiring contact
+Abhinav Jain
+Founder
+About the job
+
+Position : Senior Gen AI Engineer
+EXxperience : 6+ Years
+
+About MantriAI
+MantriAI is the search partner for the company on this role. Every application comes to us first. We screen, and only shortlisted profiles go to the company.
+
+This post is for a well funded early stage company building an AI platform for industrial reliability, working with oil and gas, chemicals, manufacturing, utilities and automotive. The product watches critical plant equipment, predicts what is going to fail, explains why, and tells a reliability engineer what to do next. Founded in 2024, headquartered in the United States with engineering built out of India, and funded with about ₹58 Cr raised in early 2026. Enterprise deployments are already live.
+
+What you will do
+Build agentic workflows for diagnostics and root cause analysis. Agents that plan, call tools including the numerical models and the plant historian, and produce a recommendation an engineer will act on.
+
+Lead engineering initiatives aimed at the continuous enhancement of the AI platform, with a focus on the rapid development and iteration of scalable, robust distributed infrastructure to support machine learning training, inference, and evaluation.
+
+Build and own the asset knowledge graph: equipment hierarchy, failure modes, ontology and schema design, entity resolution across messy plant records, and retrieval that reasons over the graph.
+
+Build multimodal extraction over P&IDs, OEM manuals, inspection reports, maintenance work orders and plant imagery, with accuracy measured per field.
+
+Take all of it into customer environments. VPC, on-premise and at the edge, because plants are often air-gapped or short on bandwidth.
+
+Define and articulate the long-term strategic vision for company's GenAI platform, and mentor engineers as the team grows.
+
+What we are looking for
+
+6+ years in engineering, with at least eighteen months of it building LLM systems that shipped and stayed in production.
+
+Depth in at least one of: agent systems, knowledge graphs and graph retrieval, document and multimodal extraction. Hands-on agent work is required, since the product is an agent platform.
+
+A track record of taking systems to scale, on high data volume and awkward data structures.
+
+You can explain how you knew a system was working, and what the worst thing was that it did in production.
+
+Comfortable working alongside domain experts, and comfortable being the first person on something.
+
+Good to have
+
+Classical machine learning or statistical modelling in your background.
+
+Exposure to industry: plants, asset management, reliability, maintenance, IIoT.
+
+Real-time systems, or edge and on-premise LLM deployment.
+
+An advanced degree in computer science, data science, applied mathematics or engineering.
+
+Not this role
+Model training and fine-tuning as the main craft. Inference infrastructure and GPU serving on its own. A peoplemanagement seat. This one is hands-on first.
+
+Details
+
+Compensation: ₹65-85 LPA plus ESOP
+
+Location: Remote today. Open to moving to Bangalore once office opens end of 2026
+
+Notice: We are prioritizing 30 to 45 days
+
+Location and other
+Remote for now. The Bengaluru office is expected to open in the next six to ten months and this role moves there, so relocating to Bengaluru needs to work for you. The founders are based in the United States, so expect some Pacific time overlap in the week.
+
+Process
+A short call with MantriAI, then three rounds with Spector: the co-founder and CTO, a technical round, and a final conversation with the CEO.
+
+Posted by MantriAI, search partner for the company. Shortlisted applications hear from us within 48 hours.
+
+Apply Now
+About the company
+MantriAI
+Actively Hiring
+Helping people with hiring needs
+51-200 Employees
+Bangalore Urban
+51-200
+Technology
+Top 1% of responders
+Responds within a day
+Learn more about MantriAI 
+Founders
+Abhinav Jain
+Founder
+View the team 
+Similar Jobs
+Ariveguru Technology Solutions
+Enterprise Cloud Solutions and Applications
+Lead AI-First MERN Fullstack Engineer (Vibe Coder) - Bangalore
+₹7L – ₹14L
+Apply
+Aikenist
+Welcome to the Future of HealthCare!
+Software Engineer
+₹4L – ₹9L • No equity
+Apply
+Gyrus.AI
+AI for Image/Video Analytics
+AI Deployment Engineer (AWS)
+₹8L – ₹12L
+Apply
+Fuze
+Digital assets infrastructure platform
+Founding Engineer
+$40k – $100k • 0.05% – 0.2%
+Apply
+Hevo Data
+No Code Data Pipeline
+SDE III _ Tech Lead
+₹30L – ₹60L
+Apply
+OneAssure
+Insurance Distribution Platform & Technology Service Provider
+SDE - Intern
+₹20,000 – ₹25,000 • No equity
+Apply
+EaseOps
+Salesforce for hospital operations—automating compliance, workflows, and patient services for India
+Backend Intern
+₹1L – ₹2L • No equity
+Apply
+RecordBook
+Register & Excel Sheet App
+React Native Developer
+₹8L – ₹12L • No equity
+Apply
+Javis
+Enterprise Works Platform
+Senior Machine Learning Engineer
+₹27L – ₹45L • No equity
+Apply
+For Candidates
+Overview
+Startup Jobs
+Web3 Jobs
+Featured
+Startup Hiring Data
+Tech Startups
+Remote
+For Recruiters
+Overview
+Recruit Pro
+Curated
+Wellfound:ai
+Hire Developers
+Pricing
+Company
+About
+Help
+Blog
+Terms & Risks
+Privacy & Cookies
+Trust
+Platform Status
+
+Copyright © 2026 Wellfound. All rights reserved.
+
+Cookie Preferences
+
+Browse by: Jobs, Remote Jobs, Locations, Startups, Startups Hiring, Industries, Tech Hubs

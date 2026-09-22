@@ -1,0 +1,515 @@
+COMPANY: SJ Mobilita
+URL: https://www.linkedin.com/jobs/view/ai-engineer-%E2%80%93-generative-ai-agentic-ai-at-sj-mobilita-4453092846/
+SCORE: 89
+SCRAPED: 2026-09-16
+
+---
+
+0 notifications
+Skip to search
+Skip to main content
+Skip to primary content
+Skip to aside
+Skip to footer
+Home
+My Network
+Jobs
+Messaging
+8
+Notifications
+Me
+For Business
+
+Try Premium for ₹0
+
+AI Engineer – Generative AI & Agentic AI (Verified job)
+AI Engineer – Generative AI & Agentic AI 
+
+SJ Mobilita • Bangalore Urban, Karnataka, India (On-site)
+
+Save
+Easy Apply
+
+SJ Mobilita
+
+AI Engineer – Generative AI & Agentic AI 
+
+Bangalore Urban, Karnataka, India · Reposted 23 hours ago · Over 100 applicants
+
+Promoted by hirer · Actively reviewing applicants
+
+On-site
+Full-time
+Easy Apply
+Save
+Use AI to assess how you fit
+
+Get AI-powered advice on this job and more exclusive features with Premium. Activate Premium for ₹0
+
+Show match details
+
+Tailor my resume
+
+Help me stand out
+
+About the job
+
+AI Engineer – Generative AI & Agentic AI
+
+📍 Location: Bangalore
+
+💼 Experience: 4–6 Years
+
+📌 Employment: Full-Time
+
+🔹 Role Overview
+
+We are looking for a highly skilled AI Engineer with strong hands-on experience in Generative AI, LLMs, Agentic AI, RAG, Python, and Azure AI technologies.
+
+The ideal candidate should be capable of designing, developing, optimizing, and deploying production-ready AI applications using modern AI frameworks and Azure cloud technologies.
+
+🔹 Key Responsibilities
+
+Design and develop scalable Generative AI and Agentic AI solutions using LLMs.
+Build AI applications using OpenAI APIs, AutoGen, RAG, and MCP.
+Develop intelligent agents and multi-agent workflows for enterprise use cases.
+Design and implement RAG pipelines, including data ingestion, retrieval, ranking, and response generation.
+Work with structured, unstructured, and graph-based data.
+Integrate AI solutions with Azure AI Services, Azure OpenAI, Azure Cosmos DB, and Graph capabilities.
+Develop high-quality, scalable applications using Python.
+Manage the complete lifecycle from design and development to testing, deployment, monitoring, and production support.
+Optimize AI applications for latency, throughput, scalability, reliability, and resource utilization.
+Troubleshoot production issues and continuously improve application performance.
+Collaborate with engineering, product, and cloud teams to deliver production-ready AI solutions.
+
+🔹 Key Skills
+
+Generative AI: LLMs, OpenAI, RAG, Agentic AI, AutoGen, MCP, Prompt Engineering
+
+Programming: Python, REST APIs, Microservices, Software Development
+
+Azure: Azure OpenAI, Azure AI Services, Azure Cosmos DB, Azure Cloud
+
+AI/ML: Embeddings, Transformers, Vector Search, Neural Networks, Model Inference
+
+Databases: Cosmos DB, Graph DB, Vector Databases, Similarity Search
+
+Production: Deployment, Performance Optimization, Scalability, Monitoring, Troubleshooting
+
+Good to Have: Docker, Kubernetes, CI/CD, Azure AI Search, Pinecone, Milvus, Weaviate
+
+🔹 Production & Optimization
+
+Candidates should have practical experience taking AI applications from development to production, with knowledge of:
+
+Application and API deployment
+Latency and performance optimization
+Compute and memory optimization
+Scalability and concurrency
+Resource and cost optimization
+Monitoring, logging, and debugging
+Production troubleshooting
+Reliable and maintainable AI services
+
+🔹 Good to Have
+
+Experience with Docker and Kubernetes
+CI/CD and DevOps practices
+REST APIs and Microservices
+Azure Functions, AKS, or App Services
+AI/ML model evaluation and observability
+Experience with Azure AI Search, Pinecone, Milvus, Weaviate, or similar
+Experience building enterprise AI assistants, copilots, or intelligent agents
+… more
+
+Set alert for similar jobs
+
+AI Engineer – Generative AI & Agentic AI, Bangalore Urban, Karnataka, India
+
+Off
+Unlock hiring insights on SJ Mobilita
+
+171%
+
+employee growth
+
+Chart
+Chart with 25 data points.
+The chart has 1 X axis displaying Time. Data ranges from 2024-09-01 00:00:00 to 2026-09-01 00:00:00.
+The chart has 1 Y axis displaying values. Data ranges from 24 to 65.
+Sep 2024
+Sep 2025
+Sep 2026
+End of interactive chart.
+
+Applicant education level
+
+32%
+
+have a Bachelor of Technology
+
+Applicant seniority level
+
+69%
+
+Entry level applicants
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+About the company
+
+SJ Mobilita
+
+45,159 followers
+
+Follow
+
+Human Resources Services
+
+ • 
+
+11-50 employees
+
+ • 
+
+67 on LinkedIn
+
+Legal Counsel for Intl Trade Facilitation
+Global Recruitment & Staffing
+Corporate & Student Training
+Immigration Advisory & Work Permit Support
+Business Travel & Audit Compliance
+EOR/PEO Support for 170+ Countries
+Consular Interview Training
+Global Payroll Solutions
+Incorporation of Companies & Statutory Audits(120+ Countries)
+Setting Up HR Operations
+International Tax Advisory
+International Translation & Apostille Services
+Relocation, Travel, MICE & Visa Support
+
+… more
+
+Show more
+More jobs
+
+Senior AI Engineer
+Senior AI Engineer
+
+LeadSquared
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 month ago
+1 month ago
+
+ · 
+
+Easy Apply
+
+Senior AI Engineer (Verified job)
+Senior AI Engineer 
+
+Sapiens
+
+Bengaluru
+
+59 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 4 days ago
+4 days ago
+
+Senior AI Solutions Engineer (Verified job)
+Senior AI Solutions Engineer 
+
+Milestone Technologies, Inc.
+
+Greater Bengaluru Area
+
+1 school alumni works here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Senior Agentic Systems Engineer
+Senior Agentic Systems Engineer
+
+RingCentral
+
+Bengaluru (Hybrid)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+AI Engineer
+AI Engineer
+
+UST
+
+Bengaluru
+
+50 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Agentic AI Engineer (Verified job)
+Agentic AI Engineer 
+
+Talentgigs
+
+Hyderabad (On-site)
+
+Promoted
+
+ · 
+
+Posted 23 minutes ago
+23 minutes ago
+
+ · 
+
+Easy Apply
+
+Generative AI Engineer (Verified job)
+Generative AI Engineer 
+
+Polestar Analytics
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+ · 
+
+Easy Apply
+
+Artificial Intelligence Engineer
+Artificial Intelligence Engineer
+
+EverestDX Inc
+
+Hyderabad (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+Senior GenAI Engineer (Verified job)
+Senior GenAI Engineer 
+
+Artech L.L.C.
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+ · 
+
+Easy Apply
+
+Senior Software Engineer (AI) (Verified job)
+Senior Software Engineer (AI) 
+
+Circles
+
+Bengaluru (Hybrid)
+
+3 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Agentic AI Engineer  (Verified job)
+Agentic AI Engineer 
+
+Persistent Systems
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+Senior Agentic AI Engineer (Verified job)
+Senior Agentic AI Engineer 
+
+Sapiens
+
+Bengaluru
+
+59 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 5 days ago
+5 days ago
+
+See more jobs like this
+
+Job search smarter with Premium
+
+See jobs where you’d be a top applicant
+
+Message hiring managers with InMail
+
+Get personalized cover letter and resume tips
+
+Plus! Get insider access to live talks with industry leaders.
+
+Meer Fahad Ali and millions of other members use Premium
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+Looking for talent?
+
+Post a job
+
+About
+
+Accessibility
+
+Talent Solutions
+
+Community Guidelines
+
+Careers
+
+Marketing Solutions 
+
+Privacy & Terms
+
+Ad Choices
+
+Advertising
+
+Sales Solutions
+
+Mobile
+
+Small Business
+
+Safety Center
+
+LinkedIn Corporation © 2026
+
+Questions?
+
+Visit our Help Center.
+
+Manage your account and privacy
+
+Go to your Settings.
+
+Recommendation transparency
+
+Learn more about Recommended Content.
+
+Select language
+
+العربية (Arabic)
+বাংলা (Bangla)
+Čeština (Czech)
+Dansk (Danish)
+Deutsch (German)
+Ελληνικά (Greek)
+English (English)
+Español (Spanish)
+فارسی (Persian)
+Suomi (Finnish)
+Français (French)
+हिंदी (Hindi)
+Magyar (Hungarian)
+Bahasa Indonesia (Indonesian)
+Italiano (Italian)
+עברית (Hebrew)
+日本語 (Japanese)
+한국어 (Korean)
+मराठी (Marathi)
+Bahasa Malaysia (Malay)
+Nederlands (Dutch)
+Norsk (Norwegian)
+ਪੰਜਾਬੀ (Punjabi)
+Polski (Polish)
+Português (Portuguese)
+Română (Romanian)
+Русский (Russian)
+Svenska (Swedish)
+తెలుగు (Telugu)
+ภาษาไทย (Thai)
+Tagalog (Tagalog)
+Türkçe (Turkish)
+Українська (Ukrainian)
+Tiếng Việt (Vietnamese)
+简体中文 (Chinese (Simplified))
+正體中文 (Chinese (Traditional))

@@ -1,0 +1,171 @@
+COMPANY: Fx31 Labs
+URL: https://wellfound.com/jobs/4691299-agentic-ai-engineer
+SCORE: 85
+SCRAPED: 2026-09-16
+
+---
+
+DiscoverFind JobsFor Recruiters
+Log InSign Up
+Fx31 Labs Ahmedabad
+Actively Hiring
+Save
+Apply Now
+Agentic AI Engineer
+₹35L – ₹40L
+|
+Bengaluru • 
+Pune
++3
+|4 years of exp
+|Full Time
+Posted: 6 days ago• Recruiter recently active
+Job Location
+Bengaluru • 
+Pune • 
+Hyderabad • 
+Kolkata • 
+Chennai
+Remote Work Policy
+
+In office - WFH flexibility
+
+Visa Sponsorship
+
+Not Available
+
+Relocation
+Allowed
+Skills
+Python
+LLMs
+LangChain
+Retrieval-Augmented Generation (RAG)
+Langgraph
+Agentic AI
+About the job
+
+Job Title: Sr. AI Engineer
+Location: Bengaluru/Hyderabad/Pune/Chennai/Kolkata
+
+Role Summary
+
+We are seeking an experienced AI professional to design, develop, and deploy enterprise-grade Agentic AI solutions powered by LLMs. The ideal candidate will have strong expertise in prompt engineering, agent orchestration frameworks, multi-agent architectures, memory and state management, RAG systems, and production deployment on cloud platforms.
+
+Key Responsibilities
+
+• Design and build LLM-powered agentic systems capable of planning, reasoning, tool usage, and multi-step workflow execution.
+• Develop orchestration pipelines using LangGraph, LangChain, or Semantic Kernel.
+• Implement agentic patterns including Planner-Executor, ReAct, Supervisor-Worker, and Multi-Agent Collaboration.
+• Create and maintain reusable Agentic Skills, tool integrations, memory systems, checkpoints, and task-tracking mechanisms.
+• Lead prompt engineering efforts including system prompts, tool/function calling, structured outputs, guardrails, and instruction tuning.
+• Integrate APIs, enterprise services, search systems, and external tools into agent workflows.
+• Implement automated testing, evaluation frameworks, observability, tracing, monitoring, and cost optimization.
+• Ensure enterprise-grade security through prompt injection protection, RBAC, sandboxing, audit logging, and input/output validation.
+• Translate business requirements into technical designs, HLDs, LLDs, and scalable AI architectures.
+• Drive innovation by researching and implementing emerging Agentic AI techniques and best practices.
+
+Required Skills
+
+• Strong hands-on experience with Prompt Engineering and Agentic AI development.
+• Expertise in LangGraph, LangChain, Semantic Kernel, or similar orchestration frameworks.
+• Experience with context engineering, memory management, state management, checkpoints, scratchpads, and task orchestration.
+• Proficiency in Python (preferred) or TypeScript/JavaScript.
+• Experience with RAG, hybrid retrieval, reranking, chunking, and vector databases (Pinecone, FAISS, Azure AI Search, etc.).
+• Knowledge of GitHub, DevOps, CI/CD, enterprise code management, and cloud platforms (Azure, AWS, or GCP).
+• Experience building user-facing AI applications (chatbots, voice assistants, workflow automation).
+• Strong analytical, problem-solving, communication, and stakeholder management skills.
+
+Preferred
+
+• Experience with OpenAI Agent Skills, Claude Skills, or similar agent skill frameworks.
+• Experience with LLM evaluation frameworks, agent testing methodologies, and production-scale AI deployments.
+• Understanding of secure tool execution, cloud computing technologies, and modern AI trends.
+
+Apply Now
+About the company
+Fx31 Labs Ahmedabad
+Actively Hiring
+11-50 Employees
+Ahmedabad
+11-50
+Information Technology
+Blockchains
+Software Engineering
+Mobile Application
+B2B · SaaS · Mobile · Artificial Intelligence / Machine Learning
+Learn more about Fx31 Labs Ahmedabad 
+Similar Jobs
+Spenza
+"Connectivity as a Service". Enable any business to be a virtual mobile operator
+Full Stack Engineer- MERN
+₹12L – ₹35L • 0.1% – 0.2%
+Apply
+openigloo
+NYC Building and Owner Reviews
+Software Architect (L3/L4/L5)
+$50k – $80k • 0.01% – 0.1%
+Apply
+SciSpace
+The AI Research Co-Scientist (ChatGPT for Research)
+Senior AI Product Manager (With Software Engineering Experience)
+₹30L – ₹55L • 0.05% – 0.1%
+Apply
+Visara Partners
+Microsoft Power Platform(PowerApps)
+₹15L – ₹29L • No equity
+Apply
+Cultext.ai
+Operator led Sourcing and AI-powered Screening
+Staff Engineer/Front End Architect
+₹90L – ₹1.3 cr
+Apply
+AuxoAI
+We help companies—turn their strategies into practical digital and AI solutions
+GCP Delivery Lead (Practice Lead / Principal Architect)
+₹20L – ₹75L • No equity
+Apply
+Xohani Solutions
+Central India's top product partner of Salesforce, ServiceNow & Venture Studios
+Java Solution Architect
+₹28L – ₹38L • No equity
+Apply
+ENGINPILOT
+Operating System for Physical Assets
+Senior Full Stack Developer
+₹4.5L – ₹6.5L • No equity
+Apply
+Adosx Tech
+AI-Native Operating System for Automotive Retail
+Founding Architect / Engineering Lead
+₹20L – ₹25L • 1.0% – 1.5%
+Apply
+For Candidates
+Overview
+Startup Jobs
+Web3 Jobs
+Featured
+Startup Hiring Data
+Tech Startups
+Remote
+For Recruiters
+Overview
+Recruit Pro
+Curated
+Wellfound:ai
+Hire Developers
+Pricing
+Company
+About
+Help
+Blog
+Terms & Risks
+Privacy & Cookies
+Trust
+Platform Status
+
+Copyright © 2026 Wellfound. All rights reserved.
+
+Cookie Preferences
+
+Browse by: Jobs, Remote Jobs, Locations, Startups, Startups Hiring, Industries, Tech Hubs

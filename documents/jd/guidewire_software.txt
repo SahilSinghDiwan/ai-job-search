@@ -1,0 +1,277 @@
+COMPANY: Guidewire Software
+URL: https://www.linkedin.com/jobs/view/ai-engineer-at-guidewire-software-4434978384/
+SCORE: 85
+SCRAPED: 2026-09-16
+
+---
+
+0 notifications
+Skip to search
+Skip to main content
+Skip to primary content
+Skip to aside
+Skip to footer
+Home
+My Network
+Jobs
+Messaging
+8
+Notifications
+Me
+For Business
+
+Try Premium for ₹0
+
+AI Engineer (Verified job)
+AI Engineer 
+
+Guidewire Software • Bengaluru, Karnataka, India (On-site)
+
+Apply
+
+Guidewire Software
+
+AI Engineer 
+
+Bengaluru, Karnataka, India · Reposted 1 week ago · Over 100 people clicked apply
+
+Promoted by hirer · Responses managed off LinkedIn
+
+On-site
+Full-time
+
+Not currently accepting applications
+
+Use AI to assess how you fit
+
+Get AI-powered advice on this job and more exclusive features with Premium. Activate Premium for ₹0
+
+Show match details
+
+Tailor my resume
+
+Help me stand out
+
+People you can reach out to
+
+School alumni from Centre for Development of Advanced Computing (C-DAC)
+
+Show all
+About the job
+
+Summary
+
+Guidewire is seeking an AI Engineer to join our Professional Services AI Engineering team in Bangalore. You will work as a dedicated AI-side member of a Strike Team, pairing with a Product Engineer to deliver AI productization projects end-to-end. Your primary craft is harness engineering and prompt engineering — building the agent harnesses, tool integrations, prompts, and eval loops that turn an LLM into a production feature. Around that core, you will also handle the supporting AI work: data parsing, embeddings, RAG pipelines, light ML work, and accuracy validation.
+
+You will help shape the technical approach alongside our AI Architect and partner with a Senior AI Engineer on the deeper architectural calls, contributing your own ideas and knowing when to bring in specialist support. This role suits someone who has solid AI fundamentals and is excited to go deep on agent and prompt design as their day job.
+
+Job Description
+
+Key Responsibilities
+
+ Harness Engineering: Build and maintain the LLM harnesses that power each AI feature — agent loops, tool/function calling, context construction, memory, retries, and failure handling. Use frameworks like LangChain, LlamaIndex, or LangGraph where they fit; write custom orchestration where they don't.
+ Prompt Engineering: Design, iterate, and version prompts as first-class assets. Run structured prompt experiments, measure deltas with eval datasets, and keep prompt libraries clean and reviewable.
+ RAG Pipelines: Build and operate Retrieval-Augmented Generation pipelines that extract information from documents and parse it into structured knowledge bases — chunking, indexing, retrieval, reranking, prompt assembly, and response handling — collaborating with the AI Architect to shape and refine the patterns.
+ Embeddings & Vector Indexes: Generate embeddings and manage vector indexes (e.g., OpenSearch, Pinecone, pgvector). Tune indexes for retrieval quality and cost.
+ Data Parsing & Curation: Build extraction and parsing pipelines for documents, structured records, and customer datasets so they are clean, labeled, and ready for downstream AI work.
+ Accuracy Validation: Write and operate accuracy validation scripts. Maintain evaluation datasets and report quality metrics to the Strike Team and the AI Architect.
+ Light ML Work: Apply traditional ML where appropriate — classification, clustering, lightweight fine-tuning — to complement LLM-based components.
+ Analysis: Do the data analysis that informs AI design decisions — sample inspection, error analysis, prompt iteration.
+
+KPIs & Success Metrics
+
+ AI feature accuracy and quality against eval datasets meets the project bar.
+ Prompt iteration velocity with measurable eval deltas on owned features.
+ RAG and retrieval quality (relevance, groundedness) for owned pipelines.
+ On-time delivery of AI-side Strike Team commitments.
+ Eval coverage: golden and regression sets maintained for owned features.
+
+Key Skills & Experience
+
+ Education: Bachelor's or Master's degree in Computer Science, Data Science, Statistics, or a related technical field.
+ Experience: 3+ years of AI or data science experience, with hands-on time in LLM-based application development.
+ Technical Proficiency:
+
+– Strong Python skills, including the standard data science stack (pandas, numpy, scikit-learn).
+
+– Hands-on experience building LLM harnesses — agent loops, tool/function calling, structured outputs — against APIs like Anthropic, OpenAI, or Bedrock.
+
+– Strong prompt engineering practice: structured iteration, prompt versioning, and prompt evaluation against datasets.
+
+– Working experience with at least one orchestration framework (LangChain, LlamaIndex, LangGraph) and at least one vector database.
+
+– Comfortable with embeddings, similarity search, and basic retrieval evaluation.
+
+– Working knowledge of classical ML for analysis and lightweight modeling tasks.
+
+– Comfort using AI coding assistants (Claude Code) for daily work.
+
+ Engineering Excellence: Able to write clean, tested code that ships to production — not just notebooks. Familiar with Git, code review, and basic CI/CD.
+ Analytical Mindset: Strong instinct for data analysis, error inspection, and iterative experimentation.
+
+Preferred Skills & Experience
+
+ Agent Frameworks: Hands-on experience with agentic frameworks (LangGraph, Claude Agent SDK, OpenAI Agents) or custom agent harnesses in production.
+ Evals: Experience building structured eval harnesses (golden sets, regression suites, LLM-as-judge patterns).
+ Cloud: Hands-on AWS experience (Bedrock, SageMaker, OpenSearch).
+ Fine-Tuning: Any experience with model fine-tuning or distillation.
+ Guidewire Knowledge: Familiarity with Guidewire products or the insurance domain is a plus.
+ Domain Analysis: Prior experience working on document-heavy, regulated, or insurance/finance datasets.
+
+About Guidewire
+
+Guidewire is the platform P&C insurers trust to engage, innovate, and grow efficiently. We combine digital, core, analytics, and AI to deliver our platform as a cloud service. More than 540+ insurers in 40 countries, from new ventures to the largest and most complex in the world, run on Guidewire.
+
+As a partner to our customers, we continually evolve to enable their success. We are proud of our unparalleled implementation track record with 1600+ successful projects, supported by the largest R&D team and partner ecosystem in the industry. Our Marketplace provides hundreds of applications that accelerate integration, localization, and innovation.
+
+For more information, please visit www.guidewire.com and follow us on Twitter: @Guidewire_PandC.
+
+Guidewire Software, Inc. is proud to be an equal opportunity and affirmative action employer. We are committed to an inclusive workplace, and believe that a diversity of perspectives, abilities, and cultures is a key to our success. Qualified applicants will receive consideration without regard to race, color, ancestry, religion, sex, national origin, citizenship, marital status, age, sexual orientation, gender identity, gender expression, veteran status, or disability. All offers are contingent upon passing a criminal history and other background checks where it's applicable to the position.
+… more
+
+Set alert for similar jobs
+
+Artificial Intelligence Engineer, Bengaluru, Karnataka, India
+
+Off
+Unlock hiring insights on Guidewire Software
+
+26%
+
+employee growth
+
+Chart
+Chart with 25 data points.
+The chart has 1 X axis displaying Time. Data ranges from 2024-09-01 00:00:00 to 2026-09-01 00:00:00.
+The chart has 1 Y axis displaying values. Data ranges from 3522 to 4431.
+Sep 2024
+Sep 2025
+Sep 2026
+End of interactive chart.
+
+Applicant education level
+
+42%
+
+have a Bachelor of Technology
+
+Applicant seniority level
+
+74%
+
+Entry level applicants
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+About the company
+
+Guidewire Software
+
+309,283 followers
+
+Follow
+
+Software Development
+
+ • 
+
+1001-5000 employees
+
+ • 
+
+4,343 on LinkedIn
+
+Guidewire is the platform P&C insurers trust to engage, innovate, and grow efficiently. More than 570 insurers in 43 countries, from new ventures to the largest and most complex in the world, rely on Guidewire products. With core systems leveraging data and analytics, digital, and artificial intelligence, Guidewire defines cloud platform excellence for P&C insurers.
+
+We are proud of our unparalleled implementation record, with 1,700+ successful projects supported by the industry’s largest R&D team and SI partner ecosystem. Our marketplace represents the largest partner community in P&C, where customers can access hundreds of applications to accelerate integration, localization, and innovation.
+
+For more information, please visit https://www.guidewire.com/.
+… more
+
+Commitments
+
+Social impact
+
+The Guidewire Gives Back (GGB) program creates opportunities for community impact across a broad range of employee passions. We encourage engagement by matching employee donations up to $1,000 per fiscal year; providing 3 days of paid volunteer time off; and giving employees donation rewards for each hour of logged VTO, which can be donated to a nonprofit of their choice. Beyond employees selecting the causes they wish to support on their own, our local GGB committees often organize wider volunteer events to give employees the opportunity to participate in events together.
+Additionally, we also encourage volunteerism with initiatives like our Giving Your Way 2021 year-end campaign, which resulted in over $350,000 donations and impacted over 400 causes.
+… more
+
+Diversity, equity, and inclusion
+
+We believe that promoting a culture of inclusion, and equal opportunity at all levels of our organization and in the communities where we operate is integral to the success of our business. We have launched a comprehensive DEI strategy, which centers on embedding DEI in our workforce, workplace, and community through inclusion, culture, and internal communications. To share our progress, in fiscal year 2023 we will be publishing our inaugural Diversity, Equity and Inclusion Annual Report.
+… more
+
+Work-life balance
+
+Amid global social, health, and economic crises in 2021 and 2022, we rolled out a number of new benefits focused on the various dimensions of whole-person health to complement existing market-based benefits, which in the U.S. include a 401(k) plan, affordable health insurance offerings, and even pet insurance. 
+… more
+
+Environmental sustainability
+
+We are demonstrating our commitment to reduce our environmental impact through our Environmental Policy, initiatives, and practices. In fiscal year 2022, we took an important step in our climate journey, working with Anthesis to create an Environmental Roadmap. The roadmap outlines key steps we plan to take to align our Company to a net-zero future, including setting science-based climate goals across our value chain in line with the goals of the Paris Agreement.
+Our goals for 2030 are:
+1. Source renewable energy for 100% of our global power needs annually by 2030
+2. Reduce Scope 1 and Scope 2 GHG emissions by 50% by 2030 compared to our 2020 baseline
+3. Develop a Green Fund to finance internal emission reduction initiatives and critical external climate mitigation projects
+… more
+
+Career growth and learning
+
+At Guidewire, lifelong learning is here for the taking. Advancing our employees’ skills and professional development is important to our human capital strategy and our business’ growth. We strive to invest in our employees’ development through a variety of offerings, including formal and informal learning programs, leadership development, and performance evaluations. We encourage self-directed learning, giving employees every chance to become a better version of themselves, both professionally and personally. In 2023 we launched a Career Mobility program, with the intention to promote and increase internal employability.
+… more
+
+Learn more
+Interested in working with us in the future?
+
+Members who share that they’re interested in a company may be 2x as likely to get a message from a recruiter than those who don’t. Learn more
+
+I’m interested
+
+Trending employee content
+
+Mohammed Anzy S
+
+ 
+ • 3rd+
+
+Managing Director, India at Guidewire Software
+
+1w • 
+
+We are excited to welcome Sharon Narang as our new People Leader for India and Product Development and Operations in the APAC region.
+
+Based in Bengaluru, India, Sharon will work closely with our Product Development team and the broader India and APAC teams to support our next phase of growth across the region. As Guidewire continues to scale in India, she will focus on building a people strategy that strengthens our culture, develops talent, and unlocks meaningful careers at scale.
+
+Sharon brings 20 years of HR leadership experience, having worked with prominent companies such as Microsoft, Deloitte, Flipkart, Zeta, and PayU. We are thrilled to have Sharon join our team in India as we continue to scale, address complex customer challenges, build innovative products, and create meaningful impact for insurers worldwide.
+
+Welcome, Sharon!
+
+#InsideGuidewire #Guidewire #HR #GCC #IndiaGCC #Bengaluru #APAC #PeopleLeadership #WomenInLeadership
+
+… more
+
+540
+33
+1
+
+Raman C V
+
+ 
+ • 3rd+
+
+Director of Engineering @ Guidewire Software
+
+1w • 
+
+Building an organization is about much more than scaling teams. It is about shaping culture, creating opportunities, building trust, and enabling people to do their best work.
+
+Over the past several years at Guidewire, I have been privileged to be part of an incredible journey of building and strengthening our India Development Center 😀 
+
+• Helping establish and scale the India organization into a top employer in India 🚀 
+• Building a culture of excellence, ownership, collaboration, and continuous learning
+• Creating an environment where innovation can thrive across our cloud data platform services
+• Growing a strong partner ecosystem through Guidewire DevSummit
+
+What makes this journey truly meaningful is the people. I am grateful to the talented colleagues, mentors, leaders, partners, and friends who have helpe

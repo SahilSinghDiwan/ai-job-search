@@ -1,0 +1,47 @@
+Senior Applied AI Engineer - Celonis
+Location: Bangalore, India
+Team: Digital and Marketing Operations
+Source: https://job-boards.greenhouse.io/celonis/jobs/7788209003
+Recruiter: Divya Tailor, Talent Acquisition Partner (d.tailor@celonis.de, +91 9035345149)
+TA Coordinator: Nuria Martin
+Captured: 2026-09-17
+
+THE ROLE
+Hands-on position building internal-facing AI solutions for the marketing organization in a
+B2B SaaS environment. Focus on translating strategic needs into practical tools that enhance
+operational efficiency and data quality.
+
+RESPONSIBILITIES
+- Design and deploy AI-powered automation for marketing tasks, including creative brief
+  routing and content translation
+- Develop hybrid solutions combining AI with human workflows
+- Build API integrations connecting marketing platforms like HubSpot and Monday.com to
+  custom AI solutions
+- Enhance CRM data through automated lead-to-account matching, duplicate record removal,
+  and data enrichment
+- Partner with Brand and Communications on content generation and market trend analysis
+- Measure business impact and optimize solution effectiveness
+- Research and recommend emerging AI technologies
+
+REQUIRED QUALIFICATIONS
+- 5-7 years in development/engineering with production-level application experience
+- Proficiency in Python or JavaScript with data manipulation libraries
+- Hands-on experience with Langchain, Make, Zapier, or similar tools
+- REST and GraphQL API development experience
+- Deep understanding of LLMs and prompt engineering for business applications
+- Product-oriented mindset with user-centric design focus
+- Strong communication translating technical concepts for stakeholders
+
+PREFERRED QUALIFICATIONS
+- MarTech platform familiarity (Salesforce, HubSpot, Marketo)
+- B2B SaaS environment experience
+
+NAMED TECHNOLOGIES
+Python, JavaScript, Pandas, Langchain, Make, Zapier, REST, GraphQL, LLMs
+
+INTERVIEW PROCESS
+Step 1: TA Interview - qualifications, technical and business acumen, intro to role/company
+Step 2: Hiring Manager Initial Interview (30 mins) - background, experience, overall fit
+Step 3: Challenge Interview (60 mins) - final presentation; assessed on understanding of the
+        assignment, the solution, and stakeholder presentation skills
+Step 4: Upline Interview (30 mins) - senior leadership from the Value Engineering vertical

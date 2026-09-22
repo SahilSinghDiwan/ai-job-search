@@ -4,6 +4,10 @@
 **Branch:** `india-market-support` (8 commits ahead of `master`, clean tree, nothing pushed)
 **Fork:** `SahilSinghDiwan/ai-job-search`, upstream `MadsLorentzen/ai-job-search`
 
+**Running the repo day to day? Read [PLAYBOOK.md](PLAYBOOK.md) first** — pipeline
+state, the command loop, CV rules, and Docker compile commands. This file is the
+scraper/branch record.
+
 Read this first when resuming. It records what changed, what is still open, and the
 traps that cost time to find.
 

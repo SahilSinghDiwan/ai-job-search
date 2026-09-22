@@ -1,0 +1,275 @@
+COMPANY: GoComet
+URL: https://wellfound.com/jobs/4666122-ai-engineer
+SCORE: 85
+SCRAPED: 2026-09-16
+
+---
+
+DiscoverFind JobsFor Recruiters
+Log InSign Up
+GoComet
+Actively Hiring
+The world’s most easy-to-use, intuitive multi-modal logistics platform
+B2B
+Growth Stage
+Save
+Apply Now
+AI Engineer
+Bengaluru
+|3 years of exp
+|Full Time
+Posted: 1 week ago• Recruiter recently active
+Job Location
+Bengaluru
+Remote Work Policy
+
+In office - WFH flexibility
+
+Visa Sponsorship
+
+Not Available
+
+Relocation
+Allowed
+Skills
+Python
+Software Development
+Node.js
+LLMs
+Retrieval-Augmented Generation (RAG)
+Finetuning
+Agentic AI
+About the job
+
+AI SSE — Agentic AI Systems
+Location: Bangalore
+Experience: 3–8 years
+Type: Hands-on IC | Systems Builder | Production Owner
+
+**ABOUT GOCOMET
+
+**GoComet is a Series B logistics technology company that helps global enterprises like Unilever,
+Honda, Tata, and Schneider optimize freight spend, automate procurement, and build resilient
+supply chains. We're pivoting hard into named-enterprise accounts with a 4.2x growth engine.
+Our product depth across procurement, planning, execution, and audit gives us a quantifiable
+ROI story competitors can't match.
+
+If you want to live inside LLMs, prompts, orchestration, and production complexity — this is your
+role.
+
+Why This Role Exists
+Most teams stop at demos.
+Production agentic systems fail because:
+● Prompts drift
+● Memory breaks
+● Tools misfire
+● Costs explode
+● Edge cases compound
+We need engineers who understand:
+LLMs as distributed systems with probabilistic components.
+You will make agentic AI reliable.
+
+What You Will Own
+Core Intelligence Layer
+● Prompt architecture & evaluation
+● Tool calling reliability
+● Memory design (short-term / long-term / retrieval)
+● Planning & execution loops
+● Guardrails and verification
+Production Systems
+● Latency, cost, observability
+● Failure handling & retries
+● Agent debugging pipelines
+● Versioning prompts & behaviors
+● Continuous evaluation
+
+Outcome Delivery
+
+● Translate product intent into working agents
+● Work with PMs to define constraints
+● Ship systems that work under ambiguity
+You don’t stop at: “Agent works once.”
+You stop at: “Agent works reliably at scale.”
+
+What You’ll Build
+● Multi-agent architectures (planner / executor / verifier / critic)
+● Tool ecosystems for agents
+● Evaluation harnesses for LLM behavior
+● Memory & retrieval systems
+● Agent simulation environments
+● Cost-aware orchestration layers
+● Self-improving feedback loops
+
+How You’ll Work
+Deep LLM Engineering
+● Prompt design patterns
+● Structured output strategies
+● Function/tool calling
+● Failure mode mitigation
+● Model selection & routing
+● Fine-tuning / RAG / hybrid approaches
+Software Engineering
+● Python / TypeScript production systems
+● Async orchestration
+● Distributed tracing
+● CI for agent behavior
+● Infra for evaluation
+
+This Is Not Just Backend Engineering
+This is intelligence engineering.
+You’re not wiring APIs.
+You’re building systems that reason, act, recover, and improve.
+
+Your success is measured by:
+● Reliability of agent behavior
+● Latency & cost efficiency
+● Failure recovery
+● Real outcomes delivered at scale
+
+Debugging Intelligence
+You will debug:
+● Silent hallucinations
+● Agent loops
+● Tool misuse
+● Memory corruption
+● Drift across model versions
+● Cost anomalies
+
+Who You Are
+You don’t ask: “What endpoint should I build?”
+You ask: “Why did the agent fail on this edge case?”
+
+Must-Have
+● 4–8 years strong software engineering
+● Deep hands-on LLM experience in production
+● Strong understanding of:
+○ Prompting strategies
+○ Agent orchestration
+○ Memory/RAG
+○ Tool calling
+○ Evaluation
+● Can independently design and ship AI systems
+● Strong Python or TypeScript
+● Obsessed with reliability
+
+Nice to Have
+● Built multi-agent systems
+● Worked on workflow automation
+● Built internal copilots
+● Experience with evaluation frameworks
+● Experience with cost optimization
+What This Role Is NOT
+● Not model research
+● Not API wrapper work
+● Not demo building
+● Not prompt hacking only
+
+This is:
+Engineering intelligence into production systems.
+
+Apply Now
+About the company
+GoComet
+Actively Hiring
+The world’s most easy-to-use, intuitive multi-modal logistics platform
+201-500 Employees
+Singapore
+201-500
+SaaS
+SaaS
+Enterprise Software
+Logistics
+B2B
+Growth Stage
+Employees joined from
+Cogoport
+mFino
+StartUp Theory
+Locus.sh
+Learn more about GoComet 
+Founders
+Mehul Katiyar
+Founder
+Mumbai
+Gautam Prem Jain
+Founder
+Delhi
+Chitransh Sahai
+Director & Co Founder • 10 years
+Mumbai
+View the team 
+Similar Jobs
+Gyrus.AI
+AI for Image/Video Analytics
+AI/ML Engineer
+₹5L – ₹10L
+Apply
+Spenza
+"Connectivity as a Service". Enable any business to be a virtual mobile operator
+Full Stack Engineer- MERN
+₹12L – ₹35L • 0.1% – 0.2%
+Apply
+Juntrax Solutions
+Helping SMEs Run their Business Globally
+Full Stack Developer MERN
+₹8L – ₹12L • No equity
+Apply
+Distill
+Track website changes and get alerts
+Senior Full Stack Engineer
+₹30L – ₹60L • No equity
+Apply
+OneAssure
+Insurance Distribution Platform & Technology Service Provider
+SDE - Intern
+₹20,000 – ₹25,000 • No equity
+Apply
+Sosuv Consulting
+We provide specialised Product, Software Development and Support services to the global fi
+FIX Analyst
+₹4L – ₹25L • No equity
+Apply
+Nexera
+Answer engine for professional traders
+Founding Engineer
+₹30L – ₹50L • 0.5% – 5.0%
+Apply
+CipherSchools
+Creator economy led educational video streaming platform for students
+Mentor- Competitive Programming | Teaching
+₹8L – ₹15L • No equity
+Apply
+Flux Auto
+Physical AI for Warehouses and Factories
+Robotics Testing Engineer
+₹2.5L – ₹4L • No equity
+Apply
+For Candidates
+Overview
+Startup Jobs
+Web3 Jobs
+Featured
+Startup Hiring Data
+Tech Startups
+Remote
+For Recruiters
+Overview
+Recruit Pro
+Curated
+Wellfound:ai
+Hire Developers
+Pricing
+Company
+About
+Help
+Blog
+Terms & Risks
+Privacy & Cookies
+Trust
+Platform Status
+
+Copyright © 2026 Wellfound. All rights reserved.
+
+Cookie Preferences
+
+Browse by: Jobs, Remote Jobs, Locations, Startups, Startups Hiring, Industries, Tech Hubs

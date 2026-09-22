@@ -1,0 +1,220 @@
+COMPANY: Razorpay
+URL: https://www.linkedin.com/jobs/view/ai-engineer-platform-at-razorpay-4462777778/
+SCORE: 90
+SCRAPED: 2026-09-16
+
+---
+
+0 notifications
+Skip to search
+Skip to main content
+Skip to primary content
+Skip to aside
+Skip to footer
+Home
+My Network
+Jobs
+Messaging
+8
+Notifications
+Me
+For Business
+
+Try Premium for ₹0
+
+AI Engineer (Platform) (Verified job)
+AI Engineer (Platform) 
+
+Razorpay • Bengaluru, Karnataka, India (On-site)
+
+Apply
+
+Razorpay
+
+AI Engineer (Platform) 
+
+Bengaluru, Karnataka, India · 1 week ago · Over 100 people clicked apply
+
+Responses managed off LinkedIn
+
+On-site
+Full-time
+
+Not currently accepting applications
+
+Use AI to assess how you fit
+
+Get AI-powered advice on this job and more exclusive features with Premium. Activate Premium for ₹0
+
+Show match details
+
+Tailor my resume
+
+Help me stand out
+
+People you can reach out to
+
+School alumni from Centre for Development of Advanced Computing (C-DAC)
+
+Show all
+About the job
+
+Razorpay is one of India’s leading full-stack financial technology companies, powering the way businesses move, manage, and grow money. Founded in 2014 by Harshil Mathur and Shashank Kumar with a simple vision - to simplify payments for Indian businesses - we’ve since grown into a fintech powerhouse driving India’s digital payment revolution.
+
+Razorpay powers millions of businesses with a smarter, scalable stack that goes beyond transactions to help them truly build and grow.
+
+From building AI-native agentic payments, to AI-assisted fraud detection and real-time risk intelligence to automated reconciliation, smart payouts, and predictive financial insights, we are embedding intelligence across our stack to make money movement faster, safer, and more efficient. In close collaboration with ecosystem partners - including banks, networks, regulators - we are pioneering industry-first solutions that are shaping the next era of fintech
+
+Across India, Singapore and Malaysia, our products span everything from seamless checkouts to payroll automation - powering a fintech ecosystem that’s redefining how money moves across Asia.
+
+Today, that ecosystem supports everyone from early-stage startups to some of India’s largest enterprises, enabling them to accept, process, and disburse payments at scale while expanding into new ways of managing money more efficiently.
+
+Our scale speaks volumes: Razorpay processes $180+ billion in annualized transactions, powering leading businesses like Airbnb, Facebook, WhatsApp, Airtel, CRED, BookmyShow, Zomato, Swiggy, Lenskart, Mirae Asset Capital markets, Indian Oil, National Pension Scheme - and over 100 of India’s unicorns. With strong roots in India and growing operations in Southeast Asia, we are shaping the next chapter of financial technology across the region.
+
+We are backed by global investors including GIC, Peak XV Partners (formerly Sequoia Capital India & SEA), Tiger Global, Ribbit Capital, Matrix Partners, MasterCard, and Salesforce Ventures, having raised over $740 million to date. Strategic acquisitions - including Ezetap (POS and offline payments), Curlec (Malaysia expansion), BillMe (digital invoicing), and POP (rewards-first UPI) - along with earlier moves in fraud prevention, payroll, and lending, have further strengthened our platform and widened our footprint across Asia.
+
+But what truly sets Razorpay apart is our culture. At Razorpay, ownership is our oxygen - you own what you build, with no micromanagement or red tape, just the runway to make your ideas fly. Learning is a lifestyle - if you’re curious, you’ll feel at home here. People > Pedigree - we hire for attitude, hustle, and hunger more than degrees. Transparency thrives over titles - this is where interns question CXOs and CXOs say “thank you.” Guided by our values of Customer First, Autonomy & Ownership, Agility with Integrity, Transparency, Challenging the status quo and a strong belief that Razorpay grows with Razors, you’ll be part of a 3000+ strong team building not just products, but the financial infrastructure of the future.
+
+AI Engineer (Infrastructure)
+
+Razorpay’s infrastructure runs millions of payment transactions a day across payment routing, settlement, reconciliation, merchant onboarding, fraud, and lending. That infrastructure is large, always-on, and expensive to operate the way most companies operate it — with war rooms, runbooks, and humans paging each other at 3 AM. We don’t think that’s the ceiling.
+
+This role exists to take the next layer off human shoulders. You’ll sit inside the Infrastructure team and build the AI systems that run, heal, and optimize the platform themselves — agents that triage incidents, pipelines that self-remediate, copilots that compress a six-hour Sev2 into thirty minutes, automation that catches regressions before they ship. Not chatbots bolted onto a dashboard. Infrastructure that gets smarter every quarter. You’ll report into the Infrastructure team lead. You’ll own automation and AI initiatives end-to- end — from the problem statement to the system that runs in production. You won’t have a JD; you’ll have a mandate.
+
+So you know what you’re automating. Razorpay’s infra stack is, in broad strokes:
+
+ Cloud. multi-cloud — AWS as the primary, GCP for specific workloads, with ongoing consolidation.
+ Orchestration. thousands of nodes across EKS clusters, with service mesh, autoscaling, and progressive delivery.
+ Provisioning. Terraform + Atlantis for IaC, Argo CD for GitOps, internal platforms for one-click provisioning.
+ Observability. Prometheus, Thanos, Loki, Grafana, OpenTelemetry — plus a heavy internal investment in structured logging and SLO-based alerting.
+ Incident response. PagerDuty-driven on-call, runbooks in Notion, and a strong — and very manual — incident response culture we want to automate aggressively.
+ Data plane. high-throughput Kafka, self-managed and managed Postgres/MySQL, Redis, and a growing footprint of vector stores for the AI work itself.
+
+You don’t need to have operated all of this yourself. You do need to be comfortable enough in this world to know which parts are painful, which parts are load-bearing, and where an agent can actually replace a human.
+
+What You’ll Actually Do
+
+ Take an infrastructure problem from “we should automate this” to “it’s running in production, here’s the toil it removed” — in weeks, not quarters.
+ Build agents that triage alerts, correlate signals across services, draft or execute remediations, and escalate to humans only when it actually matters.
+ Ship LLM-powered copilots for the on-call engineer — surfacing “this has happened before, here’s what fixed it” at 3 AM instead of a blank Slack thread.
+ Automate the runbook. If a human is copy-pasting steps out of a Notion doc, that’s a target. Turn runbooks into agentic workflows that run themselves.
+ Build eval harnesses for infra agents — because “the AI said to restart the cluster” is only acceptable if you can show, with evidence, that it was right.
+ Work alongside SREs, platform engineers, and devs — not as a service desk, but as the person who ships the thing that makes the service desk unnecessary.
+ Run experiments. Have strong opinions about which models, which tools, and which agent architectures actually work for infrastructure — and prove them with output.
+
+What We’re Looking For
+
+ Background. 2–6 years of experience. Top engineering or CS school in India or abroad. Or — you’re currently at one of those schools and have decided dropping out and building is the better trade. Both paths land here.
+ AI-first by default. Not “I use ChatGPT sometimes.” Your daily workflow assumes AI is in the loop on every task that can be improved by it. Cursor, Claude Code, custom agents, MCPs — pick your stack and own it.
+ Open-source model fluency. You’ve stress-tested the lineup — Llama, Mistral, Qwen, DeepSeek, GLM, Kimi, and whatever’s on the leaderboard this week. You have opinions on which one wins where, what they’re bad at, and where the cost / latency / quality frontier sits today.
+ Infrastructure literacy. You’ve touched real infrastructure — cloud, Kubernetes, Terraform, CI/CD, observability — enough to know what a Sev2 feels like and why nobody wants to page at 3 AM. You don’t need to have run a 200-person SRE org. You do need to be able to read a Prometheus query and a Terraform plan without googling every line.
+ Builder, not talker. Side projects, OSS contributions, internal tools at your last job, a hackathon weapon — something we can look at and say “that’s a person who ships.”
+ Single-person army energy. Ambiguity, multi-hat, no playbook — energising rather than draining. You know good design, good UX, good code, and good prompts when you see them. You can articulate why one approach is better than another in a way that holds up under scrutiny.
+ Eval mindset. You don’t just “vibe-check” your AI work. You build the smallest possible eval before shipping — and have an opinion about why most AI products fail without one.
+
+What Makes You Stand Out
+
+ You’ve built agents that orchestrate other agents, not just single-shot LLM calls.
+ You’ve shipped an AI-driven automation into a real on-call or ops workflow — and it’s still running without you.
+ You’ve fine-tuned a model — even if just for fun.
+ You have a public artifact — GitHub stars, a blog, X posts that engineers quote, a YouTube channel where you build in public.
+ You contribute to open-source AI tooling, or to infra-as-code / observability projects.
+ You can show evidence of doing the work of five people in a quarter — and explain how.
+ You’ve helped a team replace a manual ops process with an agent that now runs on its own.
+
+What the first call looks like
+
+This Is Non-standard, So We’ll Be Transparent Up Front. The First Technical Call Is One Hour, Hands-on, And Runs Entirely Off Your Screen. Come Ready To Walk Us Through
+
+ Your AI productivity setup. The tools, the agents, the workflows, the hotkeys. We want to see your terminal, your editor, your prompt library, your custom skills.
+ Your token usage history. Yes, actually open the dashboard on the call — we want to see what you actually use, how much, on what.
+ Your three favourite projects. Demo each one, walk us through the architecture, and tell us what was hard.
+ Your learnings. What worked, what didn’t, where AI broke down for you, what you do when a model is the wrong tool.
+
+If the answer to any of this is “I don’t really track that” or “let me take this offline,” this isn’t the role.
+
+What You’ll Get
+
+ Real ownership of the AI layer on top of infrastructure that processes millions of payments a day. Your work is load-bearing from week one. A team that wants to be automated out of the boring parts and will back the bets you make to get there.
+ Freedom to use whatever models, agents, frameworks, and tools work best for the problem in front of you.
+ Working with leaders building Razorpay’s next decade — not maintaining the last one.
+ Competitive compensation, calibrated for an engineer who can do the work of a small team.
+
+Razorpay believes in and follows an equal employment opportunity policy that doesn't discriminate on gender, religion, sexual orientation, colour, nationality, age, etc. We welcome interests and applications from all groups and communities across the globe.
+
+Follow us on LinkedIn & Twitter
+… more
+
+Set alert for similar jobs
+
+Artificial Intelligence Engineer, Bengaluru, Karnataka, India
+
+Off
+Unlock hiring insights on Razorpay
+
+11%
+
+employee growth
+
+Chart
+Chart with 25 data points.
+The chart has 1 X axis displaying Time. Data ranges from 2024-09-01 00:00:00 to 2026-09-01 00:00:00.
+The chart has 1 Y axis displaying values. Data ranges from 3642 to 4237.
+Sep 2024
+Sep 2025
+Sep 2026
+End of interactive chart.
+
+Applicant education level
+
+49%
+
+have a Bachelor of Technology
+
+Applicant seniority level
+
+72%
+
+Entry level applicants
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+About the company
+
+Razorpay
+
+1,299,182 followers
+
+Follow
+
+Software Development
+
+ • 
+
+1001-5000 employees
+
+ • 
+
+3,455 on LinkedIn
+
+Power your finance, grow your business.
+Razorpay is India’s first full-stack financial solutions company. We are on a mission to enhance the payment experience of over 300 million end consumers. And in doing so, we aim to enable Indian businesses - big and small - accept payments digitally with minimal effort and maximum ease. 
+
+Razorpay has grown from being a payment gateway provider to a solutions-driven organization boasting of an extensive products suite to accept and disburse payments as well as raise capital and park money. In a nutshell, we fit into every nook and corner where your business touches money. 
+
+#OutgrowOrdinary
+We identify ourselves as disruptors in the digital payments space and our vision is to power the financial ecosystem for other disruptors. Like attracts like and Razorpay actively looks to partner with established companies and startups that have either broken the glass ceiling in their industry or are set to. 
+
+The Razorpay Product Suite today comprises verticals, along with Payment Gateway, like Payment Links, Payment Pages, Subscriptions, Smart Collect, Route, Razorpay Capital, RazorpayX, Payroll and Thirdwatch.
+
+Razorpay was started in 2014 by two IIT Roorkee alumni, Harshil Mathur and Shashank Kumar. Just a short few years later, Razorpay has evolved into a 800-odd strong organization with some of the best talents in the country helping some of the best companies manage their money movement seamlessly.
+
+Certified cool
+We are a bunch of spirited, ambitious and fun folks. And no, we’re not saying this ourselves--leading institutions have recognized Razorpay for the high trust and high-performance culture that we maintain. 
+
+Our strength lies in the people we are and we go to great lengths to nurture a family of coders, designers, sellers, marketers, analysts, writers, runners, photographers, gamers, tinkerers, and above all, people who are dreamers and doers at the same time. Be a part of our exciting journey.
+… more
+
+Interested in working with us in th

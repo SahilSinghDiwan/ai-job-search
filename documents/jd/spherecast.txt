@@ -1,0 +1,72 @@
+COMPANY: spherecast
+URL: https://jobs.ashbyhq.com/spherecast/9025d01d-43ae-46ba-9bca-4d143a6da4ac
+SCORE: 81
+SCRAPED: 2026-09-16
+
+---
+
+LLM Engineer (Visa Sponsorship)
+Location
+
+New York City
+
+Employment Type
+
+Full time
+
+Location Type
+
+On-site
+
+Department
+
+Engineering
+
+Overview
+Application
+LLM Engineer – Agnes (Visa Sponsorship)
+
+As a LLM Engineer at Spherecast, you will be responsible for building Agnes from the ground up – our AI Supply Chain Manager that decides what to produce, where to make it, and how to move it through factories, warehouses, and channels.
+
+This is a fast-paced, highly autonomous role for someone who can own AI systems end-to-end: from prototypes to production, from prompts to tested and evaluated pipelines, from agents to real-world outcomes (POs, TOs, bookings). You’ll work directly with the core team to turn the physical flow of goods into something as programmable as code.
+
+If you’re a builder who thrives at the intersection of LLMs, agents, systems engineering, and messy real-world data, this is your opportunity to shape how global brands run their supply chains.
+
+What we’re looking for
+
+You are a great fit if you have:
+
+Hands-on experience with modern LLM APIs (e.g. Anthropic, OpenAI, DeepSeek, OpenRouter, Gemini, Moonshot) and have shipped features using them.
+
+Strong intuition for large language model selection – you understand the strengths, weaknesses, latency/cost tradeoffs, and ideal use cases of different LLMs.
+
+Practical experience with the HuggingFace ecosystem in real projects.
+
+A track record of building LLM-powered automations or agents that are core to a production system, not just internal demos or playgrounds.
+
+Experience designing and maintaining evaluation pipelines to iterate quickly and safely on prompts and workflows.
+
+Strong prompting and system-design skills – you know how to design tools/functions, structured outputs, and multi-step agent flows that are robust to edge cases.
+
+Experience with LLM observability and monitoring (logging, traces, quality metrics, feedback loops) to track and improve production accuracy over time.
+
+Bonus: Experience running self-hosted LLMs in production or serious prototypes.
+
+About Spherecast
+
+Spherecast is building Agnes, the AI Supply Chain Manager for Consumer Goods.
+
+Agnes decides what to produce, where to make it, and how to move it through factories, warehouses, and channels – simulating thousands of options in seconds and executing the best plan.
+
+We are building Agnes to shape the physical flow of goods in the world, turning it into something as programmable as code.
+
+When we succeed, every consumer product you touch will run on the Spherecast stack – planned in the Spherecast OS, executed over Spherecast Rails, and optimized by the shared Spherecast Network.
+
+Oracle turned atoms into bits. Spherecast turns bits back to atoms, but globally optimized.
+
+Be part of the next $T company.
+
+Apply for this Job
+Powered by 
+
+Privacy PolicySecurityVulnerability Disclosure

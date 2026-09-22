@@ -1,0 +1,488 @@
+COMPANY: Optum India
+URL: https://www.linkedin.com/jobs/view/lead-ai-ml-engineer-nlp-transformers-vector-databases-and-rag-at-optum-india-4461979002/
+SCORE: 81
+SCRAPED: 2026-09-16
+
+---
+
+0 notifications
+Skip to search
+Skip to main content
+Skip to primary content
+Skip to aside
+Skip to footer
+Home
+My Network
+Jobs
+Messaging
+9
+Notifications
+Me
+For Business
+
+Try Premium for ₹0
+
+Lead AI/ML Engineer ( NLP, Transformers, Vector Databases, and RAG),  
+
+Optum India • Bengaluru, Karnataka, India (On-site)
+
+Save
+Easy Apply
+
+Optum India
+
+Lead AI/ML Engineer ( NLP, Transformers, Vector Databases, and RAG),  
+
+Bengaluru, Karnataka, India · 1 week ago · Over 100 applicants
+
+Promoted by hirer · Actively reviewing applicants
+
+On-site
+Full-time
+Easy Apply
+Save
+Use AI to assess how you fit
+
+Get AI-powered advice on this job and more exclusive features with Premium. Activate Premium for ₹0
+
+Show match details
+
+Tailor my resume
+
+Help me stand out
+
+People you can reach out to
+
+School alumni from Centre for Development of Advanced Computing (C-DAC)
+
+Show all
+
+Meet the hiring team
+
+Khadar SK 
+
+• 3rd
+
+Talent Acquisition Partner at UnitedHealth Group -Optum
+
+Job poster
+
+Message
+About the job
+
+The Lead AI/ML Engineer is a primary driver in the design and development of state-of-the-art Artificial Intelligence solutions with a strong focus on Natural Language Processing (NLP), Transformer-based architectures, Vector Database technologies, and Retrieval-Augmented Generation (RAG). The Lead AI/ML Engineer works closely with senior data scientists, machine learning engineers, software engineers, and subject matter experts on current company technologies and forward-looking projects. They drive research, innovation, and solution implementation in the creation of next-generation AI systems.
+
+Key Responsibilities
+
+· Lead end-to-end training and fine-tuning of Large Language Models (LLMs), including both open-source (e.g., Qwen, LLaMA, Mistral) and closed-source (e.g., OpenAI, Gemini, Anthropic) ecosystems.
+
+· Deep knowledge and extensive experience with Machine/Deep Learning frameworks including transformer architectures, state space models, large language models, and agentic approaches.
+
+· Architect and implement GraphRAG pipelines, including knowledge graph representation and retrieval for enhanced contextual grounding.
+
+· Design, train, and optimize semantic and dense vector embeddings for document understanding, search, and retrieval.
+
+· Develop semantic retrieval systems with advanced document segmentation and indexing strategies.
+
+· Knowledge of algorithms and techniques within a computational domain with emphasis on text processing.
+
+This keeps the JD exactly as is while making it immediately obvious that the role's primary focus is NLP, Transformers, Vector Databases, Embeddings, Retrieval, and RAG.
+
+Preferred Qualifications
+
+Master's degree in Computer Science, Machine Learning, Artificial Intelligence, or a related field.
+11-15+ years of experience in Data Science, Applied AI/ML, and Statistical Modeling, with a strong track record of developing, deploying, and scaling production-grade AI solutions.
+
+Deep expertise in:
+
+Natural Language Processing (NLP)
+Fundamental Machine Learning
+Deep Learning
+Transformer Architectures
+State Space-Based Architectures
+Azure ML and/or AWS
+Strong Python programming, SQL, database querying, data preparation, and analysis skills
+Exploratory Data Analysis (EDA)
+Experience with PyTorch
+LLM training and fine-tuning (e.g., GPT, LLaMA, Mistral, Qwen)
+Graph-based retrieval systems (Knowledge Graphs)
+Embedding models (e.g., BGE, E5, SimCSE)
+Semantic Search and Vector Databases (e.g., FAISS, Weaviate, Milvus)
+Model Fusion and Ensemble Techniques (Stacking, Boosting, Gating)
+Optimization Algorithms (Bayesian, Particle Swarm, Genetic Algorithms)
+Reinforcement Learning (e.g., RLHF, PPO, DPO, GRPO), Supervised Fine-Tuning (SFT), LoRA, QLoRA, Axolotl
+Prompt Optimization Frameworks (AutoPrompt, GreaterPrompt, DSPy), GEPA
+
+Key focus areas: NLP, Transformer-Based Architectures, Vector Database Technologies, Semantic Search, Embedding Models, and Retrieval-Augmented Generation (RAG).
+
+… more
+
+Requirements added by the job poster
+
+• 4+ years of work experience with Natural Language Processing (NLP)
+
+• 4+ years of work experience with Vector Databases
+
+• 3+ years of work experience with Transformers
+
+Set alert for similar jobs
+
+Lead AI/ML Engineer ( NLP, Transformers, Vector Databases, and RAG),  , Bengaluru, Karnataka, India
+
+Off
+Unlock hiring insights on Optum India
+
+12%
+
+employee growth
+
+Chart
+Chart with 25 data points.
+The chart has 1 X axis displaying Time. Data ranges from 2024-09-01 00:00:00 to 2026-09-01 00:00:00.
+The chart has 1 Y axis displaying values. Data ranges from 95445 to 106682.
+Sep 2024
+Sep 2025
+Sep 2026
+End of interactive chart.
+
+Applicant education level
+
+23%
+
+have a Bachelor of Technology
+
+Applicant seniority level
+
+37%
+
+Entry level applicants
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+About the company
+
+Optum India
+
+100,295 followers
+
+Follow
+
+IT Services and IT Consulting
+
+ • 
+
+10001+ employees
+
+ • 
+
+2,051 on LinkedIn
+
+The global capability center for UnitedHealth Group, Optum India is pushing innovation to build a simpler, more accessible high-quality health system.
+
+Show more
+More jobs
+
+Lead AI Engineer (Verified job)
+Lead AI Engineer 
+
+MathCo
+
+Bengaluru (Hybrid)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 month ago
+1 month ago
+
+ · 
+
+Easy Apply
+
+Lead AI Forward Engineer (Verified job)
+Lead AI Forward Engineer 
+
+Thomson Reuters
+
+Bengaluru (Hybrid)
+
+1 connection works here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Senior GEN AI (Verified job)
+Senior GEN AI 
+
+Artech L.L.C.
+
+Bengaluru (On-site)
+
+400K INR/yr
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 6 days ago
+6 days ago
+
+ · 
+
+Easy Apply
+
+Lead / Manager - Agentic AI Engineer (Claude Code or Codex)
+Lead / Manager - Agentic AI Engineer (Claude Code or Codex)
+
+Blend
+
+Greater Hyderabad Area (Hybrid)
+
+Promoted
+
+ · 
+
+Posted 1 month ago
+1 month ago
+
+Staff AI Engineer — Agentic AI (Verified job)
+Staff AI Engineer — Agentic AI 
+
+gnani.ai
+
+Bengaluru (On-site)
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Lead AI Engineer (Verified job)
+Lead AI Engineer 
+
+Ecolab
+
+Bengaluru East
+
+3 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Gen AI Lead (Verified job)
+Gen AI Lead 
+
+R Systems
+
+Pune Division
+
+18 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Lead Product Development AI Engineer (Verified job)
+Lead Product Development AI Engineer 
+
+Clarivate
+
+India
+
+2 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+Data and AI Lead (Verified job)
+Data and AI Lead 
+
+Welldoc
+
+Bengaluru (Hybrid)
+
+Promoted
+
+ · 
+
+Posted 3 days ago
+3 days ago
+
+Principal AI/ML Engineer Lead (Verified job)
+Principal AI/ML Engineer Lead 
+
+Trintech
+
+Bengaluru
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Principal AI Engineer
+Principal AI Engineer
+
+Infogain
+
+Bengaluru (Hybrid)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 day ago
+1 day ago
+
+ · 
+
+Easy Apply
+
+Lead AI/ML Engineer ( NLP, Transformers, Vector Databases, and RAG),  
+Lead AI/ML Engineer ( NLP, Transformers, Vector Databases, and RAG),  
+
+Optum India
+
+Hyderabad (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+See more jobs like this
+
+Job search smarter with Premium
+
+See jobs where you’d be a top applicant
+
+Message hiring managers with InMail
+
+Get personalized cover letter and resume tips
+
+Plus! Get insider access to live talks with industry leaders.
+
+Meer Fahad Ali and millions of other members use Premium
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+Looking for talent?
+
+Post a job
+
+About
+
+Accessibility
+
+Talent Solutions
+
+Community Guidelines
+
+Careers
+
+Marketing Solutions 
+
+Privacy & Terms
+
+Ad Choices
+
+Advertising
+
+Sales Solutions
+
+Mobile
+
+Small Business
+
+Safety Center
+
+LinkedIn Corporation © 2026
+
+Questions?
+
+Visit our Help Center.
+
+Manage your account and privacy
+
+Go to your Settings.
+
+Recommendation transparency
+
+Learn more about Recommended Content.
+
+Select language
+
+العربية (Arabic)
+বাংলা (Bangla)
+Čeština (Czech)
+Dansk (Danish)
+Deutsch (German)
+Ελληνικά (Greek)
+English (English)
+Español (Spanish)
+فارسی (Persian)
+Suomi (Finnish)
+Français (French)
+हिंदी (Hindi)
+Magyar (Hungarian)
+Bahasa Indonesia (Indonesian)
+Italiano (Italian)
+עברית (Hebrew)
+日本語 (Japanese)
+한국어 (Korean)
+मराठी (Marathi)
+Bahasa Malaysia (Malay)
+Nederlands (Dutch)
+Norsk (Norwegian)
+ਪੰਜਾਬੀ (Punjabi)
+Polski (Polish)
+Português (Portuguese)
+Română (Romanian)
+Русский (Russian)
+Svenska (Swedish)
+తెలుగు (Telugu)
+ภาษาไทย (Thai)
+Tagalog (Tagalog)
+Türkçe (Turkish)
+Українська (Ukrainian)
+Tiếng Việt (Vietnamese)
+简体中文 (Chinese (Simplified))
+正體中文 (Chinese (Traditional))

@@ -27,15 +27,20 @@
     pdftitle={Sahil Singh Diwan - CV},
     pdfpagemode=FullScreen,
 }
-\usepackage[scale=0.80]{geometry}
+\usepackage[scale=0.855]{geometry}
+
+% ATS: moderncv's default itemize bullet is a symbol-font glyph with no Unicode
+% mapping - it extracts as U+FFFD in the PDF text layer. An ASCII hyphen parses.
+\renewcommand{\labelitemi}{-}
+\renewcommand{\labelitemii}{-}
 \usepackage{import}
 
 % personal data
 \name{Sahil}{Singh Diwan}
 \address{Bengaluru, India}{}{}
-\phone[mobile]{+91 800-7192-680}
+\phone[mobile]{+91 8007192680}
 \email{diwan.sahilsingh@gmail.com}
-\extrainfo{\href{https://linkedin.com/in/diwan-sahil}{LinkedIn}, \href{https://github.com/SahilSinghDiwan}{GitHub}, \href{https://myprofile.nostalkers.shop}{Portfolio}, \href{https://convogene.ai}{Live demo}}
+\extrainfo{\href{https://linkedin.com/in/diwan-sahil}{linkedin.com/in/diwan-sahil} $\cdot$ \href{https://github.com/SahilSinghDiwan}{github.com/SahilSinghDiwan} $\cdot$ \href{https://sahildiwan.in/}{sahildiwan.in} $\cdot$ \href{https://convogene.ai}{convogene.ai}}
 
 \begin{document}
 
@@ -45,26 +50,27 @@
 %     PROFILE STATEMENT  (tailor per role - see 05-cv-templates.md)
 % ============================================================
 
-\vspace{6pt}
-\small{AI/GenAI Engineer with 5 years taking LLM \& RAG systems from proof-of-concept to production at scale --- on real infrastructure, not notebooks. Built the retrieval engine for an enterprise incident-resolution assistant that scaled from a 20-user POC to a 200+-SRE beta and cut triage time \textasciitilde70\%; rebuilt failing semantic search as hybrid retrieval to roughly double recall; and shipped a live, near-zero-hallucination RAG product on Azure. Currently building agentic developer tooling with LLMs, using Claude Code day to day (Claude Certified Architect --- Foundations).}
+\section{Professional Summary}
+\vspace{1pt}
+\small{Applied AI / GenAI Engineer with 6 years across software and applied AI engineering, the last two-plus taking Large Language Model (LLM), Retrieval-Augmented Generation (RAG) and agentic systems from proof-of-concept to production at scale --- on real infrastructure, not notebooks. Owns delivery end to end: retrieval and agent architecture, evaluation, deployment and the distributed systems underneath. Built the retrieval engine for an enterprise SRE incident-response assistant that scaled from a 20-user POC to a 200+-SRE beta and cut triage time \textasciitilde70\%; rebuilt failing semantic search as hybrid retrieval and measured recall roughly doubling; shipped a live, near-zero-hallucination RAG product on Azure. Now co-leads an agentic test-automation platform into client alpha, owning test execution, LLM self-healing and a model layer spanning on-premises, Vertex AI and Azure deployments, and mentors the engineers building it. Claude Certified Architect --- Foundations.}
 
 % ============================================================
 %     CORE COMPETENCIES
 % ============================================================
 
-\section{Core Competencies}
+\section{Technical Skills}
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{AI / GenAI}: RAG pipelines, hybrid retrieval, LLM integration, prompt engineering \& guardrails, agentic systems, model fine-tuning, LangChain, LangGraph, PyTorch
+\item \textbf{AI / Generative AI}: Retrieval-Augmented Generation (RAG), hybrid retrieval, semantic search, chunking \& reranking, LLM integration, prompt engineering \& guardrails, evaluation harnesses, hallucination reduction, agentic AI systems, agent skills \& Model Context Protocol (MCP), tool / function calling, self-healing agent loops, model fine-tuning, LangChain, LangGraph, PyTorch
 
-\item \textbf{Vector Search \& Retrieval}: FAISS, Milvus, ChromaDB, Elasticsearch
+\item \textbf{Vector Databases \& Search}: FAISS, Milvus, ChromaDB, Elasticsearch, embeddings, hybrid (keyword + vector) ranking
 
-\item \textbf{Data \& Event Streaming}: Apache Kafka, Apache Airflow, Pandas, NumPy
+\item \textbf{Data \& Distributed Systems}: Apache Kafka, Apache Airflow, event streaming, distributed systems, Pandas, NumPy
 
-\item \textbf{Backend \& Test Automation}: Python, FastAPI, Flask, async Python, microservices, REST APIs, Playwright, LLM-based test generation, call-graph analysis
+\item \textbf{Backend \& Test Automation}: Python, FastAPI, Flask, async Python, microservices, REST APIs, Playwright, LLM-based code generation and test generation, call-graph analysis, Allure reporting, Terraform / Infrastructure-as-Code
 
-\item \textbf{Cloud \& DevOps}: Docker, Kubernetes, Helm, GitHub Actions, Microsoft Azure, AWS, GCP, MongoDB, MySQL
+\item \textbf{Cloud, MLOps \& DevOps}: Microsoft Azure, AWS, GCP / Vertex AI, IBM Cloud, on-premises \& self-hosted LLM serving, Docker, Kubernetes, Helm, CI/CD (GitHub Actions), secrets management \& role-based access control, MLOps / LLMOps, observability \& monitoring, inference cost and latency optimisation, MongoDB, MySQL / SQL
 
 \end{itemize}
 
@@ -75,36 +81,68 @@
 \section{Professional Experience}
 \vspace{3pt}
 \begin{itemize}
+\renewcommand{\labelitemi}{}  % cventry rows carry their own layout; no marker
+
 
 % --- Most Recent Role ---
-\needspace{5\baselineskip}
-\item{\cventry{2024-Present}{Software Engineer, AI}{Infobell IT Solutions}{Bengaluru, India}{}{\vspace{1pt}
+\needspace{4\baselineskip}
+\item{\cventry{Mar 2024 - Present}{Software Engineer, AI}{Infobell IT Solutions}{Bengaluru, India}{}{}}
+\vspace{-2pt}
 \begin{itemize}
-    \item Building an \textbf{agentic AI test-automation platform}: clones a repo, uses LLMs to map signatures/call-graph/workflows, then generates and self-corrects test suites (API, workflow, security/edge) in budget- or coverage-driven modes; added PR blast-radius analysis (1/2/3-hop) and a spec-coverage certification score. Built with Claude Code.
-    \item Built the retrieval engine + Kafka/Elasticsearch pipeline for an enterprise SRE incident-resolution assistant on a major public cloud; scaled a \textbf{20-user POC to a 200+-SRE beta} and cut time-to-find similar incidents \textbf{\textasciitilde70\% (15-20 min to \textasciitilde5 min)}. Delivered to production and transitioned ownership to the client team.
-    \item Rebuilt failing semantic (cosine) search as \textbf{hybrid retrieval} with structured filtering and identifier masking (privacy-preserving), \textbf{roughly doubling recall (\textasciitilde30\% to \textasciitilde80\%)}; deployed on Kubernetes with custom Helm charts.
+    \item \textbf{Co-lead an agentic AI test-automation platform} now entering alpha with a global semiconductor client, mentoring the junior engineers building it. The platform clones a repo, maps signatures/call-graphs/workflows with LLMs, then generates and self-corrects API, workflow and security/edge suites in budget- or coverage-driven modes, with per-run inference-cost tracking, PR blast-radius analysis (1/2/3-hop) and a spec-coverage certification score. Built with Claude Code.
+    \item Own the \textbf{test-execution architecture} on that platform end to end: an LLM \textbf{self-healing loop} that repairs failing tests mid-run, GitHub Actions CI/CD, credentials and role-based access control, and Allure reporting. Extended the model layer to serve \textbf{on-premises, Vertex AI and Azure} LLM deployments, meeting a hard client constraint that no external model provider may be used; Playwright-driven UI coverage in progress.
+    \item Built the retrieval engine + Kafka/Elasticsearch pipeline for an enterprise SRE incident-resolution assistant on a major public cloud; scaled a \textbf{20-user POC to a 200+-SRE beta} and cut time-to-find similar incidents during incident response \textbf{\textasciitilde70\% (15-20 min to \textasciitilde5 min)}, measured with the SREs themselves. Delivered end to end and transitioned ownership to the client team.
+    \item Rebuilt failing semantic (cosine) search as \textbf{hybrid retrieval} with structured filtering and identifier masking (privacy-preserving), \textbf{roughly doubling measured recall (\textasciitilde30\% to \textasciitilde80\%)}; deployed on Kubernetes with custom Helm charts.
     \item Built and shipped \textbf{Convogene.ai}, a live near-zero-hallucination RAG chatbot for a semiconductor client (scheduled scraping via LangGraph/LangChain, two-layer data + prompt guardrails), deployed on Microsoft Azure.
-    \item Built Linux-kernel patch-backporting automation (ordered patch sequences of 5-120 patches) and a cloud-native anomaly-detection system on Apache Airflow / Kubernetes.
-\end{itemize}}}
+    \item Designing the \textbf{execution layer} of a cloud-onboarding assistant for a Fortune-50 cloud provider: an agent skill that authenticates against the customer's cloud account, performs CRUD on live resources and provisions infrastructure via \textbf{Terraform}, so trial users reach a working environment instead of spending most of a 14-day sandbox window on setup.
+    \item Built Linux-kernel patch-backporting automation (ordered patch sequences of 5-120 patches) and a cloud-native anomaly-detection system on Apache Airflow / Kubernetes. Run internal enablement sessions on \textbf{Claude Code} and Cursor for the engineering team.
+\end{itemize}
 
 \vspace{3pt}
 
 % --- Previous Role ---
-\needspace{5\baselineskip}
-\item{\cventry{2022-2023}{Master Trainer, AI \& Python}{India STEM Foundation}{Remote \& On-site, India}{}{\vspace{1pt}
+\needspace{4\baselineskip}
+\item{\cventry{Aug 2022 - Aug 2023}{Master Trainer, AI \& Python}{India STEM Foundation}{Remote \& On-site, India}{}{}}
+\vspace{-2pt}
 \begin{itemize}
-    \item Led online Python and AI training for an international student base (USA, UK, Singapore, India).
-    \item Designed hands-on robotics curricula (Python, C, Raspberry Pi, Arduino), translating complex concepts into accessible modules.
-\end{itemize}}}
+    \item Led online Python and AI training for an international student base (USA, UK, Singapore, India) and designed hands-on robotics curricula (Python, C, Raspberry Pi, Arduino), translating complex concepts into accessible modules.
+\end{itemize}
 
 \vspace{3pt}
 
 % --- Earlier Role ---
-\needspace{5\baselineskip}
-\item{\cventry{2020-2022}{Junior Software Developer}{Koderoom}{Remote, India}{}{\vspace{1pt}
+\needspace{4\baselineskip}
+\item{\cventry{Jun 2020 - Jun 2022}{Junior Software Developer}{Koderoom}{Remote, India}{}{}}
+\vspace{-2pt}
 \begin{itemize}
     \item Built and maintained backend APIs for a legal contract-management platform --- document parsing, data structuring, and secure retrieval of sensitive contracts.
-\end{itemize}}}
+\end{itemize}
+
+\vspace{3pt}
+
+\needspace{3\baselineskip}
+\item{\cventry{2018 - 2019}{Site Engineer}{Samia Engineering Services}{Nagpur, India}{}{}}
+\vspace{-2pt}
+\begin{itemize}
+    \item On-site mechanical engineering across industrial equipment projects, prior to transitioning into software.
+\end{itemize}
+
+\end{itemize}
+
+% ============================================================
+%     SELECTED PROJECTS
+% ============================================================
+
+\needspace{6\baselineskip}
+\section{Selected Projects}
+\vspace{1pt}
+\begin{itemize}
+
+\item \textbf{Convogene.ai} --- live production RAG assistant, \href{https://convogene.ai}{convogene.ai}. LangGraph/LangChain ingestion, hybrid retrieval and two-layer guardrails evaluated for near-zero hallucination; on Azure.
+
+\item \textbf{Agentic AI test-automation platform} --- repo-aware agent that maps call graphs with LLMs, then generates, executes and self-heals API, workflow and security suites under an inference-cost budget, with blast-radius analysis and Allure reporting across on-prem, Vertex AI and Azure models. Co-led; built with Claude Code.
+
+\item \textbf{ai-job-search} --- open-source agentic toolkit: Claude Code skills that scrape job portals, rank fit against a candidate profile and generate tailored CVs and cover letters end to end. \href{https://github.com/SahilSinghDiwan/ai-job-search}{github.com/SahilSinghDiwan/ai-job-search}
 
 \end{itemize}
 
@@ -115,8 +153,14 @@
 \section{Education}
 \vspace{1pt}
 \begin{itemize}
+\renewcommand{\labelitemi}{}  % cventry rows carry their own layout; no marker
 
-\item{\cventry{2023-2024}{Post Graduate Diploma (6 months)}{Centre for Development of Advanced Computing (C-DAC)}{India}{}{}}
+
+\item{\cventry{Sep 2023 - Feb 2024}{Post Graduate Diploma (6 months)}{Centre for Development of Advanced Computing (C-DAC)}{India}{}{}}
+
+\vspace{3pt}
+
+\item{\cventry{2019-2020}{Post Graduate Diploma, Industrial Robotics}{Rashtrasant Tukadoji Maharaj Nagpur University --- Oberoi Centre for Excellence}{Nagpur, India}{}{}}
 
 \vspace{3pt}
 
@@ -132,6 +176,7 @@
 \vspace{1pt}
 \begin{itemize}
 \item{\textbf{Claude Certified Architect --- Foundations} (Anthropic) --- issued Aug 2026, valid to Aug 2027. \href{https://www.credly.com/badges/19e35e8e-4d09-45a9-ade3-e246ceef7203}{Credly badge}.}
+\item{\textbf{Claude Certified Architect --- Practitioner} (Anthropic) --- in progress.}
 \item{\textbf{IBM Cloud Advocate Essentials} --- completed Dec 2025.}
 \end{itemize}
 

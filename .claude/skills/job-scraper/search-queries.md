@@ -16,6 +16,7 @@ order and cadence are set here. Selected on **signal quality, not volume** (see
 | `freehire-search` | **ON** | every run | Global-remote across ~50 ATS platforms; real `posted_at` dates |
 | `instahyre-search` | **ON - demoted** | every 2nd run | See demotion note below |
 | `naukri-search` | **OFF** | on demand only | Bulk-poster dominance and no salary data; kept installed as an escape hatch. See its `SKILL.md` |
+| `ats-search` | **ON** | every run | Direct Greenhouse/Ashby/Lever feeds for the companies in `companies.txt` (incl. Razorpay); real employer-set dates, no board markup. Run with queries covering both Priority 1-3 terms and `-q "Forward Deployed"` - title-only matching means a role has to be queried by its actual title to surface, and it will not appear under an "AI Engineer" query just because the company is AI-first |
 | Danish portals (4) | **OFF** | never | Wrong market; kept installed for clean upstream merges |
 
 **Instahyre is demoted, not disabled.** It surfaces real Bengaluru AI roles, but it
@@ -91,7 +92,16 @@ site:linkedin.com/jobs "AI Platform Engineer" (Bengaluru OR Remote)
 site:linkedin.com/jobs "Agentic" AI engineer
 site:linkedin.com/jobs "AI developer tooling" OR "LLM tooling" engineer
 site:wellfound.com "agentic" OR "AI agent" engineer remote
+site:linkedin.com/jobs "Forward Deployed Engineer" (Bengaluru OR Remote) India
+bun run .agents/skills/ats-search/cli/src/cli.ts search -q "Forward Deployed" --format table
 ```
+
+**Forward Deployed Engineer** is a distinct title, not a synonym for "AI Engineer" -
+it will not surface under any query above. It shows up at customer-facing
+implementation-heavy AI/agentic companies (Palantir popularized it; Razorpay and
+similar funded product companies now use it too) and fits the platform/agentic
+profile well when the JD is AI-adjacent - evaluate normally, do not assume it is
+non-technical from the title alone.
 
 ### Priority 4: Broader ML / GenAI (wider net)
 

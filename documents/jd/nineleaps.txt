@@ -1,0 +1,490 @@
+COMPANY: Nineleaps
+URL: https://www.linkedin.com/jobs/view/ai-engineer-at-nineleaps-4448183699/
+SCORE: 81
+SCRAPED: 2026-09-16
+
+---
+
+0 notifications
+Skip to search
+Skip to main content
+Skip to primary content
+Skip to aside
+Skip to footer
+Home
+My Network
+Jobs
+Messaging
+8
+Notifications
+Me
+For Business
+
+Try Premium for ₹0
+
+AI Engineer
+
+Nineleaps • Bengaluru, Karnataka, India (On-site)
+
+Saved
+Apply
+
+Nineleaps
+
+AI Engineer
+
+Bengaluru, Karnataka, India · 1 month ago · Over 100 people clicked apply
+
+Responses managed off LinkedIn
+
+On-site
+Full-time
+Apply
+Saved
+Use AI to assess how you fit
+
+Get AI-powered advice on this job and more exclusive features with Premium. Activate Premium for ₹0
+
+Show match details
+
+Tailor my resume
+
+Help me stand out
+
+About the job
+
+The Core Responsibilities For The Job Include The Following
+
+Solution Architecture and Deployment: 
+
+Design and deploy scalable, secure GenAI architectures integrated into customer-facing products.
+Build REST APIs for AI/ML models and deploy them in containerised environments (Docker, Kubernetes) on cloud platforms (AWS, Azure, GCP).
+
+GenAI And LLM Development
+
+Fine-tune and optimise generative models, including GPT, VAEs, GANs, and transformer-based architectures.
+Apply techniques like Retrieval-Augmented Generation (RAG) and prompt engineering to enhance model performance and relevance.
+Work with both commercial and open-source LLMs (e. g., GPT-4 Claude, LLaMA 3.2 Phi).
+
+Agentic AI Integration
+
+Primary Focus: Build, deploy, and optimise AI agents leveraging frameworks such as LangChain, LangGraph, CrewAI, AgentFlow, and Autogen.
+Implement orchestration strategies, multi-agent collaboration, tool integration, and memory/state management.
+Drive experimentation to create autonomous or semi-autonomous agents that solve real business workflows and decision-making processes.
+
+MLOps And Performance Optimisation
+
+Establish MLOps pipelines covering model lifecycle: training, CI/CD, monitoring, and retraining.
+Use tools like Git, Docker, Kubernetes, and vector DBs to ensure efficient and reliable deployment.
+Optimise resource utilisation and infrastructure costs.
+
+Cross-Functional Collaboration
+
+Partner with engineering, data science, and product teams to align technical solutions with business goals.
+Effectively communicate complex concepts across diverse technical and non-technical audiences.
+Stay current with industry advancements and drive innovation in GenAI and AI agent strategy.
+
+Requirements
+
+Strong proficiency in Python, SQL, and GenAI frameworks (e. g., LangChain).
+Hands-on experience in building and deploying AI agents with orchestration, tool use, and state management.
+In-depth knowledge of LLM architecture, RAGs, embeddings, prompt tuning, vector databases, agentic AI patterns (ReAct, tool-calling agents, multi-step reasoning, guardrails)
+Experience with cloud platforms (AWS, Azure, GCP) and containerisation.
+Strong analytical, problem-solving, and communication skills.
+Data integration experience with REST APIs, Google APIs, and SQL databases. Comfortable moving data between systems.
+Experience in Web development: FastAPIs, Typescript, async patterns, building production APIs, React, node.js, Component architecture, hooks, state management, consuming streaming APIs (SSE/WebSocket)
+
+Preferred
+
+3+ years of hands-on experience with LLMs and GenAI in production settings.
+Exposure to agentic AI tools and multi-agent workflows (e. g., CrewAI, LangGraph, and Autogen).
+Familiarity with MLOps and AI deployment best practices.
+Experience in client-facing or cross-functional AI initiatives.
+Publications, open-source contributions, or demonstrable projects showcasing AI agent development.
+
+This job was posted by Ana Bardhan from Nineleaps.
+… more
+
+Set alert for similar jobs
+
+Artificial Intelligence Engineer, Bengaluru, Karnataka, India
+
+Off
+Unlock hiring insights on Nineleaps
+
+16%
+
+employee growth
+
+Chart
+Chart with 25 data points.
+The chart has 1 X axis displaying Time. Data ranges from 2024-09-01 00:00:00 to 2026-09-01 00:00:00.
+The chart has 1 Y axis displaying values. Data ranges from 425 to 499.
+Sep 2024
+Sep 2025
+Sep 2026
+End of interactive chart.
+
+Applicant education level
+
+42%
+
+have a Bachelor of Technology
+
+Applicant seniority level
+
+67%
+
+Entry level applicants
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+About the company
+
+Nineleaps
+
+82,851 followers
+
+Follow
+
+IT Services and IT Consulting
+
+ • 
+
+201-500 employees
+
+ • 
+
+498 on LinkedIn
+
+Nineleaps is a digital product engineering, data engineering and AI engineering company that helps enterprises build scalable digital products, modern data platforms and production-grade AI systems.
+
+Show more
+More jobs
+
+Senior AI Engineer
+Senior AI Engineer
+
+LeadSquared
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 month ago
+1 month ago
+
+ · 
+
+Easy Apply
+
+AI Engineer (Verified job)
+AI Engineer 
+
+Ecolab
+
+Bengaluru East
+
+3 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 13 hours ago
+13 hours ago
+
+Artificial Intelligence Engineer (Verified job)
+Artificial Intelligence Engineer 
+
+Recro
+
+Greater Bengaluru Area (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+ · 
+
+Easy Apply
+
+Agentic AI Engineer (Verified job)
+Agentic AI Engineer 
+
+Infosys
+
+Bengaluru East
+
+4 connections work here
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+AI/ML Engineer (Verified job)
+AI/ML Engineer 
+
+Recro
+
+Bengaluru (On-site)
+
+18 INR/yr - 22 INR/yr
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+Agentic AI Engineer (Verified job)
+Agentic AI Engineer 
+
+Talentgigs
+
+Hyderabad (On-site)
+
+Promoted
+
+ · 
+
+Posted 24 minutes ago
+24 minutes ago
+
+ · 
+
+Easy Apply
+
+AI Engineer
+AI Engineer
+
+UST
+
+Bengaluru
+
+50 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Senior AI Engineer (Verified job)
+Senior AI Engineer 
+
+Sapiens
+
+Bengaluru
+
+59 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 4 days ago
+4 days ago
+
+Artificial Intelligence Engineer
+Artificial Intelligence Engineer
+
+EverestDX Inc
+
+Hyderabad (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+Senior GenAI Engineer (Verified job)
+Senior GenAI Engineer 
+
+Artech L.L.C.
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+ · 
+
+Easy Apply
+
+Artificial Intelligence Engineer (Verified job)
+Artificial Intelligence Engineer 
+
+EdgeVerve
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 3 weeks ago
+3 weeks ago
+
+ · 
+
+Easy Apply
+
+Gen  AI / ML Engineers  (Verified job)
+Gen  AI / ML Engineers 
+
+Tata Consultancy Services
+
+Bengaluru (On-site)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+See more jobs like this
+
+Job search smarter with Premium
+
+See jobs where you’d be a top applicant
+
+Message hiring managers with InMail
+
+Get personalized cover letter and resume tips
+
+Plus! Get insider access to live talks with industry leaders.
+
+Meer Fahad Ali and millions of other members use Premium
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+Looking for talent?
+
+Post a job
+
+About
+
+Accessibility
+
+Talent Solutions
+
+Community Guidelines
+
+Careers
+
+Marketing Solutions 
+
+Privacy & Terms
+
+Ad Choices
+
+Advertising
+
+Sales Solutions
+
+Mobile
+
+Small Business
+
+Safety Center
+
+LinkedIn Corporation © 2026
+
+Questions?
+
+Visit our Help Center.
+
+Manage your account and privacy
+
+Go to your Settings.
+
+Recommendation transparency
+
+Learn more about Recommended Content.
+
+Select language
+
+العربية (Arabic)
+বাংলা (Bangla)
+Čeština (Czech)
+Dansk (Danish)
+Deutsch (German)
+Ελληνικά (Greek)
+English (English)
+Español (Spanish)
+فارسی (Persian)
+Suomi (Finnish)
+Français (French)
+हिंदी (Hindi)
+Magyar (Hungarian)
+Bahasa Indonesia (Indonesian)
+Italiano (Italian)
+עברית (Hebrew)
+日本語 (Japanese)
+한국어 (Korean)
+मराठी (Marathi)
+Bahasa Malaysia (Malay)
+Nederlands (Dutch)
+Norsk (Norwegian)
+ਪੰਜਾਬੀ (Punjabi)
+Polski (Polish)
+Português (Portuguese)
+Română (Romanian)
+Русский (Russian)
+Svenska (Swedish)
+తెలుగు (Telugu)
+ภาษาไทย (Thai)
+Tagalog (Tagalog)
+Türkçe (Turkish)
+Українська (Ukrainian)
+Tiếng Việt (Vietnamese)
+简体中文 (Chinese (Simplified))
+正體中文 (Chinese (Traditional))

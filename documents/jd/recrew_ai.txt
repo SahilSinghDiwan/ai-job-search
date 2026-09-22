@@ -1,0 +1,497 @@
+COMPANY: Recrew AI
+URL: https://www.linkedin.com/jobs/view/senior-machine-learning-engineer-at-recrew-ai-4467722396/
+SCORE: 84
+SCRAPED: 2026-09-16
+
+---
+
+0 notifications
+Skip to search
+Skip to main content
+Skip to primary content
+Skip to aside
+Skip to footer
+Home
+My Network
+Jobs
+Messaging
+8
+Notifications
+Me
+For Business
+
+Try Premium for ₹0
+
+Senior Machine Learning Engineer
+
+Recrew AI • Bengaluru, Karnataka, India (On-site)
+
+Save
+Apply
+
+Recrew AI
+
+Senior Machine Learning Engineer
+
+Bengaluru, Karnataka, India · 17 hours ago · 29 people clicked apply
+
+Promoted by hirer · Responses managed off LinkedIn
+
+On-site
+Full-time
+Apply
+Save
+Use AI to assess how you fit
+
+Get AI-powered advice on this job and more exclusive features with Premium. Activate Premium for ₹0
+
+Show match details
+
+Tailor my resume
+
+Help me stand out
+
+People you can reach out to
+
+Meet the hiring team
+
+Pranavi Nemali 
+
+• 3rd
+
+Techical Recruiter
+
+Job poster
+
+Message
+About the job
+
+Role: Senior Machine Learning Engineer
+
+Function: Machine Learning / Artificial Intelligence
+
+Location: Bengaluru
+
+Type: Full-time
+
+Industry: Information Technology & Services, Computer Software, Fintech
+
+About Company
+
+The company is a Bengaluru-based enterprise tech startup founded in 2016. It builds paperless digital solutions that power financial inclusion across India.
+
+The company serves 100 million+ users and 1,500+ enterprises. Its products cover digital identity verification, e-signing, document automation, and payment automation.
+
+All solutions are designed to comply with RBI, SEBI, and other regulatory standards. The company is backed by notable investors and led by founders with backgrounds at Flipkart and Twitter.
+
+Position Overview
+
+We're seeking a Senior Machine Learning Engineer to design, build, and deploy production-grade ML systems that power the company's document understanding, fraud detection, and identity verification solutions. You'll work on cutting-edge problems involving computer vision, LLMs, and multimodal AI while collaborating with backend, platform, and product teams to deliver scalable ML systems that serve millions of users.
+
+Role & Responsibilities
+
+Design, build, train, and deploy ML and Deep Learning models for production
+Develop ML/AI solutions for document understanding, face analysis, forgery detection, and visual reasoning
+Build and integrate LLM/VLM/GenAI solutions for extraction, reasoning, and decision support
+Own the complete ML lifecycle from data analysis to deployment and monitoring
+Write clean, efficient, and testable Python code for ML pipelines and services
+Collaborate with cross-functional teams to ship scalable ML systems
+Optimize model performance, reliability, latency, and cost in production environments
+Mentor junior engineers and establish ML engineering best practices
+
+Must Have Criteria
+
+4–10 years of hands-on Python experience for ML, DL, and GenAI development
+Strong fundamentals in Machine Learning, Deep Learning, linear algebra, and optimization
+Experience with both PyTorch and TensorFlow for deep learning model development
+Practical Computer Vision experience with OpenCV and PIL for image processing
+Hands-on experience with OCR engines and document processing pipelines
+Experience with LLMs and GenAI systems including prompting and fine-tuning
+Proven track record of taking ML models from development to production
+
+Nice to Have
+
+Experience in fintech, compliance, fraud detection, or identity verification domains
+MLOps experience with model monitoring, CI/CD pipelines, and deployment automation
+Experience with ML system design and architecture at scale
+Background in document processing, OCR, or automated verification systems
+
+What We Offer
+
+Opportunity to work on high-impact AI problems serving top fintechs in India
+Ownership of systems operating at scale with legal and financial significance
+Freedom to design, experiment, and ship without bureaucratic overhead
+Strong engineering culture focused on fundamentals and long-term thinking
+Growth opportunities in a fast-scaling startup
+
+… more
+
+Set alert for similar jobs
+
+Senior Machine Learning Engineer, Bengaluru, Karnataka, India
+
+Off
+
+Job search faster with Premium
+
+Access company insights like strategic priorities, headcount trends, and more
+
+Meer Fahad Ali and millions of other members use Premium
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+About the company
+
+Recrew AI
+
+8,890 followers
+
+Follow
+
+Staffing and Recruiting
+
+ • 
+
+11-50 employees
+
+ • 
+
+22 on LinkedIn
+
+Recrew is a recruiting company built for how talent acquisition should work, not how it has always worked.
+
+We combine proprietary AI agents with a curated network of specialist recruiters to deliver full-service hiring for startups, mid-market companies, and Global Capability Centers. No retainers or bloated teams, just mandates filled with the right people.
+
+The traditional recruiting agency model is broken. Incentives are misaligned, pipelines are thin, and most firms sell you a team that is learning on your dime. We built Recrew to fix that by screening at scale with human recruiters who have earned their stripes in specific industries and functions.
+
+Our model is simple: We only win when you make a hire. That keeps us honest.
+
+We work with companies that care about hiring quality and hiring speed. Whether you need a recruiting partner to fill critical roles or AI tools to power your existing team, Recrew is built for both.
+
+Visit www.recrew.ai to see the platform or book a conversation with our team.
+… more
+
+Interested in working with us in the future?
+
+Members who share that they’re interested in a company may be 2x as likely to get a message from a recruiter than those who don’t. Learn more
+
+I’m interested
+Show more
+More jobs
+
+Senior Engineer, Agentic AI & MLOps Engineering (5-8 years) (Verified job)
+Senior Engineer, Agentic AI & MLOps Engineering (5-8 years) 
+
+Sandisk
+
+Bengaluru
+
+7 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 3 weeks ago
+3 weeks ago
+
+Senior Machine Learning Engineer - Agentic AI (Verified job)
+Senior Machine Learning Engineer - Agentic AI 
+
+Quantiphi
+
+Bengaluru (Hybrid)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+Senior Machine Learning Engineer (Verified job)
+Senior Machine Learning Engineer 
+
+Quantiphi
+
+Bengaluru (Hybrid)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 6 days ago
+6 days ago
+
+ · 
+
+Easy Apply
+
+Senior AI Engineer – Generative AI & Agentic AI IRC295269 (Verified job)
+Senior AI Engineer – Generative AI & Agentic AI IRC295269 
+
+GlobalLogic
+
+Bengaluru
+
+1 connection works here
+
+Promoted
+
+ · 
+
+Posted 3 weeks ago
+3 weeks ago
+
+Senior Machine Learning Engineer
+Senior Machine Learning Engineer
+
+Recrew AI
+
+Bengaluru (On-site)
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+Senior Machine Learning Engineer (Verified job)
+Senior Machine Learning Engineer 
+
+HackerRank
+
+Bengaluru East (Hybrid)
+
+1 school alumni works here
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+Senior Machine Learning Engineer, Content Platform (Verified job)
+Senior Machine Learning Engineer, Content Platform 
+
+Roku
+
+Bengaluru (Hybrid)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 1 week ago
+1 week ago
+
+ · 
+
+Easy Apply
+
+Sr. Machine Learning Engineer (Verified job)
+Sr. Machine Learning Engineer 
+
+Conga
+
+Bengaluru
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 4 days ago
+4 days ago
+
+ · 
+
+Easy Apply
+
+Senior AI ML Engineer (Verified job)
+Senior AI ML Engineer 
+
+Optum
+
+Bengaluru (Hybrid)
+
+Actively reviewing applicants
+
+Promoted
+
+ · 
+
+Posted 3 weeks ago
+3 weeks ago
+
+ · 
+
+Easy Apply
+
+Senior Machine Learning Platform Engineer (Verified job)
+Senior Machine Learning Platform Engineer 
+
+Amgen
+
+Hyderabad (On-site)
+
+2 school alumni work here
+
+Promoted
+
+ · 
+
+Posted 3 days ago
+3 days ago
+
+Senior AI/ML & Gen AI Engineer 
+Senior AI/ML & Gen AI Engineer 
+
+CMMI Level 3 Company
+
+Hyderabad (On-site)
+
+25 INR/yr - 30 INR/yr
+
+Promoted
+
+ · 
+
+Posted 2 weeks ago
+2 weeks ago
+
+ · 
+
+Easy Apply
+
+Sr. AI/ML Engineer (Verified job)
+Sr. AI/ML Engineer 
+
+Skyworks Solutions, Inc.
+
+Bengaluru
+
+1 school alumni works here
+
+Promoted
+
+ · 
+
+Posted 3 days ago
+3 days ago
+
+See more jobs like this
+
+Job search smarter with Premium
+
+See jobs where you’d be a top applicant
+
+Message hiring managers with InMail
+
+Get personalized cover letter and resume tips
+
+Plus! Get insider access to live talks with industry leaders.
+
+Meer Fahad Ali and millions of other members use Premium
+
+Activate Premium for ₹0
+
+1-month free trial with 24/7 support. We’ll send you a reminder 7 days before your trial ends.
+
+Looking for talent?
+
+Post a job
+
+About
+
+Accessibility
+
+Talent Solutions
+
+Community Guidelines
+
+Careers
+
+Marketing Solutions 
+
+Privacy & Terms
+
+Ad Choices
+
+Advertising
+
+Sales Solutions
+
+Mobile
+
+Small Business
+
+Safety Center
+
+LinkedIn Corporation © 2026
+
+Questions?
+
+Visit our Help Center.
+
+Manage your account and privacy
+
+Go to your Settings.
+
+Recommendation transparency
+
+Learn more about Recommended Content.
+
+Select language
+
+العربية (Arabic)
+বাংলা (Bangla)
+Čeština (Czech)
+Dansk (Danish)
+Deutsch (German)
+Ελληνικά (Greek)
+English (English)
+Español (Spanish)
+فارسی (Persian)
+Suomi (Finnish)
+Français (French)
+हिंदी (Hindi)
+Magyar (Hungarian)
+Bahasa Indonesia (Indonesian)
+Italiano (Italian)
+עברית (Hebrew)
+日本語 (Japanese)
+한국어 (Korean)
+मराठी (Marathi)
+Bahasa Malaysia (Malay)
+Nederlands (Dutch)
+Norsk (Norwegian)
+ਪੰਜਾਬੀ (Punjabi)
+Polski (Polish)
+Português (Portuguese)
+Română (Romanian)
+Русский (Russian)
+Svenska (Swedish)
+తెలుగు (Telugu)
+ภาษาไทย (Thai)
+Tagalog (Tagalog)
+Türkçe (Turkish)
+Українська (Ukrainian)
+Tiếng Việt (Vietnamese)
+简体中文 (Chinese (Simplified))
+正體中文 (Chinese (Traditional))

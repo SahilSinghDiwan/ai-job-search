@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Search Tracker</title>
+<style>
+:root{
+  --bg:#f7f7f5; --panel:#fff; --border:#e2e0dc; --text:#1c1b19; --muted:#75716a;
+  --accent:#c25a2b; --accent-soft:#f5e7df;
+  --s-applied:#7a7f8a; --s-interview:#2f6fae; --s-offer:#2e8b57; --s-rejected:#b0453a;
+  --shadow:0 1px 2px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171614; --panel:#201f1c; --border:#34322e; --text:#eceae5; --muted:#9a958c;
+  --accent:#e2814f; --accent-soft:#3a2a21;
+  --s-applied:#9aa0ab; --s-interview:#68a6de; --s-offer:#5fbd88; --s-rejected:#e0796c;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --bg:#171614; --panel:#201f1c; --border:#34322e; --text:#eceae5; --muted:#9a958c;
+  --accent:#e2814f; --accent-soft:#3a2a21;
+  --s-applied:#9aa0ab; --s-interview:#68a6de; --s-offer:#5fbd88; --s-rejected:#e0796c;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.5 ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 96px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:18px}
+h1{font-size:22px;margin:0;letter-spacing:-.01em}
+.file{font-size:13px;color:var(--muted)}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--s-offer);margin-right:6px;vertical-align:middle}
+.dot.dirty{background:var(--accent)}
+button,select,input,textarea{font:inherit;color:inherit}
+.btn{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:7px 12px;cursor:pointer;
+  box-shadow:var(--shadow);transition:transform .08s}
+.btn:hover{border-color:var(--accent)} .btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.bar input[type=search]{flex:1;min-width:180px;padding:7px 11px;border:1px solid var(--border);
+  border-radius:8px;background:var(--panel)}
+.bar select{padding:7px 9px;border:1px solid var(--border);border-radius:8px;background:var(--panel)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:18px}
+.tile{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.tile .n{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.tile .l{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.tablewrap{overflow-x:auto;background:var(--panel);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:820px}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
+  padding:11px 12px;border-bottom:1px solid var(--border);white-space:nowrap;cursor:pointer;user-select:none}
+th:hover{color:var(--text)}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr{cursor:pointer} tbody tr:hover{background:var(--accent-soft)}
+tbody tr.sel{background:var(--accent-soft)}
+.co{font-weight:600}
+.role{color:var(--muted);font-size:13px}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap}
+.p-applied{background:var(--s-applied)} .p-interview{background:var(--s-interview)}
+.p-offer{background:var(--s-offer)} .p-rejected{background:var(--s-rejected)}
+.p-offer_accepted,.p-hired{background:var(--s-offer)}
+.p-screening{background:var(--s-interview)}
+.p-withdrawn,.p-no_response{background:var(--s-applied)}
+.mono{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px;white-space:nowrap}
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .18s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--panel);
+  border-left:1px solid var(--border);transform:translateX(100%);transition:transform .2s ease;
+  overflow-y:auto;padding:20px;z-index:5}
+.drawer.on{transform:none}
+.drawer h2{font-size:16px;margin:0 0 14px}
+.fld{margin-bottom:12px}
+.fld label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px}
+.fld input,.fld select,.fld textarea{width:100%;padding:8px 10px;border:1px solid var(--border);
+  border-radius:8px;background:var(--bg)}
+.fld textarea{min-height:92px;resize:vertical}
+.drawer-actions{display:flex;gap:8px;margin-top:18px}
+.danger{color:var(--s-rejected);border-color:var(--s-rejected)}
+.empty{padding:40px;text-align:center;color:var(--muted)}
+.hint{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.6}
+kbd{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:11px}
+.savebar{position:fixed;left:0;right:0;bottom:0;background:var(--panel);border-top:1px solid var(--border);
+  padding:10px 20px;display:flex;gap:10px;align-items:center;justify-content:flex-end;z-index:4}
+.savebar .msg{margin-right:auto;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Job Search Tracker</h1>
+      <div class="file" id="fileInfo">No file loaded</div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn" id="openBtn">Open CSV…</button>
+      <button class="btn" id="themeBtn" title="Toggle theme">◐</button>
+    </div>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="bar">
+    <input type="search" id="q" placeholder="Search company, role, notes…">
+    <select id="fStatus"><option value="">All statuses</option></select>
+    <select id="fSector"><option value="">All sectors</option></select>
+    <button class="btn primary" id="addBtn">+ Add row</button>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr id="thead"></tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden>Nothing here yet.</div>
+  </div>
+
+  <p class="hint">
+    Click any row to edit it. Changes stay in the browser until you hit <b>Save</b>.<br>
+    <b>Save</b> writes straight back to <code>job_search_tracker.csv</code> in Chrome/Edge.
+    In Safari/Firefox it downloads a replacement file instead.
+  </p>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true"></aside>
+
+<div class="savebar">
+  <span class="msg" id="msg"></span>
+  <button class="btn" id="revertBtn" disabled>Revert</button>
+  <button class="btn primary" id="saveBtn" disabled>Save</button>
+</div>
+
+<script>
+const COLS = ["date","company","sector","role","role_type","channel","status","contact_person","fit_rating","notes","cv_file","cover_letter_file","source"];
+const ENUMS = {
+  status:["applied","interview","offer","offer_accepted","rejected","screening","withdrawn","no_response","hired"],
+  sector:["ai_frontier","ai_product_india","ai_product_global","dev_tooling","analytics","it_services","staffing","hospitality","unknown"],
+  role_type:["ai_engineering","sre_ml_infra","software_engineering","data_science","unknown"],
+  channel:["linkedin","naukri","wellfound","greenhouse","ashby","workday","unstop","direct","referral","other"],
+  source:["gmail","manual","scraper"],
+  fit_rating:["","5","4","3","2","1"]
+};
+const TABLE_COLS = ["date","company","role","status","channel","sector"];
+const DEFAULT_NAME = "job_search_tracker.csv";
+
+let header = COLS.slice(), rows = [], original = "", handle = null, dirty = false, sortKey = "date", sortDir = -1, selIdx = null;
+const $ = s => document.querySelector(s);
+
+/* ---------- CSV ---------- */
+function parseCSV(text){
+  const out=[]; let row=[], f="", q=false;
+  text = text.replace(/^﻿/,"").replace(/\r\n?/g,"\n");
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(q){ if(c==='"'){ if(text[i+1]==='"'){f+='"';i++;} else q=false; } else f+=c; }
+    else if(c==='"') q=true;
+    else if(c===','){ row.push(f); f=""; }
+    else if(c==='\n'){ row.push(f); out.push(row); row=[]; f=""; }
+    else f+=c;
+  }
+  if(f.length||row.length){ row.push(f); out.push(row); }
+  return out.filter(r=>r.length>1||(r[0]||"").trim()!=="");
+}
+const esc = v => { v=(v??"")+""; return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; };
+const toCSV = () => [header.join(",")].concat(rows.map(r=>header.map(h=>esc(r[h])).join(","))).join("\n")+"\n";
+
+function load(text, name, h){
+  const g = parseCSV(text);
+  if(!g.length){ alert("Empty CSV."); return; }
+  header = g[0].map(s=>s.trim());
+  rows = g.slice(1).map(r=>Object.fromEntries(header.map((k,i)=>[k, r[i]??""])));
+  original = text; handle = h||null; setDirty(false);
+  $("#fileInfo").textContent = name + " · " + rows.length + " rows" + (handle?"":" (read-only copy — Save downloads)");
+  buildFilters(); render();
+}
+
+/* ---------- state ---------- */
+function setDirty(d){
+  dirty=d;
+  $("#saveBtn").disabled=!d; $("#revertBtn").disabled=!d;
+  $("#msg").innerHTML = d ? '<span class="dot dirty"></span>Unsaved changes' : (rows.length?'<span class="dot"></span>Saved':'');
+}
+window.addEventListener("beforeunload", e => { if(dirty){ e.preventDefault(); e.returnValue=""; } });
+
+/* ---------- render ---------- */
+function visible(){
+  const q=$("#q").value.trim().toLowerCase(), st=$("#fStatus").value, sc=$("#fSector").value;
+  return rows.map((r,i)=>({r,i})).filter(({r})=>{
+    if(st && r.status!==st) return false;
+    if(sc && r.sector!==sc) return false;
+    if(q && !header.some(h=>(r[h]||"").toLowerCase().includes(q))) return false;
+    return true;
+  }).sort((a,b)=>{
+    const x=(a.r[sortKey]||"").toLowerCase(), y=(b.r[sortKey]||"").toLowerCase();
+    return x<y?-sortDir:x>y?sortDir:0;
+  });
+}
+function render(){
+  $("#thead").innerHTML = TABLE_COLS.map(c=>
+    `<th data-k="${c}">${c.replace(/_/g," ")}${sortKey===c?(sortDir>0?" ↑":" ↓"):""}</th>`).join("");
+  $("#thead").querySelectorAll("th").forEach(th=>th.onclick=()=>{
+    const k=th.dataset.k; if(sortKey===k) sortDir*=-1; else {sortKey=k; sortDir=1;} render();
+  });
+  const v = visible();
+  $("#tbody").innerHTML = v.map(({r,i})=>`<tr data-i="${i}" class="${i===selIdx?"sel":""}">
+    <td class="mono">${he(r.date)}</td>
+    <td class="co">${he(r.company)}</td>
+    <td class="role">${he(r.role)}</td>
+    <td><span class="pill p-${he(r.status||"applied")}">${he(r.status)}</span></td>
+    <td class="mono">${he(r.channel)}</td>
+    <td class="mono">${he(r.sector)}</td>
+  </tr>`).join("");
+  $("#empty").hidden = v.length>0;
+  $("#tbody").querySelectorAll("tr").forEach(tr=>tr.onclick=()=>openDrawer(+tr.dataset.i));
+  renderTiles();
+}
+const he = s => (s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function renderTiles(){
+  const c = k => rows.filter(r=>r.status===k).length;
+  const t=[["Total",rows.length],["Applied",c("applied")],["Interview",c("interview")],["Offer",c("offer")],["Rejected",c("rejected")]];
+  $("#tiles").innerHTML = t.map(([l,n])=>`<div class="tile"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("");
+}
+function buildFilters(){
+  const fill=(sel,key)=>{ const cur=sel.value;
+    const vals=[...new Set(rows.map(r=>r[key]).filter(Boolean))].sort();
+    sel.innerHTML = `<option value="">All ${key==="status"?"statuses":"sectors"}</option>`+vals.map(v=>`<option>${he(v)}</option>`).join("");
+    sel.value = vals.includes(cur)?cur:"";
+  };
+  fill($("#fStatus"),"status"); fill($("#fSector"),"sector");
+}
+
+/* ---------- drawer ---------- */
+function openDrawer(i){
+  selIdx=i; const r=rows[i];
+  $("#drawer").innerHTML = `<h2>${he(r.company)||"New entry"}</h2>` + header.map(h=>{
+    const v=r[h]??"";
+    if(h==="notes") return fld(h,`<textarea data-f="${h}">${he(v)}</textarea>`);
+    if(h==="date") return fld(h,`<input type="date" data-f="${h}" value="${he(v)}">`);
+    if(ENUMS[h]){
+      const opts=[...new Set([...(v?[v]:[]),...ENUMS[h]])];
+      return fld(h,`<select data-f="${h}">${opts.map(o=>`<option ${o===v?"selected":""} value="${he(o)}">${he(o)||"—"}</option>`).join("")}</select>`);
+    }
+    return fld(h,`<input data-f="${h}" value="${he(v)}">`);
+  }).join("") + `<div class="drawer-actions">
+      <button class="btn primary" id="applyBtn">Apply</button>
+      <button class="btn" id="closeBtn">Cancel</button>
+      <button class="btn danger" id="delBtn" style="margin-left:auto">Delete</button>
+    </div>`;
+  $("#drawer").classList.add("on"); $("#drawer").setAttribute("aria-hidden","false"); $("#scrim").classList.add("on");
+  $("#applyBtn").onclick=apply; $("#closeBtn").onclick=closeDrawer;
+  $("#delBtn").onclick=()=>{ if(confirm("Delete this row?")){ rows.splice(selIdx,1); setDirty(true); closeDrawer(); render(); } };
+  $("#drawer").querySelector("[data-f]").focus();
+  render();
+}
+const fld=(h,inner)=>`<div class="fld"><label>${h.replace(/_/g," ")}</label>${inner}</div>`;
+function apply(){
+  const r=rows[selIdx];
+  $("#drawer").querySelectorAll("[data-f]").forEach(el=>{ r[el.dataset.f]=el.value; });
+  setDirty(true); closeDrawer(); buildFilters(); render();
+}
+function closeDrawer(){
+  $("#drawer").classList.remove("on"); $("#drawer").setAttribute("aria-hidden","true");
+  $("#scrim").classList.remove("on"); selIdx=null; render();
+}
+$("#scrim").onclick=closeDrawer;
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape" && selIdx!==null) closeDrawer();
+  if((e.metaKey||e.ctrlKey) && e.key==="s"){ e.preventDefault(); save(); }
+  if((e.metaKey||e.ctrlKey) && e.key==="Enter" && selIdx!==null){ e.preventDefault(); apply(); }
+});
+
+/* ---------- actions ---------- */
+$("#addBtn").onclick=()=>{
+  const blank=Object.fromEntries(header.map(h=>[h,""]));
+  blank.date=new Date().toISOString().slice(0,10);
+  blank.status="applied"; blank.source="manual";
+  rows.unshift(blank); setDirty(true); render(); openDrawer(0);
+};
+$("#q").oninput=render; $("#fStatus").onchange=render; $("#fSector").onchange=render;
+$("#revertBtn").onclick=()=>{ if(confirm("Discard unsaved changes?")) load(original, $("#fileInfo").textContent.split(" · ")[0], handle); };
+
+$("#openBtn").onclick=async()=>{
+  if(window.showOpenFilePicker){
+    try{
+      const [h]=await window.showOpenFilePicker({types:[{description:"CSV",accept:{"text/csv":[".csv"]}}]});
+      const f=await h.getFile(); load(await f.text(), f.name, h);
+    }catch(e){ if(e.name!=="AbortError") alert(e.message); }
+  } else {
+    const inp=document.createElement("input"); inp.type="file"; inp.accept=".csv,text/csv";
+    inp.onchange=async()=>{ const f=inp.files[0]; if(f) load(await f.text(), f.name, null); };
+    inp.click();
+  }
+};
+
+async function save(){
+  if(!rows.length) return;
+  const text=toCSV();
+  if(handle){
+    try{
+      if(await handle.queryPermission({mode:"readwrite"})!=="granted"
+        && await handle.requestPermission({mode:"readwrite"})!=="granted") throw new Error("Write permission denied");
+      const w=await handle.createWritable(); await w.write(text); await w.close();
+      original=text; setDirty(false); flash("Written to "+handle.name);
+      return;
+    }catch(e){ alert("Direct save failed: "+e.message+"\nFalling back to download."); }
+  }
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([text],{type:"text/csv"}));
+  a.download=DEFAULT_NAME; a.click(); URL.revokeObjectURL(a.href);
+  original=text; setDirty(false); flash("Downloaded "+DEFAULT_NAME+" — move it over the original.");
+}
+$("#saveBtn").onclick=save;
+function flash(m){ $("#msg").innerHTML='<span class="dot"></span>'+he(m); }
+
+$("#themeBtn").onclick=()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const dark=cur? cur==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.setAttribute("data-theme", dark?"light":"dark");
+};
+
+/* drag & drop */
+document.addEventListener("dragover",e=>e.preventDefault());
+document.addEventListener("drop",async e=>{
+  e.preventDefault(); const f=e.dataTransfer.files[0]; if(f) load(await f.text(), f.name, null);
+});
+
+/* try same-directory autoload when served over http */
+(async()=>{
+  if(location.protocol.startsWith("http")){
+    try{ const r=await fetch(DEFAULT_NAME); if(r.ok) load(await r.text(), DEFAULT_NAME, null); }catch(e){}
+  }
+  if(!rows.length){ setDirty(false); render(); }
+})();
+</script>
+</body>
+</html>
