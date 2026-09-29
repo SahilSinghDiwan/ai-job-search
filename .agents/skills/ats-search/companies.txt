@@ -1,0 +1,70 @@
+# ats-search company list
+# ------------------------------------------------------------------
+# No ATS provider offers a way to enumerate company slugs, so this file IS
+# the search surface: `search` only sees companies listed here. Maintain it.
+#
+# FORMAT — one company per line:
+#
+#     <provider>  <slug>   # optional note
+#
+# * <provider> is greenhouse | ashby | lever
+# * <slug> is the company's board token — the path segment in its own careers
+#   link (job-boards.greenhouse.io/<slug>, jobs.ashbyhq.com/<slug>,
+#   jobs.lever.co/<slug>). Find it from the company's Careers page; it cannot
+#   be guessed reliably and a wrong slug is a silent 404.
+# * Fields are split on runs of whitespace (spaces or tabs, either works).
+# * `#` starts a comment; blank lines are ignored.
+#
+# ADDING A COMPANY — verify the slug before you commit it:
+#
+#     bun run .agents/skills/ats-search/cli/src/cli.ts check <provider> <slug>
+#
+# Every slug below returned HTTP 200 with at least one open posting when this
+# list was seeded (2026-08-25). Boards go quiet; `check --all` re-verifies.
+# ------------------------------------------------------------------
+
+# --- Frontier AI labs and applied-AI product companies ---
+greenhouse  anthropic        # Claude; hires globally, some remote-eligible reqs
+ashby       openai           # largest single AI board reachable this way
+ashby       cohere           # enterprise LLMs, remote-friendly
+ashby       perplexity       # answer engine; has hired in India
+ashby       elevenlabs       # voice AI, heavily remote
+ashby       cursor           # Anysphere — agentic coding, direct match to Claude Code work
+ashby       cognition        # Devin — agentic software engineering
+ashby       harvey           # legal-domain RAG at scale
+ashby       sierra           # conversational AI agents
+ashby       decagon          # AI support agents
+ashby       writer           # enterprise generative AI
+ashby       mercor           # AI talent marketplace, hires in India
+ashby       abridge          # clinical LLM/ASR
+greenhouse  scaleai          # data + evaluation for frontier labs
+greenhouse  togetherai       # inference/fine-tuning cloud
+greenhouse  gleanwork        # Glean — enterprise RAG search, Bengaluru office
+greenhouse  cresta           # contact-centre AI, India engineering presence
+
+# --- AI/LLM developer tooling and retrieval infrastructure ---
+ashby       langchain        # LangChain/LangGraph — his primary stack
+ashby       modal            # serverless GPU runtime
+ashby       baseten          # model inference platform
+ashby       pinecone         # managed vector DB
+ashby       browserbase      # headless browser infra for agents
+ashby       deepgram         # speech-to-text APIs
+ashby       composio         # agent tool-calling infra, India-founded
+ashby       lambda           # Lambda Labs — GPU cloud
+greenhouse  assemblyai       # speech AI APIs, remote-first
+
+# --- India-based product companies with real AI/ML engineering ---
+ashby       sarvam           # Sarvam AI — Bengaluru, Indic foundation models
+ashby       atlan            # data catalogue, India-founded, remote-friendly
+ashby       navi             # Bengaluru fintech, in-house ML
+greenhouse  observeai        # Observe.AI — Bengaluru, conversation intelligence
+greenhouse  netradyne        # Bengaluru, edge vision AI
+greenhouse  postman          # Bengaluru HQ engineering
+greenhouse  razorpaysoftwareprivatelimited  # Razorpay — Bengaluru
+greenhouse  phonepe          # Bengaluru, large ML org
+greenhouse  rubrik           # Bengaluru R&D centre
+greenhouse  databricks       # Bengaluru engineering centre
+lever       cred             # Bengaluru
+lever       meesho           # Bengaluru
+lever       zeta             # Bengaluru fintech infra
+lever       mindtickle       # Pune/Bengaluru, ML-heavy product

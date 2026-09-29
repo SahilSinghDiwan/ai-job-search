@@ -47,6 +47,14 @@ When the user provides a job posting (URL or text), follow this workflow:
 
 ## Reference Files
 
+**Local overrides.** For every reference file below, if a `<name>.local.md` sibling
+exists, read that file *instead of* the tracked one. The tracked files are templates
+full of `[PLACEHOLDER]` tokens; the `.local.md` copies hold the candidate's real data
+and are gitignored, so nothing personal can be committed from a public fork. If you
+are asked to record a new fact about the candidate, write it to the `.local.md` file
+when one exists — never into the template.
+
+
 | File | Purpose |
 |------|---------|
 | `01-candidate-profile.md` | Education, experience, skills, publications, awards |
@@ -57,6 +65,7 @@ When the user provides a job posting (URL or text), follow this workflow:
 | `06-cover-letter-templates.md` | LaTeX cover letter structure and tailoring rules |
 | `07-interview-prep.md` | STAR examples, tough questions, roleplay guidelines |
 | `08-application-forms.md` | Portal free-text fields: self-introduction, project entries, character-limited pitches |
+| `09-referral-outreach.md` | Finding referral contacts at a target company and drafting the outreach the candidate sends |
 
 ---
 

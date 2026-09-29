@@ -461,5 +461,308 @@ class TestSearchCompanyScoreThreshold(unittest.TestCase):
         self.assertEqual(results[0]["company"], "Novo Nordisk")
 
 
+# ---------------------------------------------------------------------------
+# Indian company-name matching (two-tier stripping)
+# ---------------------------------------------------------------------------
+
+class IndianCompanyNameTests(unittest.TestCase):
+    """Indian legal suffixes strip unconditionally; generic industry words
+    only in the lower-confidence pass."""
+
+    def test_pvt_ltd_variants_normalize_identically(self):
+        for name in [
+            "Acme Technologies Pvt Ltd",
+            "Acme Technologies Pvt. Ltd.",
+            "Acme Technologies Private Limited",
+            "Acme Technologies Ltd",
+            "Acme Technologies Limited",
+            "Acme Technologies LLP",
+        ]:
+            with self.subTest(name=name):
+                self.assertEqual(normalize(name), "acmetechnologies")
+
+    def test_generic_words_are_not_stripped_unconditionally(self):
+        # "technologies" carries some identity, so the confident pass keeps it.
+        self.assertEqual(normalize("Acme Technologies"), "acmetechnologies")
+        self.assertEqual(normalize("Acme Solutions India"), "acmesolutionsindia")
+
+    def test_aggressive_normalize_strips_generic_words(self):
+        self.assertEqual(normalize("Acme Technologies Pvt Ltd", aggressive=True), "acme")
+        self.assertEqual(normalize("Acme India Pvt. Ltd.", aggressive=True), "acme")
+        self.assertEqual(normalize("Acme Solutions", aggressive=True), "acme")
+        self.assertEqual(normalize("Acme Software Labs", aggressive=True), "acme")
+        self.assertEqual(
+            normalize("Acme Global Capability Centre India", aggressive=True), "acme"
+        )
+        self.assertEqual(normalize("Acme GCC", aggressive=True), "acme")
+
+    def test_all_indian_variants_match_one_entry(self):
+        entry = "Acme Technologies Pvt Ltd"
+        for query in [
+            "Acme Technologies Pvt Ltd",
+            "Acme Technologies Private Limited",
+            "Acme India Pvt. Ltd.",
+            "Acme Technologies",
+            "Acme",
+        ]:
+            with self.subTest(query=query):
+                self.assertGreaterEqual(match_score(query, entry), 30)
+
+    def test_generic_word_match_never_reads_as_exact(self):
+        # "Acme India Pvt Ltd" and "Acme Technologies Pvt Ltd" match on "acme"
+        # alone, so the score must clear the search threshold without claiming
+        # the exact-match confidence a literally identical name would get.
+        score = match_score("Acme India Pvt. Ltd.", "Acme Technologies Pvt Ltd")
+        self.assertGreaterEqual(score, 30)
+        self.assertLess(score, 100)
+
+    def test_aggressive_cap_sits_between_threshold_and_confident_tiers(self):
+        # Documented invariant: capped matches surface in search results
+        # (>= the 30 threshold) but can never outrank the 70+ tiers the
+        # unconditional pass produces.
+        self.assertGreater(salary_lookup.AGGRESSIVE_SCORE_CAP, 30)
+        self.assertLess(salary_lookup.AGGRESSIVE_SCORE_CAP, 70)
+
+    def test_exact_match_outranks_generic_word_match(self):
+        data = _make_data(
+            _entry("Acme India Pvt Ltd", "Bengaluru"),
+            _entry("Acme Technologies Pvt Ltd", "Bengaluru"),
+        )
+        results = search_company(data, "Acme Technologies Private Limited")
+        self.assertEqual(results[0]["company"], "Acme Technologies Pvt Ltd")
+
+    def test_generic_words_alone_do_not_create_a_match(self):
+        # Two different companies that share only noise words.
+        self.assertEqual(
+            match_score("Acme India Pvt Ltd", "Globex Solutions India Private Limited"), 0
+        )
+        self.assertEqual(match_score("Acme Systems", "Globex Systems"), 0)
+
+    def test_search_finds_indian_entry_across_name_variants(self):
+        data = _make_data(
+            _entry("Acme Technologies Pvt Ltd", "Bengaluru"),
+            _entry("Globex Solutions India Private Limited", "Bengaluru"),
+        )
+        for query in ["Acme Technologies Pvt Ltd", "Acme India Pvt. Ltd.", "Acme Technologies"]:
+            with self.subTest(query=query):
+                results = search_company(data, query)
+                self.assertEqual([r["company"] for r in results], ["Acme Technologies Pvt Ltd"])
+
+    def test_danish_matching_is_unaffected(self):
+        self.assertEqual(normalize("Novo Nordisk A/S"), "novonordisk")
+        self.assertEqual(match_score("Orsted", "Ørsted A/S"), 85)
+
+
+# ---------------------------------------------------------------------------
+# Absolute (money) mode
+# ---------------------------------------------------------------------------
+
+ABSOLUTE_METADATA = {
+    "source": "AmbitionBox + levels.fyi, collected 2026-08",
+    "mode": "absolute",
+    "currency": "INR",
+    "unit": "LPA",
+    "baseline_description": "Market band for AI/GenAI engineers, 3-5 yrs, Bengaluru",
+}
+
+
+def _absolute_entry(**category):
+    return {
+        "company": "Acme Technologies Pvt Ltd",
+        "city": "Bengaluru",
+        "categories": {"ai_engineer_3_5y": dict(category)},
+    }
+
+
+class ModeTests(unittest.TestCase):
+    def test_missing_mode_defaults_to_index(self):
+        self.assertEqual(salary_lookup.get_mode({}), "index")
+        self.assertEqual(salary_lookup.get_mode(None), "index")
+
+    def test_explicit_modes_are_read(self):
+        self.assertEqual(salary_lookup.get_mode({"mode": "absolute"}), "absolute")
+        self.assertEqual(salary_lookup.get_mode({"mode": "INDEX"}), "index")
+
+
+class ResolveAbsoluteComponentsTests(unittest.TestCase):
+    def test_all_components_present_nothing_derived(self):
+        values, derived = salary_lookup.resolve_absolute_components(
+            {"fixed_lpa": 28.0, "variable_lpa": 4.0, "esop_lpa": 6.0, "total_ctc_lpa": 38.0}
+        )
+        self.assertEqual(values["fixed_lpa"], 28.0)
+        self.assertEqual(values["total_ctc_lpa"], 38.0)
+        self.assertEqual(derived, set())
+
+    def test_total_derived_when_all_components_present(self):
+        values, derived = salary_lookup.resolve_absolute_components(
+            {"fixed_lpa": 22.0, "variable_lpa": 3.0, "esop_lpa": 0.0}
+        )
+        self.assertEqual(values["total_ctc_lpa"], 25.0)
+        self.assertEqual(derived, {"total_ctc_lpa"})
+
+    def test_total_not_derived_from_partial_components(self):
+        values, derived = salary_lookup.resolve_absolute_components(
+            {"fixed_lpa": 22.0, "variable_lpa": 3.0}
+        )
+        self.assertIsNone(values["total_ctc_lpa"])
+        self.assertIsNone(values["esop_lpa"])
+        self.assertEqual(derived, set())
+
+    def test_fixed_not_inferred_from_total_minus_variable_alone(self):
+        values, derived = salary_lookup.resolve_absolute_components(
+            {"total_ctc_lpa": 40.0, "variable_lpa": 5.0}
+        )
+        self.assertIsNone(values["fixed_lpa"])
+        self.assertEqual(derived, set())
+
+    def test_single_missing_component_inferred_from_complete_total(self):
+        values, derived = salary_lookup.resolve_absolute_components(
+            {"total_ctc_lpa": 40.0, "variable_lpa": 5.0, "esop_lpa": 7.0}
+        )
+        self.assertEqual(values["fixed_lpa"], 28.0)
+        self.assertEqual(derived, {"fixed_lpa"})
+
+    def test_missing_component_is_none_not_zero(self):
+        values, _ = salary_lookup.resolve_absolute_components({"fixed_lpa": 30.0})
+        self.assertIsNone(values["esop_lpa"])
+        self.assertNotEqual(values["esop_lpa"], 0)
+
+
+class FormatEntryAbsoluteTests(unittest.TestCase):
+    def test_renders_rupee_amounts_and_headers(self):
+        rendered = format_entry(
+            _absolute_entry(count=42, fixed_lpa=28.0, variable_lpa=4.0,
+                            esop_lpa=6.0, total_ctc_lpa=38.0),
+            ABSOLUTE_METADATA,
+        )
+        for expected in ["Fixed", "Variable", "ESOP", "Total CTC",
+                         "\u20b928.0", "\u20b94.0", "\u20b96.0", "\u20b938.0"]:
+            self.assertIn(expected, rendered)
+        self.assertIn("All amounts in LPA (INR)", rendered)
+        self.assertNotIn("vs Baseline", rendered)
+
+    def test_unknown_component_rendered_as_unknown_not_zero(self):
+        rendered = format_entry(
+            _absolute_entry(count=11, variable_lpa=5.0, total_ctc_lpa=45.0),
+            ABSOLUTE_METADATA,
+        )
+        self.assertIn("?", rendered)
+        self.assertIn("not reported", rendered)
+        self.assertNotIn("\u20b90.0", rendered)
+
+    def test_derived_total_is_flagged(self):
+        rendered = format_entry(
+            _absolute_entry(count=7, fixed_lpa=22.0, variable_lpa=3.0, esop_lpa=0.0),
+            ABSOLUTE_METADATA,
+        )
+        self.assertIn("\u20b925.0~", rendered)
+        self.assertIn("derived", rendered)
+
+    def test_currency_and_unit_drive_labels(self):
+        metadata = {"mode": "absolute", "currency": "USD", "unit": "k"}
+        rendered = format_entry(_absolute_entry(fixed_lpa=180.0), metadata)
+        self.assertIn("$180.0", rendered)
+        self.assertIn("All amounts in k (USD)", rendered)
+
+    def test_index_mode_rendering_untouched_when_mode_absent(self):
+        entry = {"company": "Acme", "city": "",
+                 "categories": {"eng": {"count": 5, "index": 108.5}}}
+        rendered = format_entry(entry, {"index_baseline": 100, "index_label": "Index"})
+        self.assertIn("vs Baseline", rendered)
+        self.assertIn("108.5", rendered)
+
+
+class JsonResultsTests(unittest.TestCase):
+    def test_index_mode_json_is_unchanged(self):
+        results = [{"company": "Acme", "categories": {"eng": {"count": 5, "index": 108.5}}}]
+        self.assertIs(salary_lookup.json_results(results, {}), results)
+
+    def test_absolute_mode_json_exposes_components_separately(self):
+        results = [_absolute_entry(count=7, fixed_lpa=22.0, variable_lpa=3.0, esop_lpa=0.0)]
+        payload = salary_lookup.json_results(results, ABSOLUTE_METADATA)
+        resolved = payload[0]["categories"]["ai_engineer_3_5y"]["resolved"]
+        self.assertEqual(resolved["fixed_lpa"], 22.0)
+        self.assertEqual(resolved["variable_lpa"], 3.0)
+        self.assertEqual(resolved["esop_lpa"], 0.0)
+        self.assertEqual(resolved["total_ctc_lpa"], 25.0)
+        self.assertEqual(resolved["derived_fields"], ["total_ctc_lpa"])
+        self.assertEqual(resolved["currency"], "INR")
+        self.assertEqual(resolved["unit"], "LPA")
+
+    def test_absolute_mode_json_marks_unknown_components_null(self):
+        results = [_absolute_entry(count=11, variable_lpa=5.0, total_ctc_lpa=45.0)]
+        payload = salary_lookup.json_results(results, ABSOLUTE_METADATA)
+        resolved = payload[0]["categories"]["ai_engineer_3_5y"]["resolved"]
+        self.assertIsNone(resolved["fixed_lpa"])
+        self.assertIsNone(resolved["esop_lpa"])
+
+    def test_absolute_mode_json_does_not_mutate_input(self):
+        results = [_absolute_entry(count=7, fixed_lpa=22.0)]
+        salary_lookup.json_results(results, ABSOLUTE_METADATA)
+        self.assertNotIn("resolved", results[0]["categories"]["ai_engineer_3_5y"])
+
+
+class ValidateAbsoluteModeTests(unittest.TestCase):
+    def _issues(self, category, metadata=None):
+        data = {
+            "metadata": metadata if metadata is not None else {"mode": "absolute"},
+            "companies": [{"company": "Acme", "categories": {"eng": category}}],
+        }
+        return collect_validation_issues(data)
+
+    def test_valid_absolute_entry_has_no_issues(self):
+        errors, warnings = self._issues(
+            {"count": 42, "fixed_lpa": 28.0, "variable_lpa": 4.0,
+             "esop_lpa": 6.0, "total_ctc_lpa": 38.0}
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(warnings, [])
+
+    def test_unknown_mode_is_an_error(self):
+        errors, _ = collect_validation_issues(
+            {"metadata": {"mode": "sideways"}, "companies": []}
+        )
+        self.assertTrue(any("metadata.mode" in e for e in errors))
+
+    def test_non_numeric_component_is_an_error(self):
+        errors, _ = self._issues({"fixed_lpa": "28 lakh"})
+        self.assertTrue(any("fixed_lpa must be a number" in e for e in errors))
+
+    def test_inconsistent_sum_is_a_warning_not_an_error(self):
+        errors, warnings = self._issues(
+            {"fixed_lpa": 28.0, "variable_lpa": 4.0, "esop_lpa": 6.0, "total_ctc_lpa": 50.0}
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("components sum to 38", warnings[0])
+
+    def test_small_rounding_difference_is_tolerated(self):
+        _, warnings = self._issues(
+            {"fixed_lpa": 28.0, "variable_lpa": 4.0, "esop_lpa": 6.0, "total_ctc_lpa": 39.0}
+        )
+        self.assertEqual(warnings, [])
+
+    def test_absolute_checks_do_not_run_in_index_mode(self):
+        errors, _ = self._issues({"fixed_lpa": "28 lakh"}, metadata={})
+        self.assertEqual(errors, [])
+
+
+class ValidateFlagAbsoluteTests(ValidateFlagTests):
+    def test_validate_flag_reports_absolute_sum_warning(self):
+        code, out = self._run_validate(
+            '{"metadata": {"mode": "absolute"}, "companies": ['
+            '{"company": "Acme", "categories": {"eng": {"fixed_lpa": 28, '
+            '"variable_lpa": 4, "esop_lpa": 6, "total_ctc_lpa": 50}}}]}'
+        )
+        self.assertEqual(code, 0)
+        self.assertIn("components sum to 38", out)
+
+    def test_validate_flag_rejects_unknown_mode(self):
+        code, out = self._run_validate('{"metadata": {"mode": "sideways"}, "companies": []}')
+        self.assertEqual(code, 1)
+        self.assertIn("metadata.mode", out)
+
+
+
 if __name__ == "__main__":
     unittest.main()

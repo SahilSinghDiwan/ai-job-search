@@ -6,29 +6,27 @@
 
 *The job search that runs on your machine.*
 
-<p align="center">
-  <a href="https://trendshift.io/repositories/43622?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-43622" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/43622/daily" alt="MadsLorentzen%2Fai-job-search | Trendshift" width="250" height="55"/></a>
-</p>
-
-[![CI](https://github.com/MadsLorentzen/ai-job-search/actions/workflows/ci.yml/badge.svg)](https://github.com/MadsLorentzen/ai-job-search/actions/workflows/ci.yml)
+[![CI](https://github.com/SahilSinghDiwan/ai-job-search/actions/workflows/ci.yml/badge.svg)](https://github.com/SahilSinghDiwan/ai-job-search/actions/workflows/ci.yml)
 
 An AI-powered job application framework built on [Claude Code](https://claude.com/claude-code). Fork it, fill in your profile, and let Claude evaluate job postings, tailor your CV, write cover letters, and prepare you for interviews.
 
+**This fork targets the Indian job market** — Naukri, Instahyre, Wellfound, company ATS boards and global-remote listings, with compensation handled in CTC-versus-fixed terms rather than a flat salary number. It tracks [MadsLorentzen/ai-job-search](https://github.com/MadsLorentzen/ai-job-search) upstream, which is country-agnostic at its core and ships Danish portals. If you are hiring-market-agnostic or European, start upstream; if you are searching in India, start here. [What this fork changes](#what-this-fork-changes) lists the differences.
+
 > Note: This is an independent open-source project and is not affiliated with, endorsed by, sponsored by, or maintained by Anthropic. Anthropic and Claude Code are referenced only to describe the toolchain this workflow uses.
 >
-> This project has **no affiliated cryptocurrency, token, or paid sponsorship program**. Anything claiming otherwise is unauthorized and should be treated as a scam. The only ways to support the project are the Ko-fi link below and contributing on GitHub.
+> This project has **no affiliated cryptocurrency, token, or paid sponsorship program**. Anything claiming otherwise is unauthorized and should be treated as a scam. The only ways to support it are upstream's Ko-fi link below and contributing on GitHub.
 
 ## Does it actually work?
 
-I'm a geophysicist by training. When my position was cut in late 2025, I built this framework to run my own job search - the same `/scrape`, `/apply`, and `/interview` workflow in this repo, used weekly, on my own career. I was upfront about it with every employer I spoke to, and instead of counting against me, it usually sparked a genuine technical conversation.
+The framework's author, a geophysicist by training, built it to run his own job search after his position was cut in late 2025 — the same `/scrape`, `/apply` and `/interview` loop in this repo, used weekly. Sixty-nine tailored applications, twenty first interviews and one signed contract later, he started as an AI engineer in June 2026. That is upstream's track record, in [his words](https://github.com/MadsLorentzen/ai-job-search).
 
-Sixty-nine tailored applications, twenty first interviews, and one signed contract later, I started as an AI engineer in June 2026. People kept asking whether this actually works. It got me hired. Now it's yours.
+This fork is that framework pointed at India and run the same way. Its own numbers are not in yet.
 
 *The longer version, including the full application funnel, is on [LinkedIn](https://www.linkedin.com/in/mads-lorentzen/).*
 
 <p align="center">
-  <i>Did this save you a Sunday of cover-letter writing? Consider a coffee.<br>
-  Did it land you the job? Maybe two.</i> ☕
+  <i>Did this save you a Sunday of cover-letter writing? The framework's upstream
+  author takes coffees; this fork takes none.</i> ☕
 </p>
 
 <p align="center">
@@ -37,9 +35,80 @@ Sixty-nine tailored applications, twenty first interviews, and one signed contra
   </a>
 </p>
 
+## What this fork changes
+
+Everything upstream does still works the same way. What is different here:
+
+**India job sources.** Five portal skills were added and the four Danish ones removed:
+
+| Skill | Source | Notes |
+|---|---|---|
+| `ats-search` | Greenhouse, Lever, Ashby | The employer's own ATS feed for a named list of companies (`.agents/skills/ats-search/companies.txt`). Highest signal available: no board markup, real employer-set dates |
+| `wellfound-search` | Wellfound | Startups, India and remote. A majority of listings publish salary; per-listing eligibility is verified rather than trusted |
+| `wwr-search` | We Work Remotely | Global-remote, with each listing's country-eligibility line actually parsed |
+| `instahyre-search` | Instahyre | India tech/startup. Ships demoted to every second run — it never expires listings, so dates need browser enrichment |
+| `naukri-search` | Naukri.com | India's largest index. Ships **disabled**: bulk-poster dominated, no salaries. Browser-driven on your own login, because Naukri's robots.txt blocks HTTP access |
+
+The roster, the cadence, and the traps behind each of those calls are in
+[docs/portal-field-notes.md](docs/portal-field-notes.md). Sources that were researched
+and deliberately *not* built — and why, usually robots.txt — are listed there too.
+
+**Indian compensation, done properly.** An Indian offer is quoted as **CTC**, which
+bundles fixed pay, a variable component, ESOPs at a notional valuation, gratuity and
+PF. A proudly quoted "₹40 LPA CTC" routinely decomposes to ₹24 fixed. `/apply` and
+`/rank` therefore evaluate against a **fixed-pay** floor, never the headline, and
+`salary_lookup.py` does the decomposition (`tools/README_SALARY_TOOL.md`).
+
+**The form fields Indian portals demand.** `08-application-forms.md` covers current
+CTC, expected CTC and notice period: what to write, what never to put in writing, and
+why a notice period you are already serving is worth volunteering.
+
+**Referral outreach as a first-class artifact.** `/apply` now offers a fourth output
+alongside the CV, cover letter and form fields: ranked referral contacts at the target
+company with drafted outreach notes. It drafts only — it never sends anything.
+
+**ATS verification of the compiled PDF.** `tools/ats_check.py` extracts the PDF's text
+layer and checks what a parser actually sees: `(cid:*)` markers, `U+FFFD` bullets, a
+literal email and phone, reading order, and keyword coverage scored against the job
+description. The stock CV template carries the fixes it checks for.
+
+**A tracker you can look at.** `tools/gen_dashboard.py` builds an offline HTML
+dashboard from `job_search_tracker.csv` plus the outcome archives; `serve_tracker.sh`
+serves it locally and `scripts/install-tracker-launchd.sh` keeps that running across
+logins on macOS.
+
+**An instrumented ledger.** `tools/instrument.py` adds an append-only event log over
+the tracker — a stable join key per application, per-application cost, and an offline
+verifier that re-derives the ledger from its events. Its data files stay untracked.
+
+**Personal data cannot be committed.** See [Keeping your data out of
+git](#keeping-your-data-out-of-git).
+
+## Keeping your data out of git
+
+A job-search profile holds your phone number, address, employers and compensation
+floor. On a public fork that is exactly the wrong thing to commit, so this fork
+separates the two:
+
+- The tracked files are **templates**, full of `[PLACEHOLDER]` tokens: `CLAUDE.md`,
+  `01-candidate-profile.md`, `02-behavioral-profile.md`.
+- Your real data lives in `.local.md` siblings — `CLAUDE.local.md`,
+  `01-candidate-profile.local.md`, `02-behavioral-profile.local.md` — which
+  `.gitignore` excludes. `CLAUDE.md` imports `CLAUDE.local.md` automatically, and the
+  job-application skill is instructed to read a `.local.md` file in preference to its
+  template whenever one exists.
+- `STATUS.md` and `HANDOFF.md` (where *your* search stands), `documents/jd/`,
+  `documents/profile-text/` and `documents/prompts/` are ignored for the same reason,
+  as are the tracker CSV, the generated reports and every `/apply` output.
+
+To start: `cp CLAUDE.md CLAUDE.local.md`, then fill it in or run `/setup`.
+
+If you forked to a **private** remote and would rather track your profile directly,
+fill in the tracked files instead and delete the `.local.md` rules from `.gitignore`.
+
 ## What this is
 
-A structured workflow that turns Claude Code into a full-stack job application assistant. The core workflow (self-profiling, fit evaluation, and the drafter-reviewer application pipeline) is **language- and country-agnostic**. The job portal search skills are built for the Danish market (Jobindex, Jobnet, Akademikernes Jobbank, etc.), but the pattern is designed to be swapped for your local job boards.
+A structured workflow that turns Claude Code into a full-stack job application assistant. The core workflow (self-profiling, fit evaluation, and the drafter-reviewer application pipeline) is **language- and country-agnostic**. This fork is targeted at the **Indian job market**: the shipped portal search skills cover Naukri, Instahyre, Wellfound, Greenhouse/Lever/Ashby ATS boards, LinkedIn and global-remote boards, and the same pattern swaps in any other local board via `/add-portal`.
 
 ```
 /setup          /scrape              /apply <url>
@@ -72,7 +141,9 @@ The framework encodes career guidance best practices, including structured evalu
 ### 1. Fork and clone
 
 ```bash
-gh repo fork MadsLorentzen/ai-job-search --clone
+gh repo fork SahilSinghDiwan/ai-job-search --clone   # India-targeted (this repo)
+# or, for the country-agnostic original:
+# gh repo fork MadsLorentzen/ai-job-search --clone
 cd ai-job-search
 ```
 
@@ -81,7 +152,7 @@ cd ai-job-search
 PowerShell:
 
 ```powershell
-$tools = @("jobbank-search", "jobdanmark-search", "jobindex-search", "jobnet-search", "linkedin-search", "freehire-search")
+$tools = @("ats-search", "instahyre-search", "linkedin-search", "naukri-search", "wellfound-search", "wwr-search", "freehire-search")
 foreach ($tool in $tools) {
   Push-Location ".agents/skills/$tool/cli"
   bun install
@@ -92,7 +163,7 @@ foreach ($tool in $tools) {
 Bash / zsh / Git Bash:
 
 ```bash
-for tool in jobbank-search jobdanmark-search jobindex-search jobnet-search linkedin-search freehire-search; do
+for tool in ats-search instahyre-search linkedin-search naukri-search wellfound-search wwr-search freehire-search; do
   (cd .agents/skills/$tool/cli && bun install)
 done
 ```
@@ -102,6 +173,7 @@ For `linkedin-search` and `freehire-search` the install is optional: both have z
 ### 3. Set up your profile
 
 ```bash
+cp CLAUDE.md CLAUDE.local.md   # your real profile goes here; it is gitignored
 claude
 # Then inside Claude Code:
 /setup
@@ -120,7 +192,7 @@ This searches multiple job portals for positions matching your profile, deduplic
 ### 5. Apply to a job
 
 ```bash
-/apply https://jobindex.dk/job/1234567
+/apply https://www.instahyre.com/job/438118/
 ```
 
 If the URL can't be fetched (some job portals block automated access), you can paste the job description directly instead:
@@ -154,7 +226,9 @@ Postings are treated as untrusted input (the workflow follows no instructions em
 
 ```
 ai-job-search/
-├── CLAUDE.md                          # Main candidate profile + workflow rules
+├── CLAUDE.md                          # Profile TEMPLATE + workflow rules (imports CLAUDE.local.md)
+├── CLAUDE.local.md                    # Your real profile - gitignored, never committed
+├── PLAYBOOK.md                        # Day-to-day operating guide: the loop, the rules, Docker compiles
 ├── .claude/
 │   ├── commands/
 │   │   ├── apply.md                   # /apply workflow (drafter-reviewer)
@@ -172,7 +246,7 @@ ai-job-search/
 │   ├── skills/
 │   │   ├── job-application-assistant/  # Core application skill
 │   │   │   ├── SKILL.md               # Skill definition
-│   │   │   ├── 01-candidate-profile.md # Your education, experience, skills
+│   │   │   ├── 01-candidate-profile.md # Education/experience/skills TEMPLATE (.local.md overrides)
 │   │   │   ├── 02-behavioral-profile.md# PI/DISC/personality assessment
 │   │   │   ├── 03-writing-style.md    # Tone, structure, do's and don'ts
 │   │   │   ├── 04-job-evaluation.md   # Scoring framework for job fit
@@ -183,10 +257,11 @@ ai-job-search/
 │   │   └── upskill/                   # /upskill skill gap analysis and learning plan
 │   └── settings.json                  # Claude Code permissions (shared, scoped)
 ├── .agents/skills/                    # Job portal CLI tools
-│   ├── jobbank-search/                # Akademikernes Jobbank (Denmark)
-│   ├── jobdanmark-search/             # Jobdanmark.dk (Denmark)
-│   ├── jobindex-search/               # Jobindex.dk (Denmark)
-│   ├── jobnet-search/                 # Jobnet.dk (Denmark, government portal)
+│   ├── naukri-search/                 # Naukri.com (India's largest board, browser-driven)
+│   ├── instahyre-search/              # Instahyre (India tech/startup)
+│   ├── ats-search/                    # Greenhouse / Lever / Ashby company boards
+│   ├── wellfound-search/              # Wellfound (startups, India + remote)
+│   ├── wwr-search/                    # We Work Remotely (global remote)
 │   ├── linkedin-search/               # LinkedIn public job listings (country-agnostic)
 │   └── freehire-search/               # freehire.me tech job aggregator (multi-market, REST API)
 ├── cv/
@@ -204,13 +279,21 @@ ai-job-search/
 │   ├── diplomas/                      # Degree certificates and transcripts
 │   ├── references/                    # Reference letters
 │   └── applications/                  # Past application records (<company>_<role>/)
+├── docs/
+│   └── portal-field-notes.md          # Portal roster, traps, and sources deliberately not built
 ├── .github/workflows/ci.yml           # CI: LaTeX smoke compiles, skill lint, CLI typechecks
-├── salary_lookup.py                   # Salary benchmarking tool (BYO data)
+├── salary_lookup.py                   # Salary benchmarking + CTC decomposition (BYO data)
 ├── tools/
+│   ├── ats_check.py                   # ATS parseability + JD keyword coverage on the compiled PDF
+│   ├── gen_dashboard.py               # Offline HTML dashboard from the tracker + outcome archives
+│   ├── instrument.py                  # Append-only event ledger over the tracker (cost, join key)
+│   ├── verify_pdf.py                  # Page count, date format and layout checks on a compiled PDF
 │   ├── convert_salary_excel.py        # Convert salary Excel to JSON
 │   ├── lint_skills.py                 # CI lint for skills, commands, settings.json
 │   ├── security_guards.py             # CI guards: permission allowlist, gitignore rules, manifests
 │   └── README_SALARY_TOOL.md          # Salary tool setup instructions
+├── serve_tracker.sh                   # Serve the dashboard locally
+├── scripts/install-tracker-launchd.sh # Keep that server running across logins (macOS)
 ├── job_scraper/                       # Scraper state (seen jobs, results)
 ├── gmail_sync/                        # /gmail-sync state (processed message IDs, last sync date)
 ├── upskill/                           # /upskill report output (markdown reports per run)
@@ -287,7 +370,7 @@ If you prefer doing it by hand, the manual route still works: update the guidanc
 
 ### Job search tools
 
-The four Danish CLI tools in `.agents/skills/` (Jobbank, Jobdanmark, Jobindex, Jobnet) demonstrate the pattern for building a job-portal integration for a specific market. If you're in a different country, run:
+The India CLI tools in `.agents/skills/` (Naukri, Instahyre, Wellfound, ATS boards) demonstrate the pattern for building a job-portal integration for a specific market. If you're in a different country, run:
 
 ```
 /add-portal
@@ -297,10 +380,10 @@ Give it your local job board's URL. The command investigates the portal (search-
 
 Maintaining a fork adapted to your market or language? Add it to the [Community forks & adaptations](https://github.com/MadsLorentzen/ai-job-search/discussions/78) thread so others can find it.
 
-For **country-agnostic** starting points outside Denmark, the repo ships two portal skills alongside the Danish demos:
+For **country-agnostic** coverage alongside the India portals, the repo ships two market-neutral portal skills:
 
 - **`linkedin-search`** — built on LinkedIn's public, unauthenticated `jobs-guest` endpoints. Field-agnostic, **zero runtime dependencies** (runs with just `bun`), and takes the search location as an explicit flag, so it works for any market out of the box (`-l "Berlin, Germany"`, `-l "Mumbai, Maharashtra, India"`, `-l "Remote"`, …). Intended for **personal use only** — automated access is against LinkedIn's Terms of Service, so keep volume low. See `.agents/skills/linkedin-search/SKILL.md`.
-- **`freehire-search`** — queries the [freehire.me](https://freehire.me) aggregator's public REST API (JSON, no API key). Tech-focused (software, data, engineering, DevOps, remote), multi-market via facet flags (`--region`, `--country`, `--remote`), and **zero runtime dependencies**. Unlike the HTML-scraping Danish portals, results come back structured (skills, seniority, category). The backend is MIT-licensed and [self-hostable](https://github.com/strelov1/freehire) — point `FREEHIRE_API_URL` at your own instance if you prefer. See `.agents/skills/freehire-search/SKILL.md`.
+- **`freehire-search`** — queries the [freehire.me](https://freehire.me) aggregator's public REST API (JSON, no API key). Tech-focused (software, data, engineering, DevOps, remote), multi-market via facet flags (`--region`, `--country`, `--remote`), and **zero runtime dependencies**. Unlike the HTML-scraping portals, results come back structured (skills, seniority, category). The backend is MIT-licensed and [self-hostable](https://github.com/strelov1/freehire) — point `FREEHIRE_API_URL` at your own instance if you prefer. See `.agents/skills/freehire-search/SKILL.md`.
 
 ### Extending the framework: portals, templates, criteria - and borrowing from other forks
 
@@ -322,7 +405,36 @@ Market-specific *data sources* (a national salary database, local award-rate tab
 
 ### Salary benchmarking
 
-The salary tool works with any salary data you provide (union statistics, Glassdoor exports, personal research, etc.). See `tools/README_SALARY_TOOL.md` for the expected format and setup. If you don't have salary data, the salary step is simply skipped.
+The salary tool works with any salary data you provide (market surveys, Glassdoor exports, personal research). See `tools/README_SALARY_TOOL.md` for the expected format and setup. If you don't have salary data, the salary step is simply skipped.
+
+For India it also does the part that actually decides an offer: **decomposing a CTC**
+into fixed pay, variable, ESOP and statutory components, so you compare a fixed-pay
+floor against fixed pay rather than against a headline number. An unreported component
+renders as `?`, never as `0` — the tool does not invent a split it wasn't given.
+
+### Checking a CV against an ATS
+
+```bash
+python3 tools/ats_check.py cv/main_example.pdf --jd documents/jd/<posting>.txt \
+  --email you@example.com --phone 9999999999
+```
+
+It reads the PDF's embedded text layer — what a parser sees, not what the page looks
+like — and reports encoding damage, contact details that exist only as icons or links,
+reading-order problems, page count, and how much of the posting's vocabulary your CV
+genuinely covers. Run it before you send anything. `tools/verify_pdf.py` covers the
+layout rules (2 pages, ASCII date ranges, no orphaned entry titles).
+
+### Tracking and instrumenting the search
+
+`/html-report` (or `python3 tools/gen_dashboard.py`) builds a self-contained dashboard
+from `job_search_tracker.csv` and the outcome archives. `./serve_tracker.sh` serves it
+at a local URL, and `scripts/install-tracker-launchd.sh` installs a macOS LaunchAgent
+so it survives logout.
+
+`tools/instrument.py` maintains an append-only event log beside the tracker: a stable
+join key per application, per-application cost, and `verify` to re-derive the ledger
+from its events offline. The tool is committed; `events.csv` and `costs.csv` never are.
 
 ### Starting over
 
@@ -361,10 +473,17 @@ To get the most from this, invest time during `/setup` in describing not just yo
 
 ## Contributing
 
-Thinking about a PR? Read [CONTRIBUTING.md](CONTRIBUTING.md) first - it explains what gets merged, what lives in forks, and why.
+Issues and PRs are welcome here for anything India-specific: a portal skill for an
+Indian board, CTC/compensation handling, the form-field guidance, the ATS checks.
+
+Anything market-neutral — a fix to `/apply`, the evaluation framework, the LaTeX
+templates, the CLI contract — belongs [upstream](https://github.com/MadsLorentzen/ai-job-search)
+so every fork gets it. [CONTRIBUTING.md](CONTRIBUTING.md) explains upstream's rules on
+what gets merged there and what is expected to live in a market fork like this one.
 
 ## Acknowledgements
 
+- [Mads Lorentzen](https://github.com/MadsLorentzen) for [ai-job-search](https://github.com/MadsLorentzen/ai-job-search), the framework this fork is built on
 - [Mikkel Krogholm](https://github.com/mikkelkrogsholm) ([skills repo](https://github.com/mikkelkrogsholm/skills)) for the job search CLI skills
 - Built with [Claude Code](https://claude.com/claude-code) by [Anthropic](https://anthropic.com)
 

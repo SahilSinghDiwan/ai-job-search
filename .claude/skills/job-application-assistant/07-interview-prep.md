@@ -16,6 +16,11 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 
 <!-- These are populated by /setup from your actual experience. Below are templates showing the format. -->
 
+<!-- Confidentiality: if an employer or client cannot be named, agree the wording once and reuse it
+verbatim everywhere (e.g. "a global semiconductor client", "an enterprise SRE program on a major
+public cloud"). Mark each number with its confidence - measured, estimated, or qualitative - and
+offer an estimate only as an estimate, with the reasoning shown. -->
+
 ### 1. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
 **S:** [CONTEXT - what was happening, what was the problem]
 **T:** [YOUR RESPONSIBILITY - what you specifically needed to do]
@@ -52,6 +57,19 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 
 ### "What's your biggest weakness?"
 > [PREPARE YOUR ANSWER - genuine weakness with concrete mitigation strategy]
+
+### "What's your current CTC / expected CTC?" (India-specific - do not anchor to current)
+> Deflect to a band; never let your current number become the anchor. "I'd rather align on the
+> value of the role than on my current number. Based on the scope here and the market for
+> [YOUR_ROLE_TITLE] with my experience, I'm targeting the [YOUR_TARGET_BAND] **fixed** band. Happy to
+> discuss where this role sits in that range." Keep your walk-away floor private. Remember that an
+> Indian offer is quoted as **CTC**, not fixed pay - see the CTC decomposition rules in
+> `04-job-evaluation.md` before you agree that a number clears your floor.
+
+### "What is your notice period?" (India-specific)
+> 60-90 days is the norm, and a long notice actively costs you offers. State the real date. If you
+> are already serving notice, or can negotiate a buyout or an early release, say so unprompted -
+> it is one of the few answers that is both honest and a competitive advantage.
 
 ### "Why this company specifically?"
 > Customize per company. Must reference: specific projects, company values, market position, or team structure. Never give a generic answer.

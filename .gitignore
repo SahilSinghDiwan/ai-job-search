@@ -20,10 +20,17 @@ venv/
 
 # Personal data (never commit these)
 salary_data.json
+# Instrumentation artifacts (tools/instrument.py) — personal outcome data, same
+# class as the ledger itself. The tool is committed; its data never is.
+events.csv
+costs.csv
+*.pre-instrument.bak
+
 # Match at any depth: the job-scraper skill resolves `job_scraper/` relative to
 # its own directory, so these land at .claude/skills/job-scraper/job_scraper/*.
 # A rooted `job_scraper/...` pattern silently fails to match them.
 **/job_scraper/seen_jobs.json
+**/job_scraper/seen_jobs.json.bak*
 **/job_scraper/notion_sync.json
 **/job_scraper/*.md
 *_BehavioralReport.pdf
@@ -95,3 +102,23 @@ upskill/*.md
 
 # Brainstorm mockups (superpowers visual companion) - never ship
 .superpowers/
+
+# ---------------------------------------------------------------------------
+# Your real data. The repo ships templates; everything personal lives in a
+# .local.md sibling that is never tracked. See CLAUDE.md's "Your real profile".
+# ---------------------------------------------------------------------------
+*.local.md
+CLAUDE.local.md
+.claude/skills/**/*.local.md
+
+# Personal working state: where YOUR search stands, as opposed to how the
+# framework works. Keep these locally, do not publish them.
+STATUS.md
+HANDOFF.md
+
+# Job descriptions, profile text and prompts you collect are personal - they
+# name the employers you are applying to.
+documents/jd/**
+documents/profile-text/**
+documents/prompts/**
+!documents/**/.gitkeep

@@ -115,12 +115,22 @@ When the role sits outside your home domain, **lead with the domain-transfer arg
 
 **Create 2-3 profile statement templates for your main role types:**
 
-<!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+<!-- Record your own lead identity here once: the title you are selling, your two or three
+flagship projects in the order you want them read (hero / depth / breadth), and your default
+market. Then lead every statement with measured numbers only, and mark estimates as estimates. -->
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+Write one statement per role type you target. The shape that works:
+
+**For [YOUR_PRIMARY_ROLE_TYPE] (default):**
+> [ROLE_TITLE] with [N] years [THE ONE-LINE CLAIM, e.g. "taking LLM & RAG systems from proof-of-concept to production at scale - on real infrastructure, not notebooks"]. [FLAGSHIP 1 with its measured result]; [FLAGSHIP 2 with its measured result]; and [FLAGSHIP 3, the shipped/public one]. [Your production stack, three or four names.]
+
+**For [YOUR_SECONDARY_ROLE_TYPE]:**
+> [Same shape, reordered so the flagship that matches this role type leads. Keep every number identical to the default statement - only the emphasis changes, never the facts.]
+
+**For [YOUR_STRETCH_OR_STARTUP_ROLE_TYPE] (breadth / end-to-end ownership):**
+> [Lead with range and shipping evidence rather than a single deep result. If your path into the field was non-linear, this is the statement where that becomes an asset: name it in one clause and follow it with what it proves.]
+
+Each statement is 5-7 lines of rendered text. Every claim in it must trace to `01-candidate-profile.md`.
 
 Statements labeled *[Used for: <company>_<role>]* were extracted from archived application drafts by `/setup` Path A. They are **phrasing references, never fact sources**: when drafting from one, every factual claim still comes from `01-candidate-profile.md` - a past tailored draft does not vouch for its own accuracy.
 
