@@ -68,6 +68,7 @@ cv/main_*.*
 cv/*.txt
 cover_letters/cover_*.*
 cover_letters/Cover_*.*
+cover_letters/form_*.*
 !cover_letters/cover_example.tex
 
 # documents/ subfolder contents are personal — only README and folder structure are tracked
@@ -122,3 +123,6 @@ documents/jd/**
 documents/profile-text/**
 documents/prompts/**
 !documents/**/.gitkeep
+
+# Local per-user kits (scripts that embed real profile facts)
+.claude/skills/**/*.local/

@@ -10,6 +10,8 @@ This is not bookkeeping. A fact that exists only in chat **will be treated as un
 
 This rule is the input side of the Step 3 Factual Grounding Audit, not a competitor to it. The audit is deliberately strict: an ungrounded claim is removed, and it cannot tell a fabrication from a real fact the user stated out loud last week. That strictness is correct, and it is exactly why confirmed facts have to reach the sources in the same turn they surface. Write to `01-candidate-profile.md` specifically — it is one of the audit's three sources, so a fact recorded there is grounded on the next run. Adding a fact to `01` that `CLAUDE.md` and the master CV simply do not mention is an absence, not a contradiction, and does not trip the audit's profile-consistency warning; if the new fact *corrects* something either of those states, fix it there too rather than leaving the two sources disagreeing.
 
+**Local submission workflow.** If `.claude/skills/job-application-assistant/10-application-submission.local.md` exists, read it before Step 0 and follow it alongside this file. It owns form recon, batching several postings, filling the portal in the browser, and the hand-over at Submit. Where the two overlap, it wins.
+
 **Token-efficiency rules for this workflow:**
 - Never re-Read a file whose contents are already in your context from an earlier step. If you read it in Step 1, it is still available in Step 2.
 - When dispatching the reviewer agent, pass draft content **inline in the agent prompt** rather than asking the agent to Read files you already have in memory.
