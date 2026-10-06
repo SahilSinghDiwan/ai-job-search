@@ -53,7 +53,10 @@ BUCKET = {"applied": "Active", "interview": "Interview", "offer": "Offer",
           # Statuses the tracker actually uses that previously fell through the
           # .get() default and were counted as Active. "declined" is a closed
           # application; "on hold" and "not_applied" really are still live.
-          "declined": "Rejected/Closed", "on hold": "Active", "not_applied": "Active"}
+          "declined": "Rejected/Closed", "on hold": "Active", "not_applied": "Active",
+          # Written by tools/instrument.py `record`, which has no legacy literal
+          # for these canonical statuses and writes them verbatim.
+          "lapsed": "Rejected/Closed", "screening": "Interview", "acknowledged": "Active"}
 BUCKETS = ["Active", "Interview", "Offer", "Offer accepted", "Hired", "Rejected/Closed"]
 COLOR = {"Active": "#3b82f6", "Interview": "#f59e0b", "Offer": "#8b5cf6",
          "Offer accepted": "#22c55e", "Hired": "#16a34a", "Rejected/Closed": "#ef4444"}

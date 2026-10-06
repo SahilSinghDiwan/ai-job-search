@@ -436,6 +436,15 @@ so it survives logout.
 join key per application, per-application cost, and `verify` to re-derive the ledger
 from its events offline. The tool is committed; `events.csv` and `costs.csv` never are.
 
+The commands write through it rather than around it. `/outcome` logs a new application
+with `instrument.py add` (tracker row, `job_id` and `applied` event in one step) and
+changes status only with `instrument.py record`; `/gmail-sync` does the same for each
+approved email. A row added on the day of the application is keyed `apply-time`; one
+added later is flagged `late-logged-backfill`, and rows keyed by `init` stay flagged as
+back-filled. `/rank` and `/apply` log each model pass with `instrument.py cost`. Token
+and USD figures are not observable from inside a slash command, so those records are
+**unmetered**: `verify` reports them as passes logged and never as cost coverage.
+
 ### Starting over
 
 To wipe your profile data and start fresh:
