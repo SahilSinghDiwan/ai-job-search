@@ -382,6 +382,19 @@ Then, separately, offer **referral outreach**. A referral moves the application 
 
 **Only on yes**, read `.claude/skills/job-application-assistant/09-referral-outreach.md` and follow it exactly. Two constraints from that file are absolute: **never send, connect, or message anyone on the candidate's behalf** — you produce drafts, he sends them — and every contact must have a genuine, specific hook or be explicitly labelled as not having one. **On no, say nothing further and move on.**
 
+### Log the drafting passes
+
+Once the CV and cover letter are final, and only when the posting came from the scraper (its URL is a key in `job_scraper/seen_jobs.json`), log the two passes:
+
+```
+python3 tools/instrument.py cost --pass tailor_cv --model "<model that drafted>" --url "<posting url>"
+python3 tools/instrument.py cost --pass tailor_cover --model "<model that drafted>" --url "<posting url>"
+```
+
+These are **unmetered** records: they say the pass happened, not what it cost. Never pass an estimated `--tokens-in`, `--tokens-out` or `--usd`; add them only if the harness reported exact figures for that pass. For a pasted posting or a URL the scraper never saw there is no `job_id` yet, so skip this and say in the summary that the passes were not logged.
+
+Drafting is not applying: do **not** add a tracker row here. The row is written when the user confirms the application was submitted.
+
 ### Next Steps
-- **Submitted?** `/outcome <company>` logs it in the tracker and starts the per-application record that `/setup` later uses to calibrate the fit framework.
+- **Submitted?** `/outcome <company>` logs it through `python3 tools/instrument.py add` (tracker row, `job_id` and `applied` event in one step - run it the same day, a later run is flagged late-logged) and starts the per-application record that `/setup` later uses to calibrate the fit framework.
 - **Interview scheduled?** `/interview` builds a stage-specific prep pack from this posting and the documents you just created.

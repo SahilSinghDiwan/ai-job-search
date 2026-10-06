@@ -38,10 +38,14 @@ Provenance is load-bearing. Every event carries `provenance`:
 Usage
 -----
     python3 tools/instrument.py init            # one-time, idempotent; backs up the ledger
+    python3 tools/instrument.py add --url <posting-url>      # at apply time: row + key + event
+    python3 tools/instrument.py add --manual --company <c> --role <r>   # no scraped posting
     python3 tools/instrument.py record --job-id <id> --to interviewing \
-        --evidence gmail:<message-id>
+        --evidence gmail:<message-id> --note "<dated note>"
     python3 tools/instrument.py cost --job-id <id> --pass rank \
         --model <model> --tokens-in 1200 --tokens-out 300 --usd 0.0042
+    python3 tools/instrument.py cost --url <posting-url> --pass rank --model <model>
+        # ^ unmetered: the pass is logged, no figure is invented, and it is not coverage
     python3 tools/instrument.py verify [--json]
     python3 tools/instrument.py status          # local summary (see the privacy note)
 
@@ -100,6 +104,24 @@ COST_FIELDS = [
 COST_PASSES = ("rank", "tailor_cv", "tailor_cover", "other")
 
 # ---------------------------------------------------------------------------
+# Where a row's join key came from. Closed, and `verify` rejects anything else.
+# ---------------------------------------------------------------------------
+# Only the two `apply-time` values are written by `add` on the day of the
+# application. Everything ending in `backfill` was keyed after the fact and is
+# never treated as apply-time evidence, however exact the key itself is.
+KEY_APPLY_TIME = "apply-time"                  # keyed from the scraped posting URL
+KEY_APPLY_TIME_MANUAL = "apply-time-manual"    # applied outside the scraper; no posting to join
+KEY_LATE = "late-logged-backfill"              # `add` run after the apply date
+KEY_SCRAPER_BACKFILL = "scraper-match-backfill"
+KEY_MANUAL_BACKFILL = "manual-backfill"
+APPLY_TIME_SOURCES = (KEY_APPLY_TIME, KEY_APPLY_TIME_MANUAL)
+KEY_SOURCES = APPLY_TIME_SOURCES + (KEY_LATE, KEY_SCRAPER_BACKFILL, KEY_MANUAL_BACKFILL)
+
+# The columns `add` may fill on a new ledger row beyond the ones it derives.
+ADD_OPTIONAL_COLUMNS = ("sector", "role_type", "channel", "contact_person", "fit_rating",
+                        "notes", "cv_file", "cover_letter_file")
+
+# ---------------------------------------------------------------------------
 # The closed status enum.
 # ---------------------------------------------------------------------------
 # Closed, disjoint, and every value is a *state of the application*, never a
@@ -142,6 +164,7 @@ LEGACY_STATUS = {
     "hired": "accepted",
     "declined": "declined",
     "offer_declined": "declined",
+    "offer declined": "declined",
     "rejected": "rejected",
     "withdrawn": "withdrawn",
     "lapsed": "lapsed",
@@ -305,11 +328,11 @@ def cmd_init(args):
         url = _match_scraped(row, seen)
         if url:
             row["job_id"] = scraped_job_id(url)
-            row["job_id_source"] = "scraper-match-backfill"
+            row["job_id_source"] = KEY_SCRAPER_BACKFILL
             matched += 1
         else:
             row["job_id"] = manual_job_id(row.get("company", ""), row.get("date", ""))
-            row["job_id_source"] = "manual-backfill"
+            row["job_id_source"] = KEY_MANUAL_BACKFILL
         keyed += 1
 
     # Duplicate manual ids (same company, same day) get a discriminator so the
@@ -364,6 +387,109 @@ def cmd_init(args):
 
 
 # ---------------------------------------------------------------------------
+# add: the apply-time path
+# ---------------------------------------------------------------------------
+
+def cmd_add(args):
+    """Log one application at the moment it is made: ledger row, join key, and
+    an observed `applied` event, in one step. This is the only path that earns
+    an `apply-time` key; `init` can only ever back-fill."""
+    rows, fields = read_rows(args.ledger)
+    if "job_id" not in fields or "job_id_source" not in fields:
+        raise SystemExit("the ledger has no job_id columns yet; run `init` first")
+
+    at = args.at or _now()
+    logged_on = at[:10]
+    applied_on = (args.date or logged_on).strip()
+    try:
+        _dt.date.fromisoformat(applied_on)
+        _dt.date.fromisoformat(logged_on)
+    except ValueError:
+        raise SystemExit("--date and --at must be ISO-8601 (YYYY-MM-DD[THH:MM:SS])")
+    if applied_on > logged_on:
+        raise SystemExit("apply date %s is after the logging time %s" % (applied_on, at))
+    # Logged after the day it happened: the key is exact but it was not written
+    # at apply time, and neither was the timestamp. Say so rather than pass it off.
+    late = applied_on < logged_on
+
+    company, role = (args.company or "").strip(), (args.role or "").strip()
+    if args.manual:
+        if not company or not role:
+            raise SystemExit("--manual needs both --company and --role")
+        job_id = manual_job_id(company, applied_on)
+        taken = {r.get("job_id") for r in rows}
+        n = 1
+        while job_id in taken:
+            n += 1
+            job_id = "%s-%d" % (manual_job_id(company, applied_on), n)
+        source = KEY_LATE if late else KEY_APPLY_TIME_MANUAL
+        posting_url = (args.url or "").strip()
+    else:
+        if not args.url:
+            raise SystemExit("give --url <scraped posting url>, or --manual with --company/--role")
+        posting = load_seen_jobs(args.seen_jobs).get(args.url)
+        if posting is None:
+            raise SystemExit(
+                "%s is not in seen_jobs.json. A key that does not join to a scraped posting "
+                "is not a scraper key: re-run with --manual --company ... --role ... "
+                "(keeping --url as the source link) if this was applied to outside the scraper."
+                % args.url
+            )
+        job_id = scraped_job_id(args.url)
+        if any(r.get("job_id") == job_id for r in rows):
+            raise SystemExit(
+                "job %s is already in the ledger; use `record` to change its status" % job_id
+            )
+        company = company or (posting.get("company") or "").strip()
+        role = role or (posting.get("title") or "").strip()
+        source = KEY_LATE if late else KEY_APPLY_TIME
+        posting_url = args.url
+
+    row = {k: "" for k in fields}
+    row.update({
+        "date": applied_on,
+        "company": company,
+        "role": role,
+        "status": LEDGER_LITERAL["applied"],
+        "source": posting_url,
+        "job_id": job_id,
+        "job_id_source": source,
+    })
+    for col in ADD_OPTIONAL_COLUMNS:
+        value = getattr(args, col, None)
+        if value and col in fields:
+            row[col] = value
+    rows.append(row)
+    write_rows(rows, fields, args.ledger)
+
+    event_at = applied_on if late else at
+    append_table(
+        args.events,
+        EVENT_FIELDS,
+        {
+            "event_id": hashlib.sha1(
+                ("%s|%s|%s" % (job_id, event_at, "applied")).encode("utf-8")
+            ).hexdigest()[:16],
+            "job_id": job_id,
+            "at": event_at,
+            "from_status": "",
+            "to_status": "applied",
+            "evidence": args.evidence or "manual",
+            "actor": args.actor,
+            "provenance": "backfill" if late else "observed",
+        },
+    )
+    print("added %s (%s): applied at %s" % (job_id, source, event_at))
+    if late:
+        print(
+            "NOTE logged %s, applied %s: flagged %s with a backfill `applied` event.\n"
+            "No timing is claimable from the apply date and the row is not apply-time evidence."
+            % (logged_on, applied_on, KEY_LATE)
+        )
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # record / cost
 # ---------------------------------------------------------------------------
 
@@ -407,6 +533,10 @@ def cmd_record(args):
     # where one exists, so the dashboard keeps rendering.
     row = by_id[args.job_id]
     row["status"] = LEDGER_LITERAL.get(args.to_status, args.to_status)
+    if args.note and "notes" in fields:
+        # Append, never overwrite: the notes cell is history too.
+        existing = (row.get("notes") or "").strip()
+        row["notes"] = (existing + " | " + args.note) if existing else args.note
     write_rows(rows, fields, args.ledger)
     print("recorded %s: %s -> %s at %s" % (args.job_id, from_status or "(none)", args.to_status, at))
     return 0
@@ -415,25 +545,68 @@ def cmd_record(args):
 def cmd_cost(args):
     if args.pass_name not in COST_PASSES:
         raise SystemExit("unknown pass %r; allowed: %s" % (args.pass_name, ", ".join(COST_PASSES)))
+    urls = args.url or []
+    if args.job_id and urls:
+        raise SystemExit("give --job-id or --url, not both")
+    if urls:
+        seen = load_seen_jobs(args.seen_jobs)
+        missing = [u for u in urls if u not in seen]
+        if missing:
+            # An id derived from a url the scraper never saw would join to nothing.
+            raise SystemExit("not in seen_jobs.json, so no job_id to cost: %s" % ", ".join(missing))
+        job_ids = [scraped_job_id(u) for u in urls]
+    elif args.job_id:
+        job_ids = [args.job_id]
+    else:
+        raise SystemExit("give --job-id, or --url for a scraped posting")
+    if len(job_ids) > 1 and any(v not in (None, "") for v in (args.tokens_in, args.tokens_out, args.usd)):
+        raise SystemExit(
+            "a token or USD figure belongs to one job; with several --url the pass can only "
+            "be logged unmetered"
+        )
+
+    def numeric(name, value, cast):
+        if value in (None, ""):
+            return ""
+        try:
+            if cast(value) < 0:
+                raise ValueError
+        except ValueError:
+            raise SystemExit("--%s must be a non-negative number, got %r" % (name, value))
+        return str(value)
+
+    tokens_in = numeric("tokens-in", args.tokens_in, int)
+    tokens_out = numeric("tokens-out", args.tokens_out, int)
+    usd = numeric("usd", args.usd, float)
+    # A pass with no USD figure is logged as having happened and nothing more.
+    # It is never written as 0 and `verify` never counts it as coverage: an
+    # unmeasured cost is not a free one.
+    metered = usd != ""
+
     at = args.at or _now()
-    append_table(
-        args.costs,
-        COST_FIELDS,
-        {
-            "cost_id": hashlib.sha1(
-                ("%s|%s|%s" % (args.job_id, at, args.pass_name)).encode("utf-8")
-            ).hexdigest()[:16],
-            "job_id": args.job_id,
-            "at": at,
-            "pass_name": args.pass_name,
-            "model": args.model,
-            "tokens_in": args.tokens_in,
-            "tokens_out": args.tokens_out,
-            "usd": args.usd,
-            "provenance": "observed",
-        },
-    )
-    print("cost recorded: %s %s $%s" % (args.job_id, args.pass_name, args.usd))
+    for job_id in job_ids:
+        append_table(
+            args.costs,
+            COST_FIELDS,
+            {
+                "cost_id": hashlib.sha1(
+                    ("%s|%s|%s" % (job_id, at, args.pass_name)).encode("utf-8")
+                ).hexdigest()[:16],
+                "job_id": job_id,
+                "at": at,
+                "pass_name": args.pass_name,
+                "model": args.model,
+                "tokens_in": tokens_in,
+                "tokens_out": tokens_out,
+                "usd": usd,
+                "provenance": "observed" if metered else "unmetered",
+            },
+        )
+        if metered:
+            print("cost recorded: %s %s $%s" % (job_id, args.pass_name, usd))
+        else:
+            print("pass logged, UNMETERED: %s %s (no USD figure; not counted as cost coverage)"
+                  % (job_id, args.pass_name))
     return 0
 
 
@@ -520,20 +693,39 @@ def verify(ledger=LEDGER, events_path=EVENTS, costs_path=COSTS, sync_path=SYNC_S
             % (lossy, ", ".join(sorted(LOSSY_LEGACY)))
         )
 
+    for i, row in enumerate(rows):
+        src = row.get("job_id_source", "")
+        if row.get("job_id") and src not in KEY_SOURCES:
+            failures.append("row %d: job_id_source %r is outside the closed set" % (i + 2, src))
+    apply_time_keyed = sum(1 for r in rows if r.get("job_id_source") in APPLY_TIME_SOURCES)
+    rank_joinable = sum(1 for r in rows if r.get("job_id_source") == KEY_APPLY_TIME)
+
     backfilled_keys = sum(1 for r in rows if r.get("job_id_source", "").endswith("backfill"))
     if backfilled_keys:
         warnings.append(
-            "%d job_ids were back-filled by company match, not written at apply time; "
-            "rank-vs-outcome over them is suggestive, not evidence" % backfilled_keys
+            "%d job_ids were back-filled (company match or late logging), not written at "
+            "apply time; rank-vs-outcome over them is suggestive, not evidence" % backfilled_keys
         )
 
     # 7. Cost coverage.
-    costed_jobs = {c["job_id"] for c in costs}
+    # Coverage means a USD figure exists for a job that is in the ledger. An
+    # unmetered pass (no figure) and a costed posting that was never applied to
+    # are both reported, and neither is coverage.
+    metered = [c for c in costs if (c.get("usd") or "").strip() != ""]
+    unmetered = len(costs) - len(metered)
+    costed_jobs = {c["job_id"] for c in metered} & known
+    pass_logged_jobs = {c["job_id"] for c in costs} & known
+    outside_ledger = sum(1 for c in costs if c["job_id"] not in known)
     try:
-        total_usd = round(sum(float(c["usd"] or 0) for c in costs), 6)
+        total_usd = round(sum(float(c["usd"]) for c in metered), 6)
     except ValueError:
         failures.append("costs.csv has a non-numeric usd value")
         total_usd = None
+    if unmetered:
+        warnings.append(
+            "%d of %d cost records are unmetered (pass logged, no USD figure); "
+            "they are not cost coverage" % (unmetered, len(costs))
+        )
 
     # 8. Freshness.
     stamp, age = freshness(sync_path, today)
@@ -551,9 +743,15 @@ def verify(ledger=LEDGER, events_path=EVENTS, costs_path=COSTS, sync_path=SYNC_S
         "observed_events": len(observed),
         "backfilled_jobs": len(backfilled_jobs),
         "timing_eligible_jobs": len(timing_eligible),
+        "apply_time_keyed_jobs": apply_time_keyed,
+        "rank_joinable_jobs": rank_joinable,
+        "backfilled_keys": backfilled_keys,
         "dispositions": dispositions,
         "cost_records": len(costs),
+        "cost_unmetered_records": unmetered,
         "cost_covered_jobs": len(costed_jobs),
+        "cost_pass_logged_jobs": len(pass_logged_jobs),
+        "cost_records_outside_ledger": outside_ledger,
         "total_usd": total_usd,
         "sync_stamp": stamp,
         "sync_age_days": age,
@@ -571,8 +769,13 @@ def cmd_verify(args):
         print("  ledger rows          %s" % report["ledger_rows"])
         print("  events               %s (%s observed)" % (report["events"], report["observed_events"]))
         print("  timing-eligible jobs %s" % report["timing_eligible_jobs"])
+        print("  apply-time keyed     %s (%s joinable to a ranked posting)"
+              % (report["apply_time_keyed_jobs"], report["rank_joinable_jobs"]))
         print("  cost-covered jobs    %s / %s  ($%s)"
               % (report["cost_covered_jobs"], report["ledger_rows"], report["total_usd"]))
+        print("  cost records         %s (%s unmetered, %s on postings not in the ledger)"
+              % (report["cost_records"], report["cost_unmetered_records"],
+                 report["cost_records_outside_ledger"]))
         print("  gmail sync           %s (%s days)" % (report["sync_stamp"], report["sync_age_days"]))
         for w in report["warnings"]:
             print("  WARN  %s" % w)
@@ -605,6 +808,21 @@ def build_parser():
 
     sub.add_parser("init", help="add the join key and seed the event log (idempotent)")
 
+    a = sub.add_parser("add", help="log an application at apply time: row + job_id + event")
+    a.add_argument("--url", default=None, help="the scraped posting's url (the seen_jobs key)")
+    a.add_argument("--manual", action="store_true",
+                   help="applied outside the scraper; needs --company and --role")
+    a.add_argument("--company", default=None)
+    a.add_argument("--role", default=None)
+    a.add_argument("--date", default=None,
+                   help="apply date, YYYY-MM-DD; defaults to today. An earlier date is "
+                        "logged as %s, not apply-time" % KEY_LATE)
+    for col in ADD_OPTIONAL_COLUMNS:
+        a.add_argument("--" + col.replace("_", "-"), dest=col, default=None)
+    a.add_argument("--evidence", default="manual", help="manual | url | gmail:<message-id>")
+    a.add_argument("--actor", default=os.environ.get("USER", "operator"))
+    a.add_argument("--at", default=None, help="ISO-8601 logging time; defaults to now")
+
     r = sub.add_parser("record", help="append one status transition")
     r.add_argument("--job-id", dest="job_id", required=True)
     r.add_argument("--to", dest="to_status", required=True, choices=STATUSES)
@@ -612,14 +830,20 @@ def build_parser():
     r.add_argument("--actor", default=os.environ.get("USER", "operator"))
     r.add_argument("--at", default=None, help="ISO-8601; defaults to now")
     r.add_argument("--force", action="store_true")
+    r.add_argument("--note", default=None, help="appended to the row's notes cell")
 
     c = sub.add_parser("cost", help="append one per-application cost record")
-    c.add_argument("--job-id", dest="job_id", required=True)
+    c.add_argument("--job-id", dest="job_id", default=None)
+    c.add_argument("--url", action="append", default=None,
+                   help="a scraped posting's url, instead of --job-id; repeatable for a "
+                        "batch pass, which is then logged unmetered")
     c.add_argument("--pass", dest="pass_name", required=True, choices=COST_PASSES)
     c.add_argument("--model", required=True)
-    c.add_argument("--tokens-in", dest="tokens_in", required=True)
-    c.add_argument("--tokens-out", dest="tokens_out", required=True)
-    c.add_argument("--usd", required=True)
+    # Optional on purpose: when the figure is not observable at the call site the
+    # pass is logged unmetered. Never pass an estimate here.
+    c.add_argument("--tokens-in", dest="tokens_in", default=None)
+    c.add_argument("--tokens-out", dest="tokens_out", default=None)
+    c.add_argument("--usd", default=None)
     c.add_argument("--at", default=None)
 
     v = sub.add_parser("verify", help="recompute every checkable claim offline")
@@ -631,6 +855,7 @@ def build_parser():
 
 HANDLERS = {
     "init": cmd_init,
+    "add": cmd_add,
     "record": cmd_record,
     "cost": cmd_cost,
     "verify": cmd_verify,

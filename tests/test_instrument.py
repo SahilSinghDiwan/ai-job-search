@@ -54,6 +54,8 @@ class Fixture(unittest.TestCase):
             "https://example.com/jobs/1": {
                 "company": "Kotak Mahindra Bank", "title": "Data Scientist",
                 "rank_score": 29},
+            "https://example.com/jobs/2": {
+                "company": "Globex", "title": "AI Engineer", "rank_score": 31},
         }}), encoding="utf-8")
         Path(self.sync).write_text(json.dumps({"last_sync": "2026-09-03"}), encoding="utf-8")
         self.addCleanup(self.dir.cleanup)
@@ -248,3 +250,240 @@ class ProjectionSpec(Fixture):
                      "--at", "2026-09-28T10:00:00")
         self.assertEqual(self.ledger_rows()[0]["status"], "interview")
         self.assertTrue(self.report()["ok"])
+
+
+class AddSpec(Fixture):
+    """The apply-time path: the only way a row earns an `apply-time` key."""
+
+    URL = "https://example.com/jobs/2"
+
+    def setUp(self):
+        super().setUp()
+        self.run_cmd("init")
+
+    def add(self, *extra):
+        return self.run_cmd("add", "--url", self.URL, "--at", "2026-10-06T10:00:00", *extra)
+
+    def row(self):
+        return [r for r in self.ledger_rows() if r["company"] == "Globex"][0]
+
+    def test_add_writes_row_keyed_from_the_scraped_posting(self):
+        self.add()
+        row = self.row()
+        self.assertEqual(row["job_id"], instrument.scraped_job_id(self.URL))
+        self.assertEqual(row["job_id_source"], "apply-time")
+        self.assertEqual(row["role"], "AI Engineer")
+        self.assertEqual(row["date"], "2026-10-06")
+        self.assertEqual(row["status"], "applied")
+        self.assertEqual(row["source"], self.URL)
+
+    def test_add_appends_an_observed_applied_event_and_verify_holds(self):
+        self.add()
+        events = [e for e in instrument.read_table(self.events, instrument.EVENT_FIELDS)
+                  if e["job_id"] == instrument.scraped_job_id(self.URL)]
+        self.assertEqual([(e["to_status"], e["provenance"]) for e in events],
+                         [("applied", "observed")])
+        rep = self.report()
+        self.assertTrue(rep["ok"], rep["failures"])
+        self.assertEqual(rep["apply_time_keyed_jobs"], 1)
+        self.assertEqual(rep["rank_joinable_jobs"], 1)
+
+    def test_apply_time_key_is_not_counted_as_backfilled(self):
+        before = self.report()["backfilled_keys"]
+        self.add()
+        self.assertEqual(self.report()["backfilled_keys"], before)
+
+    def test_added_row_becomes_timing_eligible_after_one_recorded_transition(self):
+        self.add()
+        self.assertEqual(self.report()["timing_eligible_jobs"], 0)
+        self.run_cmd("record", "--job-id", instrument.scraped_job_id(self.URL),
+                     "--to", "interviewing", "--at", "2026-10-09T10:00:00")
+        rep = self.report()
+        self.assertTrue(rep["ok"], rep["failures"])
+        self.assertEqual(rep["timing_eligible_jobs"], 1)
+
+    def test_add_refuses_a_posting_already_in_the_ledger(self):
+        self.add()
+        with self.assertRaises(SystemExit):
+            self.add()
+        self.assertEqual(len([r for r in self.ledger_rows() if r["company"] == "Globex"]), 1)
+
+    def test_add_refuses_an_unknown_url_unless_declared_manual(self):
+        with self.assertRaises(SystemExit):
+            self.run_cmd("add", "--url", "https://example.com/nope",
+                         "--at", "2026-10-06T10:00:00")
+
+    def test_manual_add_is_apply_time_keyed_but_not_rank_joinable(self):
+        self.run_cmd("add", "--manual", "--company", "Initech", "--role", "ML Lead",
+                     "--at", "2026-10-06T10:00:00")
+        row = [r for r in self.ledger_rows() if r["company"] == "Initech"][0]
+        self.assertEqual(row["job_id_source"], "apply-time-manual")
+        rep = self.report()
+        self.assertTrue(rep["ok"], rep["failures"])
+        self.assertEqual(rep["apply_time_keyed_jobs"], 1)
+        self.assertEqual(rep["rank_joinable_jobs"], 0)
+
+    def test_manual_add_requires_company_and_role(self):
+        with self.assertRaises(SystemExit):
+            self.run_cmd("add", "--manual", "--company", "Initech",
+                         "--at", "2026-10-06T10:00:00")
+
+    def test_late_logged_application_is_flagged_backfill_not_apply_time(self):
+        # Logged three days after the apply date: the key is exact, but neither
+        # it nor the `applied` timestamp was written at apply time.
+        self.add("--date", "2026-10-03")
+        row = self.row()
+        self.assertEqual(row["job_id_source"], "late-logged-backfill")
+        self.assertEqual(row["date"], "2026-10-03")
+        events = [e for e in instrument.read_table(self.events, instrument.EVENT_FIELDS)
+                  if e["job_id"] == row["job_id"]]
+        self.assertEqual([(e["at"], e["provenance"]) for e in events],
+                         [("2026-10-03", "backfill")])
+        rep = self.report()
+        self.assertTrue(rep["ok"], rep["failures"])
+        self.assertEqual(rep["apply_time_keyed_jobs"], 0)
+
+    def test_add_refuses_an_apply_date_in_the_future(self):
+        with self.assertRaises(SystemExit):
+            self.add("--date", "2026-10-09")
+
+    def test_add_requires_an_initialised_ledger(self):
+        write_ledger(self.ledger, [])
+        with self.assertRaises(SystemExit):
+            self.add()
+
+    def test_unknown_job_id_source_fails_verify(self):
+        self.add()
+        rows, fields = instrument.read_rows(self.ledger)
+        rows[-1]["job_id_source"] = "trust-me"
+        instrument.write_rows(rows, fields, self.ledger)
+        self.assertFalse(self.report()["ok"])
+
+
+class RoutedWriteSpec(Fixture):
+    """`/outcome` and `/gmail-sync` change status only through `record`."""
+
+    def setUp(self):
+        super().setUp()
+        self.run_cmd("init")
+        self.job = self.ledger_rows()[0]["job_id"]
+
+    def test_record_note_is_appended_never_overwritten(self):
+        rows, fields = instrument.read_rows(self.ledger)
+        rows[0]["notes"] = "first"
+        instrument.write_rows(rows, fields, self.ledger)
+        self.run_cmd("record", "--job-id", self.job, "--to", "interviewing",
+                     "--at", "2026-10-06T10:00:00", "--note", "2026-10-06 gmail-sync: invite")
+        self.assertEqual(self.ledger_rows()[0]["notes"], "first | 2026-10-06 gmail-sync: invite")
+
+    def test_every_status_the_commands_record_keeps_verify_green(self):
+        # The canonical targets /outcome and /gmail-sync are told to use.
+        for i, to in enumerate(("interviewing", "offer", "accepted")):
+            self.run_cmd("record", "--job-id", self.job, "--to", to,
+                         "--at", "2026-10-0%dT10:00:00" % (6 + i))
+            rep = self.report()
+            self.assertTrue(rep["ok"], (to, rep["failures"]))
+
+    def test_closing_statuses_replay(self):
+        for to in ("declined", "rejected", "withdrawn", "lapsed"):
+            self.setUp()
+            self.run_cmd("record", "--job-id", self.job, "--to", to,
+                         "--at", "2026-10-06T10:00:00")
+            rep = self.report()
+            self.assertTrue(rep["ok"], (to, rep["failures"]))
+
+    def test_legacy_closing_literals_the_specs_used_still_map(self):
+        self.assertEqual(instrument.canonical_status("offer declined"), "declined")
+        self.assertEqual(instrument.canonical_status("hired"), "accepted")
+
+    def test_command_specs_route_status_writes_through_record(self):
+        for name in ("outcome.md", "gmail-sync.md"):
+            text = (REPO / ".claude" / "commands" / name).read_text(encoding="utf-8")
+            self.assertIn("tools/instrument.py record", text, name)
+        outcome = (REPO / ".claude" / "commands" / "outcome.md").read_text(encoding="utf-8")
+        self.assertIn("tools/instrument.py add", outcome)
+
+    def test_rank_and_apply_specs_log_cost(self):
+        for name in ("rank.md", "apply.md"):
+            text = (REPO / ".claude" / "commands" / name).read_text(encoding="utf-8")
+            self.assertIn("tools/instrument.py cost", text, name)
+
+
+class UnmeteredCostSpec(Fixture):
+    def setUp(self):
+        super().setUp()
+        self.run_cmd("init")
+        self.job = self.ledger_rows()[0]["job_id"]
+
+    def test_first_cost_write_creates_the_file(self):
+        self.assertFalse(os.path.exists(self.costs))
+        self.run_cmd("cost", "--job-id", self.job, "--pass", "rank", "--model", "m")
+        self.assertTrue(os.path.exists(self.costs))
+
+    def test_unmetered_pass_is_logged_but_is_not_cost_coverage(self):
+        # A pass with no token or USD figure is recorded as having happened and
+        # nothing more: it must never read as "$0" or as coverage.
+        self.run_cmd("cost", "--job-id", self.job, "--pass", "tailor_cv", "--model", "m")
+        rep = self.report()
+        self.assertTrue(rep["ok"], rep["failures"])
+        self.assertEqual(rep["cost_records"], 1)
+        self.assertEqual(rep["cost_unmetered_records"], 1)
+        self.assertEqual(rep["cost_covered_jobs"], 0)
+        self.assertEqual(rep["cost_pass_logged_jobs"], 1)
+        self.assertEqual(rep["total_usd"], 0)
+        record = instrument.read_table(self.costs, instrument.COST_FIELDS)[0]
+        self.assertEqual(record["usd"], "")
+        self.assertEqual(record["provenance"], "unmetered")
+
+    def test_metered_pass_is_coverage(self):
+        self.run_cmd("cost", "--job-id", self.job, "--pass", "rank", "--model", "m",
+                     "--tokens-in", "10", "--tokens-out", "5", "--usd", "0.001")
+        rep = self.report()
+        self.assertEqual(rep["cost_covered_jobs"], 1)
+        self.assertEqual(rep["cost_unmetered_records"], 0)
+
+    def test_cost_on_a_posting_not_applied_to_is_not_ledger_coverage(self):
+        # /rank costs postings, most of which are never applied to.
+        self.run_cmd("cost", "--url", "https://example.com/jobs/2", "--pass", "rank",
+                     "--model", "m", "--tokens-in", "10", "--tokens-out", "5", "--usd", "0.001")
+        rep = self.report()
+        self.assertEqual(rep["cost_covered_jobs"], 0)
+        self.assertEqual(rep["cost_records_outside_ledger"], 1)
+        record = instrument.read_table(self.costs, instrument.COST_FIELDS)[0]
+        self.assertEqual(record["job_id"], instrument.scraped_job_id("https://example.com/jobs/2"))
+
+    def test_rank_cost_joins_once_the_posting_is_applied_to(self):
+        url = "https://example.com/jobs/2"
+        self.run_cmd("cost", "--url", url, "--pass", "rank", "--model", "m",
+                     "--tokens-in", "10", "--tokens-out", "5", "--usd", "0.001")
+        self.run_cmd("add", "--url", url, "--at", "2026-10-06T10:00:00")
+        self.assertEqual(self.report()["cost_covered_jobs"], 1)
+
+    def test_cost_needs_a_job(self):
+        with self.assertRaises(SystemExit):
+            self.run_cmd("cost", "--pass", "rank", "--model", "m")
+
+    def test_non_numeric_cost_is_refused_at_write_time(self):
+        with self.assertRaises(SystemExit):
+            self.run_cmd("cost", "--job-id", self.job, "--pass", "rank", "--model", "m",
+                         "--usd", "cheap")
+
+    def test_cost_refuses_a_url_the_scraper_never_saw(self):
+        with self.assertRaises(SystemExit):
+            self.run_cmd("cost", "--url", "https://example.com/nope", "--pass", "rank",
+                         "--model", "m")
+        self.assertFalse(os.path.exists(self.costs))
+
+    def test_batch_pass_logs_one_unmetered_record_per_posting(self):
+        self.run_cmd("cost", "--url", "https://example.com/jobs/1",
+                     "--url", "https://example.com/jobs/2", "--pass", "rank", "--model", "m")
+        records = instrument.read_table(self.costs, instrument.COST_FIELDS)
+        self.assertEqual(len(records), 2)
+        self.assertEqual(len({r["cost_id"] for r in records}), 2)
+        self.assertTrue(all(r["provenance"] == "unmetered" for r in records))
+
+    def test_batch_pass_cannot_carry_a_single_figure(self):
+        with self.assertRaises(SystemExit):
+            self.run_cmd("cost", "--url", "https://example.com/jobs/1",
+                         "--url", "https://example.com/jobs/2", "--pass", "rank",
+                         "--model", "m", "--usd", "0.01")

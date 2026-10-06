@@ -28,7 +28,7 @@ Confirm the Gmail MCP tools (`mcp__claude_ai_Gmail__*`) are available. If not, t
 
 1. Read `job_search_tracker.csv`. If it does not exist, tell the user there is nothing to sync against yet (suggest `/outcome` or `/apply` first) and stop. Do not create it here - `/gmail-sync` never originates new applications, only updates existing ones.
 2. Read `gmail_sync/state.json` (create if missing: `{"last_sync": null, "processed_message_ids": []}`).
-3. Build the set of **open applications**: tracker rows whose `status` is not a final value (`hired`, `rejected`, `no response`, `offer declined`, `withdrawn`). For each, derive its archive folder `documents/applications/<company>_<role>/` (lowercase, underscores - same convention as `/outcome`) and check whether `outcome.md` exists there.
+3. Build the set of **open applications**: tracker rows whose `status` is not a final value (`hired`, `offer_accepted`, `rejected`, `no response`, `lapsed`, `declined`, `offer declined`, `withdrawn`). For each, derive its archive folder `documents/applications/<company>_<role>/` (lowercase, underscores - same convention as `/outcome`) and check whether `outcome.md` exists there.
 4. If `$ARGUMENTS` named a company, filter this set to the matching row(s) (case-insensitive). No match → tell the user and stop, do not guess.
 
 ---
@@ -119,7 +119,11 @@ Approving the whole batch in one reply is expected UX - the requirement is that 
 
 For every row the user approved:
 
-1. **Tracker (`job_search_tracker.csv`):** update the matched row's `status` column per the Step 5 table, and append to `notes`: `<date> gmail-sync: <signal> ("<email subject>")`. Never restructure the CSV, reorder rows, or touch unrelated rows - same rule `/outcome` follows.
+1. **Tracker (`job_search_tracker.csv`):** never edit the `status` cell directly. Write each approved change through the instrument, which appends the transition to `events.csv` and updates the cell and the note in one step:
+   ```
+   python3 tools/instrument.py record --job-id "<the row's job_id>" --to <status> --at "<the email's date, ISO-8601>" --evidence "gmail:<message-id>" --note "<date> gmail-sync: <signal> (\"<email subject>\")"
+   ```
+   Map the Step 5 table's tracker status to `--to`: `interview` → `interviewing`, `offer` → `offer`, `rejected` → `rejected`. `--at` is when the email arrived, not when the sync ran - that is the transition time. If `record` refuses (the job is already terminal, or `--at` would precede the row's last event), treat it as a Step 5 conflict and leave it for `/outcome`; do not pass `--force`. A row with no `job_id` means `python3 tools/instrument.py init` has not run - stop and say so. After the batch, run `python3 tools/instrument.py verify` and report any `FAIL` line. Never restructure the CSV, reorder rows, or touch unrelated rows - same rule `/outcome` follows.
 2. **`outcome.md`:** tick the relevant stage checkbox (adding the date in parentheses) or update `Status`/`Date resolved` per the table. Append a dated entry to `## Notes`, never overwrite existing Notes history:
    ```
    YYYY-MM-DD (via /gmail-sync): <one-line summary of what the email said>. Source: "<subject>" from <sender>, <email date>.

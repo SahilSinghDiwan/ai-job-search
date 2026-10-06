@@ -31,8 +31,12 @@ Follow these steps **in order**.
    ```
    date,company,sector,role,role_type,channel,status,contact_person,fit_rating,notes,cv_file,cover_letter_file,source
    ```
-2. **With an argument:** match rows case-insensitively on company (and role, if given). One match → proceed. Several → list them and ask. None → the application was made outside the workflow; collect company, role, date applied, channel, and posting URL from the user and add a tracker row.
-3. **Without an argument:** list all rows whose status is not final (not hired / rejected / no response / withdrawn / offer declined) as a numbered table (company, role, date applied, current status, days quiet, follow-ups sent) and ask which to update. The two derived columns come straight from existing data: **days quiet** counts from the row's `date` or the latest dated entry in `notes`, whichever is more recent; **follow-ups sent** counts the `followed up YYYY-MM-DD` markers in `notes`. If any open row is 10+ days quiet with fewer than two follow-ups sent, add one line under the table: "Some of these have gone quiet - want a follow-up draft? (Step 2b)". If every row is resolved, say so and stop.
+2. **With an argument:** match rows case-insensitively on company (and role, if given). One match → proceed. Several → list them and ask. None → this is the application being logged for the first time (just submitted after `/apply`, or made outside the workflow). Collect company, role, date applied, channel, and posting URL, then add the row **only** through the instrument, never by editing the CSV:
+   ```
+   python3 tools/instrument.py add --url "<posting url>" --channel "<channel>" --cv-file "<path>" --cover-letter-file "<path>"
+   ```
+   That one call writes the tracker row, its `job_id`, and the `applied` event. Add `--date YYYY-MM-DD` only when the application was submitted on an earlier day; the tool then flags the row as late-logged rather than apply-time, which is the truth and must not be worked around by omitting the date. If the tool reports the URL is not in `seen_jobs.json`, re-run with `--manual --company "<company>" --role "<role>"` (keep `--url`). If `job_search_tracker.csv` has no `job_id` column yet, run `python3 tools/instrument.py init` once first.
+3. **Without an argument:** list all rows whose status is not final (not hired / offer_accepted / rejected / no response / lapsed / withdrawn / declined / offer declined) as a numbered table (company, role, date applied, current status, days quiet, follow-ups sent) and ask which to update. The two derived columns come straight from existing data: **days quiet** counts from the row's `date` or the latest dated entry in `notes`, whichever is more recent; **follow-ups sent** counts the `followed up YYYY-MM-DD` markers in `notes`. If any open row is 10+ days quiet with fewer than two follow-ups sent, add one line under the table: "Some of these have gone quiet - want a follow-up draft? (Step 2b)". If every row is resolved, say so and stop.
 4. Derive the archive folder name: `documents/applications/<company>_<role>/` - lowercase, underscores for spaces (the convention documented in `documents/README.md`). Check whether the folder and an `outcome.md` already exist - if so, you are updating, not creating.
 
 ---
@@ -121,7 +125,28 @@ Update rules: tick stage checkboxes as they are reached (add the date in parenth
 
 ## Step 4: Update the Tracker
 
-Update the matched row's `status` column (e.g. `applied` → `interview` → `offer` → `hired` / `rejected` / `no response` / `offer declined` / `withdrawn`) and append a short dated note to the `notes` column. Never restructure the CSV, reorder rows, or touch other rows.
+**Never edit the `status` cell by hand.** Every status change goes through the instrument, which appends the transition to `events.csv` and then updates the cell itself, so the event log and the tracker cannot disagree:
+
+```
+python3 tools/instrument.py record --job-id "<the row's job_id>" --to <status> --note "YYYY-MM-DD <short note>"
+```
+
+`<status>` is the instrument's closed enum, mapped from what Step 2 collected:
+
+| What happened | `--to` |
+|---|---|
+| Recruiter or phone screen | `screening` |
+| Interview or assessment stage scheduled or completed | `interviewing` |
+| Offer received, undecided | `offer` |
+| `hired` (offer accepted) | `accepted` |
+| `offer_declined` | `declined` |
+| `rejected` | `rejected` |
+| User withdrew | `withdrawn` |
+| `no_response` or `interview_only` (given up on) | `lapsed` |
+
+A further stage in the same status (a second interview round) is still a `record` call with the same `--to`: the event is what makes the stage's date recoverable. Add `--evidence gmail:<message-id>` or a URL when there is one. If `record` refuses because the job is already terminal, stop and ask the user rather than reaching for `--force`. If the status did not change and only a note is being added (the follow-up branch's `followed up YYYY-MM-DD` marker), append to the `notes` cell directly. Never restructure the CSV, reorder rows, or touch other rows.
+
+Finish with `python3 tools/instrument.py verify`; a `FAIL` line means a write bypassed the instrument and must be fixed before the turn ends.
 
 ---
 
