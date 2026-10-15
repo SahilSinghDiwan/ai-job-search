@@ -42,7 +42,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 QUEUE = ROOT / "outreach_queue.csv"
-TRACKER_URL = "http://127.0.0.1:8090/tracker.html"
+TRACKER = ROOT / "tracker.html"
 
 FIELDS = ["id", "app", "company", "role", "track", "channel", "contact", "ref", "hook",
           "after", "offset_days", "due", "status", "sent_on", "subject", "text", "source"]
@@ -414,7 +414,7 @@ def cmd_notify(a):
         return
     esc = lambda s: s.replace("\\", "\\\\").replace('"', '\\"')
     subprocess.run(["osascript", "-e",
-                    f'display notification "{esc(body)}. Open {TRACKER_URL}" '
+                    f'display notification "{esc(body)}. Open {TRACKER}" '
                     f'with title "{esc(title)}" sound name "Glass"'], check=False)
 
 

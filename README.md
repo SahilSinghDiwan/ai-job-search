@@ -75,9 +75,9 @@ literal email and phone, reading order, and keyword coverage scored against the 
 description. The stock CV template carries the fixes it checks for.
 
 **A tracker you can look at.** `tools/gen_dashboard.py` builds an offline HTML
-dashboard from `job_search_tracker.csv` plus the outcome archives; `serve_tracker.sh`
-serves it locally and `scripts/install-tracker-launchd.sh` keeps that running across
-logins on macOS.
+dashboard from `job_search_tracker.csv` plus the outcome archives. `tracker.html` is an
+editable view of the same CSV: open the file directly, connect the repo folder once,
+and Save writes back to the CSV.
 
 **An instrumented ledger.** `tools/instrument.py` adds an append-only event log over
 the tracker — a stable join key per application, per-application cost, and an offline
@@ -294,8 +294,7 @@ ai-job-search/
 │   ├── lint_skills.py                 # CI lint for skills, commands, settings.json
 │   ├── security_guards.py             # CI guards: permission allowlist, gitignore rules, manifests
 │   └── README_SALARY_TOOL.md          # Salary tool setup instructions
-├── serve_tracker.sh                   # Serve the dashboard locally
-├── scripts/install-tracker-launchd.sh # Keep that server running across logins (macOS)
+├── tracker.html                       # Editable tracker; open as a file, no server
 ├── job_scraper/                       # Scraper state (seen jobs, results)
 ├── gmail_sync/                        # /gmail-sync state (processed message IDs, last sync date)
 ├── upskill/                           # /upskill report output (markdown reports per run)
@@ -430,9 +429,9 @@ layout rules (2 pages, ASCII date ranges, no orphaned entry titles).
 ### Tracking and instrumenting the search
 
 `/html-report` (or `python3 tools/gen_dashboard.py`) builds a self-contained dashboard
-from `job_search_tracker.csv` and the outcome archives. `./serve_tracker.sh` serves it
-at a local URL, and `scripts/install-tracker-launchd.sh` installs a macOS LaunchAgent
-so it survives logout.
+from `job_search_tracker.csv` and the outcome archives. To edit the tracker, open
+`tracker.html` directly in Chrome or Edge and click **Connect folder** once; it remembers
+the repo folder, shows due outreach, and Save writes back to the CSV.
 
 `tools/instrument.py` maintains an append-only event log beside the tracker: a stable
 join key per application, per-application cost, and `verify` to re-derive the ledger
