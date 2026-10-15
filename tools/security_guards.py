@@ -70,6 +70,9 @@ REQUIRED_IGNORE_RULES = [
     "gmail_sync/",
     "reports/",
     "upskill/*.md",
+    # Outreach drafts and the queue name real contacts.
+    "cover_letters/outreach_*.*",
+    "outreach_queue.csv",
 ]
 
 # Negation (re-include) rules the template legitimately ships. .gitignore is

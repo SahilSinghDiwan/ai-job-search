@@ -80,6 +80,17 @@ tbody tr.sel{background:var(--accent-soft)}
 .drawer-actions{display:flex;gap:8px;margin-top:18px}
 .danger{color:var(--s-rejected);border-color:var(--s-rejected)}
 .empty{padding:40px;text-align:center;color:var(--muted)}
+.outreach{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--accent);
+  border-radius:12px;box-shadow:var(--shadow);padding:14px 16px;margin-bottom:18px}
+.outreach h2{margin:0 0 4px;font-size:15px}
+.outreach .sub{font-size:12.5px;color:var(--muted);margin-bottom:10px}
+.omsg{border-top:1px solid var(--border);padding:10px 0}
+.omsg .who{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;font-size:13.5px}
+.omsg .who .tag{font-size:11.5px;color:var(--muted);border:1px solid var(--border);border-radius:999px;padding:1px 8px}
+.omsg .late{color:var(--s-rejected);font-size:12px}
+.omsg pre{white-space:pre-wrap;font:13.5px/1.5 inherit;background:var(--bg);border-radius:8px;padding:10px;margin:8px 0}
+.omsg .act{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12.5px}
+.omsg code{font-size:12px;color:var(--muted);user-select:all}
 .hint{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.6}
 kbd{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:11px}
 .savebar{position:fixed;left:0;right:0;bottom:0;background:var(--panel);border-top:1px solid var(--border);
@@ -99,6 +110,12 @@ kbd{background:var(--bg);border:1px solid var(--border);border-radius:4px;paddin
       <button class="btn" id="themeBtn" title="Toggle theme">◐</button>
     </div>
   </header>
+
+  <section class="outreach" id="outreach" hidden>
+    <h2 id="outreachTitle"></h2>
+    <div class="sub">You send each one yourself. After sending, run the command shown under it so the follow-up gets dated.</div>
+    <div id="outreachList"></div>
+  </section>
 
   <div class="tiles" id="tiles"></div>
 
@@ -326,6 +343,41 @@ document.addEventListener("dragover",e=>e.preventDefault());
 document.addEventListener("drop",async e=>{
   e.preventDefault(); const f=e.dataTransfer.files[0]; if(f) load(await f.text(), f.name, null);
 });
+
+/* ---------- outreach due (read-only: tools/outreach.py owns the queue) ---------- */
+async function loadOutreach(){
+  if(!location.protocol.startsWith("http")) return;
+  let g;
+  try{ const r=await fetch("outreach_queue.csv",{cache:"no-store"}); if(!r.ok) return; g=parseCSV(await r.text()); }catch(e){ return; }
+  if(g.length<2) return;
+  const h=g[0].map(s=>s.trim()), d=new Date();
+  const today=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  const due=g.slice(1).map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]??""])))
+    .filter(r=>r.status==="pending" && r.due && r.due<=today)
+    .sort((a,b)=>(a.due+a.company).localeCompare(b.due+b.company));
+  if(!due.length) return;
+  $("#outreachTitle").textContent = due.length+" outreach message"+(due.length===1?"":"s")+" to send today";
+  $("#outreachList").innerHTML = due.map((r,i)=>{
+    const late=Math.round((new Date(today)-new Date(r.due))/864e5);
+    const isMail=/^[^@\s]+@[^@\s]+$/.test(r.ref), isUrl=/^https?:\/\//.test(r.ref);
+    const link = isUrl ? `<a class="btn" href="${he(r.ref)}" target="_blank" rel="noopener">Open profile</a>`
+      : isMail ? `<a class="btn" href="mailto:${encodeURIComponent(r.ref)}?subject=${encodeURIComponent(r.subject)}&body=${encodeURIComponent(r.text)}">Open in mail</a>` : "";
+    return `<div class="omsg">
+      <div class="who"><b>${he(r.contact)}</b><span>${he(r.company)}, ${he(r.role)}</span>
+        <span class="tag">${he(r.track.replace(/_/g," "))}</span><span class="tag">${he(r.channel.replace(/_/g," "))}</span>
+        ${late>0?`<span class="late">${late}d late</span>`:""}</div>
+      ${r.after && r.channel!=="email" ? '<div class="sub" style="margin:6px 0 0">Send only if they accepted the connection. Otherwise skip it.</div>' : ""}
+      <pre>${r.subject?"Subject: "+he(r.subject)+"\n\n":""}${he(r.text)}</pre>
+      <div class="act"><button class="btn primary" data-copy="${i}">Copy message</button>${link}
+        <code>python3 tools/outreach.py sent ${he(r.id)}</code></div></div>`;
+  }).join("");
+  $("#outreachList").addEventListener("click",e=>{
+    const b=e.target.closest("[data-copy]"); if(!b) return;
+    navigator.clipboard.writeText(due[+b.dataset.copy].text).then(()=>{ b.textContent="Copied"; setTimeout(()=>b.textContent="Copy message",1500); });
+  });
+  $("#outreach").hidden=false;
+}
+loadOutreach();
 
 /* try same-directory autoload when served over http */
 (async()=>{

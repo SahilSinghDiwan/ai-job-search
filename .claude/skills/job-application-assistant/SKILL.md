@@ -5,7 +5,7 @@ description: >
   and preparing for interviews. Triggers on keywords like: job posting, job application, CV,
   cover letter, resume, interview prep, job fit, career, application, apply, ansøgning, stilling
 allowed-tools: Read, Glob, Grep, WebFetch, WebSearch, Edit, Write, AskUserQuestion
-framework_version: 1.1.0
+framework_version: 1.2.0
 ---
 
 # Job Application Assistant
@@ -65,7 +65,7 @@ when one exists — never into the template.
 | `06-cover-letter-templates.md` | LaTeX cover letter structure and tailoring rules |
 | `07-interview-prep.md` | STAR examples, tough questions, roleplay guidelines |
 | `08-application-forms.md` | Portal free-text fields: self-introduction, project entries, character-limited pitches |
-| `09-referral-outreach.md` | Finding referral contacts at a target company and drafting the outreach the candidate sends |
+| `09-referral-outreach.md` | Application outreach, mandatory on every application: careers email, hiring manager, engineers, recruiter. Research first, human voice, drafted and scheduled, never sent |
 
 ---
 

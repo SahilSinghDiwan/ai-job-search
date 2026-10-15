@@ -63,9 +63,11 @@ PF. A proudly quoted "₹40 LPA CTC" routinely decomposes to ₹24 fixed. `/appl
 CTC, expected CTC and notice period: what to write, what never to put in writing, and
 why a notice period you are already serving is worth volunteering.
 
-**Referral outreach as a first-class artifact.** `/apply` now offers a fourth output
-alongside the CV, cover letter and form fields: ranked referral contacts at the target
-company with drafted outreach notes. It drafts only — it never sends anything.
+**Application outreach as a hard rule.** Every `/apply` drafts outreach alongside the
+CV and cover letter: a careers email, then notes to the hiring manager, the engineers
+on the team and a recruiter, spaced over a week. A research agent runs first, every
+message passes a human-voice gate (`tools/outreach.py`), and a queue reminds you what
+to send each day. It drafts and schedules only — it never sends anything.
 
 **ATS verification of the compiled PDF.** `tools/ats_check.py` extracts the PDF's text
 layer and checks what a parser actually sees: `(cid:*)` markers, `U+FFFD` bullets, a

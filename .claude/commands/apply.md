@@ -361,6 +361,7 @@ Summarize 3-5 key decisions made to tailor the application:
 
 ### Files Created
 List the files written:
+- `cover_letters/outreach_<company>_<role>.txt` once the Application Outreach section below has run, with the count of messages queued and any track left unfilled
 - `cv/main_<company>_<role><CV_EXT>` (and its compiled `.pdf`)
 - The cover letter in the format chosen in Step 2: `cover_letters/cover_<company>_<role><COVER_EXT>` (and its compiled `.pdf`) on the LaTeX path, `cover_letters/cover_<company>_<role>.txt` on the plain-text path, or both if the user asked for both
 
@@ -376,11 +377,20 @@ Check whether the posting or the portal it came from asks for free-text fields t
 
 **Only on yes**, read `08-application-forms.md` and draft the fields per its rules, grounded against the same three-source union as the CV and cover letter. Save per that file's "Output format" section. **On no, or when the posting has no such fields, say nothing further and move on** — this is an optional addition and never changes the default two-document output.
 
-Then, separately, offer **referral outreach**. A referral moves the application from the resume pile to a named human, and Indian employers run formal referral programmes with a bonus attached, so an employee forwarding a CV is acting on an existing incentive rather than doing a favour. Offer it once, in the same turn:
+### Application Outreach (Mandatory)
 
-> "Want me to find referral contacts at [Company] and draft the outreach? I'll rank the people and write the notes; you review and send them yourself."
+Outreach is part of sending an application, not an extra. Do not offer it and do not ask: once the CV and cover letter are final, read `.claude/skills/job-application-assistant/09-referral-outreach.md` and follow it exactly, in the same turn.
 
-**Only on yes**, read `.claude/skills/job-application-assistant/09-referral-outreach.md` and follow it exactly. Two constraints from that file are absolute: **never send, connect, or message anyone on the candidate's behalf** — you produce drafts, he sends them — and every contact must have a genuine, specific hook or be explicitly labelled as not having one. **On no, say nothing further and move on.**
+It has four hard rules and none bends:
+
+1. **Outreach goes with every submitted application**: the careers email, the hiring manager, the engineers on the team, then a recruiter, in that order.
+2. **Never send, connect or message anyone on the candidate's behalf.** You produce drafts and a schedule; he sends each message himself. This holds even when a mail-sending tool is available in the session.
+3. **A research agent runs before a word is written**, and what it returns is checked at a source before it is used.
+4. **Every message reads as written by a person**: it passes `python3 tools/outreach.py load` and the read-aloud test in that file.
+
+The output is `cover_letters/outreach_<company>_<role>.txt`, the research notes beside the application archive, and the loaded rows in `outreach_queue.csv`. Loading schedules nothing: the dates start when `/outcome` records the submission.
+
+If a track cannot be filled (no browser session to read LinkedIn, no careers address on the company's own site), name the track and the reason in the final summary. Never report the application as complete while a track is silently missing.
 
 ### Log the drafting passes
 
@@ -396,5 +406,5 @@ These are **unmetered** records: they say the pass happened, not what it cost. N
 Drafting is not applying: do **not** add a tracker row here. The row is written when the user confirms the application was submitted.
 
 ### Next Steps
-- **Submitted?** `/outcome <company>` logs it through `python3 tools/instrument.py add` (tracker row, `job_id` and `applied` event in one step - run it the same day, a later run is flagged late-logged) and starts the per-application record that `/setup` later uses to calibrate the fit framework.
+- **Submitted?** `/outcome <company>` logs it through `python3 tools/instrument.py add` (tracker row, `job_id` and `applied` event in one step - run it the same day, a later run is flagged late-logged), starts the outreach schedule with `python3 tools/outreach.py start` so the first messages are due that day, and starts the per-application record that `/setup` later uses to calibrate the fit framework.
 - **Interview scheduled?** `/interview` builds a stage-specific prep pack from this posting and the documents you just created.

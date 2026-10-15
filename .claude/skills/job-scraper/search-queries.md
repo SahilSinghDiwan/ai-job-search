@@ -16,7 +16,7 @@ order and cadence are set here. Selected on **signal quality, not volume** (see
 | `freehire-search` | **ON** | every run | Global-remote across ~50 ATS platforms; real `posted_at` dates |
 | `instahyre-search` | **ON - demoted** | every 2nd run | See demotion note below |
 | `naukri-search` | **OFF** | on demand only | Bulk-poster dominance and no salary data; kept installed as an escape hatch. See its `SKILL.md` |
-| `ats-search` | **ON** | every run | Direct Greenhouse/Ashby/Lever feeds for the companies in `companies.txt` (incl. Razorpay); real employer-set dates, no board markup. Run with queries covering both Priority 1-3 terms and `-q "Forward Deployed"` - title-only matching means a role has to be queried by its actual title to surface, and it will not appear under an "AI Engineer" query just because the company is AI-first |
+| `ats-search` | **ON** | every run | Direct Greenhouse/Ashby/Lever feeds for the companies in `companies.txt` (incl. Razorpay); real employer-set dates, no board markup. Run with queries covering both Priority 1-3 terms and every Priority 4 `-q` title (`"Forward Deployed"`, `"Solutions Engineer"`, `"Deployment Engineer"`, `"Solutions Architect"`, `"Customer Engineer"`) - title-only matching means a role has to be queried by its actual title to surface, and it will not appear under an "AI Engineer" query just because the company is AI-first |
 
 **Instahyre is demoted, not disabled.** It surfaces real Bengaluru AI roles, but it
 never expires listings - one page of Bangalore LLM results held postings 11, 35, 53,
@@ -91,18 +91,45 @@ site:linkedin.com/jobs "AI Platform Engineer" (Bengaluru OR Remote)
 site:linkedin.com/jobs "Agentic" AI engineer
 site:linkedin.com/jobs "AI developer tooling" OR "LLM tooling" engineer
 site:wellfound.com "agentic" OR "AI agent" engineer remote
-site:linkedin.com/jobs "Forward Deployed Engineer" (Bengaluru OR Remote) India
-bun run .agents/skills/ats-search/cli/src/cli.ts search -q "Forward Deployed" --format table
 ```
 
+### Priority 4: Forward Deployed / customer-facing AI engineering
+
+Engineers who build and ship AI systems inside a customer's environment. Matches the
+client-embedded delivery work (enterprise clients, on-premises model constraints,
+POC to production).
+
+```
+site:linkedin.com/jobs "Forward Deployed Engineer" (Bengaluru OR Remote) India
+site:linkedin.com/jobs "Forward Deployed AI Engineer" OR "Forward Deployed Software Engineer"
+site:linkedin.com/jobs "AI Solutions Engineer" OR "GenAI Solutions Engineer" (Bengaluru OR Remote)
+site:linkedin.com/jobs "AI Deployment Engineer" OR "Agent Engineer" OR "AI Implementation Engineer"
+site:linkedin.com/jobs "Solutions Architect" (GenAI OR LLM OR "agentic") (Bengaluru OR Remote)
+site:wellfound.com "Forward Deployed" OR "Solutions Engineer" AI remote
+bun run .agents/skills/ats-search/cli/src/cli.ts search -q "Forward Deployed" --format table
+bun run .agents/skills/ats-search/cli/src/cli.ts search -q "Solutions Engineer" --format table
+bun run .agents/skills/ats-search/cli/src/cli.ts search -q "Deployment Engineer" --format table
+bun run .agents/skills/ats-search/cli/src/cli.ts search -q "Solutions Architect" --format table
+bun run .agents/skills/ats-search/cli/src/cli.ts search -q "Customer Engineer" --format table
+```
+
+Titles in this family: Forward Deployed Engineer (FDE), Forward Deployed AI /
+Software Engineer, AI Solutions Engineer, AI Deployment Engineer, Agent Engineer,
+AI Implementation Engineer, Customer Engineer (AI), Solutions Architect (GenAI).
+
 **Forward Deployed Engineer** is a distinct title, not a synonym for "AI Engineer" -
-it will not surface under any query above. It shows up at customer-facing
+it will not surface under any query in Priority 1-3. It shows up at customer-facing
 implementation-heavy AI/agentic companies (Palantir popularized it; Razorpay and
 similar funded product companies now use it too) and fits the platform/agentic
 profile well when the JD is AI-adjacent - evaluate normally, do not assume it is
 non-technical from the title alone.
 
-### Priority 4: Broader ML / GenAI (wider net)
+**The non-FDE titles here are noisy.** "Solutions Engineer", "Solutions Architect"
+and "Customer Engineer" are also used for pre-sales and support roles with no
+building. Keep one only when the JD has the candidate writing and shipping LLM/agent
+code; drop it under the non-AI deal-breaker when it is demos, RFPs or a sales quota.
+
+### Priority 5: Broader ML / GenAI (wider net)
 
 Wider net for adjacent titles.
 
@@ -132,4 +159,5 @@ Only include jobs posted within the last 14 days, or with an application deadlin
 
 If the user specifies a focus area, select queries from the matching category and also generate 2-3 custom queries for that focus. For example:
 - "/scrape agentic" -> Priority 3 queries + custom agentic/AI-tooling queries
+- "/scrape fde" -> Priority 4 queries + custom forward-deployed/solutions queries
 - "/scrape remote" -> tighten all categories with "remote" + run `freehire-search`

@@ -127,7 +127,7 @@ This dimension stays pass/fail plus notes — it is not scored and not weighted.
 | Remote, with India confirmed eligible (or genuinely work-from-anywhere, verified per the gate above) | **PASS** |
 | Remote, tagged with a country he does not live in, with no stated residency or authorization requirement | **FLAG** — score and draft normally. Name the open question (does the employer hire India-based staff, and via what mechanism?) in the notes. Never treat the tag itself as a fail |
 | Remote, geography unconfirmed after checking the careers page | **FLAG** — carry the gate's "unverified" note through to the report; do not quietly upgrade it to PASS |
-| Requires relocation outside Bangalore | **FLAG** — not a hard deal-breaker for the right AI role, per the profile. Discuss with the user |
+| Requires relocation outside Bangalore | **FAIL** — relocation is a no-go, per the profile (confirmed 15 Oct 2026) |
 | Frequent international travel | **FLAG** — discuss with the user |
 
 **When — timezone overlap.** IST is UTC+5:30, which puts it roughly 12.5 hours ahead of US Pacific, 9.5 ahead of US Eastern, 4.5 ahead of the UK, and 3.5 ahead of Central European time. That arithmetic is the whole point: a US-Pacific team's 10:00 standup is 22:30 in Bengaluru, and a "small overlap requirement" written casually by a San Francisco hiring manager can mean a permanently nocturnal working life. This is a genuine quality-of-life constraint, not a footnote, and it is invisible unless you compute it explicitly. So read the posting for core-hours, standup-time, on-call, or "overlap" language and convert it into IST before judging it:

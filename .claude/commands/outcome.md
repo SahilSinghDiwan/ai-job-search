@@ -65,6 +65,14 @@ Also collect, without interrogating - one or two open questions are enough:
 
 ## Step 2b: Follow-Up Branch (chase a quiet application)
 
+**The outreach queue comes first.** An application with rows in `outreach_queue.csv` already has its follow-ups drafted and dated (see `09-referral-outreach.md`). For those, run `python3 tools/outreach.py due --text` and work from that list; this branch's 10-day note is for applications that have no queue, or whose queue is spent.
+
+**Keep the queue in step with the tracker.** Three moments, each in the same turn as the tracker write:
+
+- **Submission recorded** (the `applied` row is written): `python3 tools/outreach.py start --app <company>_<role> --date <date applied>`, then show the schedule it prints. If it reports no rows, the outreach was never drafted: say so and offer to run it now, because an application without outreach is unfinished.
+- **The user says a message went out, or that a contact replied**: `python3 tools/outreach.py sent <id>` or `replied <id>`.
+- **A final status is recorded** (rejected, withdrawn, declined, hired, no response): `python3 tools/outreach.py close --app <company>_<role>`. Nobody should be nudged about a closed application.
+
 Enter this branch from the `followup` argument (Step 0) or from the offer under the open-pipeline table (Step 1.3). Standard practice is a brief, polite follow-up one to two weeks after applying, at most twice; this branch operationalizes that.
 
 **Candidates.** An application qualifies when its status is not final, the threshold has passed since its `date` (or since the last `followed up` marker in `notes`, if any), and it has fewer than **two** logged follow-ups. Parse dates defensively - skip rows whose dates do not parse and say so rather than guessing. Present qualifying applications as a table (company, role, days quiet, follow-ups sent, channel, contact person) and draft only for the ones the user picks.

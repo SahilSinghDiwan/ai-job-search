@@ -31,9 +31,11 @@ everything after a profile change.
 2. Drafts `cv/main_<company>_<role>.tex` and a matching cover letter.
 3. A reviewer agent critiques it; the drafter revises.
 4. Compiles both and visually inspects the PDFs.
-5. Offers two extras — **application-form fields** (current CTC, expected CTC and
-   notice period, which Indian portals always demand) and **referral outreach**
-   (ranked contacts plus drafted notes; it never sends anything on your behalf).
+5. Offers **application-form fields** (current CTC, expected CTC and notice period,
+   which Indian portals always demand).
+6. Drafts **application outreach**, every time, without asking: a careers email, then
+   notes to the hiring manager, the engineers and a recruiter, researched first and
+   checked against the human-voice gate. It never sends anything on your behalf.
 
 **`/outcome <company>`** — records what happened. **`/apply` does not write the
 tracker row.** `/outcome` is the only command that creates `job_search_tracker.csv`
@@ -47,6 +49,7 @@ application is invisible to `/rank` dedup, `/html-report`, `/interview` and
 
 | Command | When |
 |---|---|
+| `python3 tools/outreach.py due --text` | What to send today from the outreach queue, ready to paste. Mark each with `sent <id>`. A desktop notification fires each morning once `scripts/install-outreach-launchd.sh` has run. |
 | `/outcome followup` | Lists applications quiet for 10+ days and drafts nudges. Drafts only — you send them. |
 | `/gmail-sync` | Pulls interview invites, assessments and rejections from Gmail into the tracker. Proposes a batch, writes only on your approval. |
 | `/html-report` | Dashboard → `reports/application-dashboard.html`. Offline, no dependencies. |
