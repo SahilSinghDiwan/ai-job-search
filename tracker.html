@@ -106,6 +106,7 @@ kbd{background:var(--bg);border:1px solid var(--border);border-radius:4px;paddin
       <div class="file" id="fileInfo">No file loaded</div>
     </div>
     <div style="display:flex;gap:8px">
+      <button class="btn primary" id="folderBtn" hidden>Connect folder…</button>
       <button class="btn" id="openBtn">Open CSV…</button>
       <button class="btn" id="themeBtn" title="Toggle theme">◐</button>
     </div>
@@ -162,6 +163,7 @@ const ENUMS = {
 };
 const TABLE_COLS = ["date","company","role","status","channel","sector"];
 const DEFAULT_NAME = "job_search_tracker.csv";
+const OUTREACH_NAME = "outreach_queue.csv";
 
 let header = COLS.slice(), rows = [], original = "", handle = null, dirty = false, sortKey = "date", sortDir = -1, selIdx = null;
 const $ = s => document.querySelector(s);
@@ -347,8 +349,10 @@ document.addEventListener("drop",async e=>{
 /* ---------- outreach due (read-only: tools/outreach.py owns the queue) ---------- */
 async function loadOutreach(){
   if(!location.protocol.startsWith("http")) return;
-  let g;
-  try{ const r=await fetch("outreach_queue.csv",{cache:"no-store"}); if(!r.ok) return; g=parseCSV(await r.text()); }catch(e){ return; }
+  try{ const r=await fetch(OUTREACH_NAME,{cache:"no-store"}); if(r.ok) renderOutreach(await r.text()); }catch(e){}
+}
+function renderOutreach(text){
+  const g=parseCSV(text);
   if(g.length<2) return;
   const h=g[0].map(s=>s.trim()), d=new Date();
   const today=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
@@ -379,10 +383,48 @@ async function loadOutreach(){
 }
 loadOutreach();
 
-/* try same-directory autoload when served over http */
+/* ---------- opened as a file: remember the repo folder ----------
+   file:// pages can't fetch neighbouring files, so the first visit asks for
+   the repo folder once. Its handle lives in IndexedDB; later visits load
+   both CSVs from it, and Save writes straight back. */
+const idb = (mode, fn) => new Promise((res, rej) => {
+  const o = indexedDB.open("tracker", 1);
+  o.onupgradeneeded = () => o.result.createObjectStore("kv");
+  o.onerror = () => rej(o.error);
+  o.onsuccess = () => { const t = o.result.transaction("kv", mode), r = fn(t.objectStore("kv"));
+    t.oncomplete = () => res(r && r.result); t.onerror = () => rej(t.error); };
+});
+async function loadFromFolder(dir){
+  const fh = await dir.getFileHandle(DEFAULT_NAME);
+  load(await (await fh.getFile()).text(), DEFAULT_NAME, fh);
+  try{ renderOutreach(await (await (await dir.getFileHandle(OUTREACH_NAME)).getFile()).text()); }catch(e){}
+  $("#folderBtn").hidden = true;
+}
+$("#folderBtn").onclick = async () => {
+  try{
+    let dir = await idb("readonly", kv => kv.get("dir")).catch(() => null);
+    if(!dir || await dir.requestPermission({mode:"readwrite"}) !== "granted"){
+      dir = await window.showDirectoryPicker({id:"tracker", mode:"readwrite"});
+      await idb("readwrite", kv => kv.put(dir, "dir"));
+    }
+    await loadFromFolder(dir);
+  }catch(e){
+    if(e.name==="NotFoundError") alert("No "+DEFAULT_NAME+" in that folder. Pick the ai-job-search repo folder.");
+    else if(e.name!=="AbortError") alert(e.message);
+  }
+};
+
+/* autoload: same-directory fetch over http, the remembered folder over file:// */
 (async()=>{
   if(location.protocol.startsWith("http")){
     try{ const r=await fetch(DEFAULT_NAME); if(r.ok) load(await r.text(), DEFAULT_NAME, null); }catch(e){}
+  } else if(window.showDirectoryPicker){
+    $("#folderBtn").hidden = false;
+    try{
+      const dir = await idb("readonly", kv => kv.get("dir"));
+      if(dir && await dir.queryPermission({mode:"readwrite"}) === "granted") await loadFromFolder(dir);
+      else if(dir) $("#folderBtn").textContent = "Reconnect folder";
+    }catch(e){}
   }
   if(!rows.length){ setDirty(false); render(); }
 })();
