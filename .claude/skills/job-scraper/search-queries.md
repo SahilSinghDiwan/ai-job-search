@@ -53,6 +53,7 @@ Primary:
 
 Secondary (company career pages via Google):
 - Direct Google searches with `site:` filters for AI-first startups and funded product companies
+- **sourcingxpress.com** - India job board with funded-startup roles; posts often list CTC bands and explicit screening rules (minimum years, stint-length rules). No portal skill: `/jobs` redirects to the homepage and listings render client-side (no links or JSON-LD in the raw HTML). robots.txt blocks only `/api/` and `/auth/`, so single job pages (`/jobs/<id>`) can be fetched. Search with `site:sourcingxpress.com/jobs` + the query terms below. Check the "Posted N days ago" line: listings stay up long after they go stale (added 16 Oct 2026)
 
 ## Query Categories
 
